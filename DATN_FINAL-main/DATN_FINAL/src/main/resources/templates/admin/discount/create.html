@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+		<h1 class="h3 mb-2 text-gray-800">CREATE TÀI KHOẢN NHÂN VIÊN, ADMIN</h1>
+		<div class="card shadow mb-4">
+			<div class="container">
+				<form th:action="@{/api/discount/save}" th:object="${discount}" method="post">
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Tên mã giảm giá:</label>
+						<div class="col-10">
+							<input type="text" id="discountName" class="form-control" th:field="*{discountName}" required />
+						</div>
+						<i class="pull-left text-danger" th:text="${error1}"></i>
+						<i class="pull-left text-danger" th:if="${#fields.hasErrors('discountName')}"
+							th:errors="*{discountName}"></i>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Phần trăm giảm giá:</label>
+						<div class="col-10 input-group mb-2">
+							<input type="number" id="decreasePercent" th:field="*{decreasePercent}"
+								class="form-control" required/>
+							<div class="input-group-prepend">
+								<div class="input-group-text">%</div>
+							</div>
+							<i class="pull-left text-danger" th:if="${#fields.hasErrors('decreasePercent')}"
+							th:errors="*{decreasePercent}"></i>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Ngày bắt đầu:</label>
+						<div class="col-10">
+							<input type="date" id="startDay" th:field="*{startDay}" class="form-control" required/>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Ngày kết thúc:</label>
+						<div class="col-10">
+							<input type="date" id="endDay" th:field="*{endDay}" class="form-control" required/>
+						</div>
+					</div>
+					<br>
+					<br>
+					<br>
+					<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#createModal">
+						<span>
+							<i class="fa-solid fa-pen-to-square"></i>
+						</span>
+						<span class="text">Thêm mới</span></button>
+					<!-- Modal -->
+					<div class="modal fade" id="createModal" tabindex="-1" role="dialog"
+						aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Thêm mới mã giảm giá</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									Bạn có muốn thêm mới mã giảm giá này không ?
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+									<button type="submit" class="btn btn-primary">Yes</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button type="reset" class="btn btn-info">
+						<span>
+							<i class="fa-solid fa-broom"></i>
+						</span>
+						<span class="text">Clear</span></button>
+					<br>
+					<hr>
+					<br>
+				</form>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

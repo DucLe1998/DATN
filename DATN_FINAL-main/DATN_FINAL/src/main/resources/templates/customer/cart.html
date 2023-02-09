@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/customer/layout :: dynamic(~{::main})}">
+
+<body>	
+	<main class="wrapperMain_content">
+		<section class="bread-crumb">
+			<span class="crumb-border"></span>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 a-left">
+						<ul class="breadcrumb">
+							<li class="home">
+								<a th:href="@{|/|}"><span>Trang chủ</span></a>
+								<span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+							</li>
+	
+							<li><strong><span>Giỏ hàng</span></strong></li>
+	
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="container">
+		<div class="row">
+            <div class="col-1">
+      		</div>
+
+            
+		      <div class="col-10">
+		        <div class="card shadow mb-4">
+					
+					<div class="card-body">
+						<div class="table-responsive">
+							<b>Các sản phẩm đã cho vào giỏ</b>
+							
+							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+								<thead>
+									<tr style="text-align: center;">
+										<th>Tên sản phẩm</th>
+						                <th>Hình Ảnh</th>
+						                <th>Kích cỡ</th>
+						                <th>Màu sắc</th>
+						                <th>Số lượng</th>	                
+						                <th>Thành tiền</th>
+						                <th>Xóa</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="c :${itemList}">
+										<td th:text="${c.product.product.name}"></td>
+			
+										<td> <img class="lazyload loaded"
+																th:src="@{|/customerAssets/images/${c.product.thumnail}|}"
+																data-src="//bizweb.dktcdn.net/thumb/medium/100/289/371/products/08-dbdfc9aa-fe11-45bc-ace0-c2c8cb80b32f.jpg?v=1516612166043"
+																th:alt="${c.product.product.name}"
+																data-was-processed="true"></td>
+										<td th:text="${c.product.size}"></td>
+										<td th:text="${c.product.color}"></td>
+										<td th:text="${c.quantity}"></td>
+							            
+				                        <td th:text="${c.product.product.price * c.quantity}">₫</td>
+				                       
+										
+										<td class="text-center">
+											<a th:href="@{|/cart/delete/${c.id}|}"
+												class="btn btn-danger" data-toggle="tooltip" data-placement="bottom"
+												title="View">
+												<i class="fa-solid fa-trash"></i>
+											</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+			
+			<section class="main-cart-page main-container col1-layout">
+				<div class="main container cartpcstyle">
+					<div class="wrap_background_aside cartbg margin-bottom-40">
+					
+						<div class="col-lg-12 col-12 order-lg-1 order-2 colcartleft col-lg-12">
+							<div class="cart-page d-xl-block d-none">
+								<div class="drawer__inner">
+									<div class="CartPageContainer">
+			 										<div class="col-lg-6 coltotal_tt">
+			 										</div>
+										
+													<div class="col-lg-6 coltotal_tt">
+														<div class="tt">
+														    <a class="btn btn-white f-left" title="Tiếp tục mua hàng" type="button" th:href="@{|/product/index2|}"><span>Tiếp tục mua hàng</span></a>
+											            </div>
+														 <div class="cart__btn-proceed-checkout-dt">
+															<a type="button" th:href="@{|/checkouts|}"  class="btn btn-white f-left" id="btn-proceed-checkout" title="Thực hiện thanh toán"><span>Thực hiện thanh toán</span></a>
+												        </div>
+											        </div>
+											
+										
+										</div>
+								</div>
+							</div>
+							<div class="cart-mobile-page d-block d-xl-none">
+								<div class="CartMobileContainer"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" media="all">
+	</main>
+
+	<script type="text/javascript">
+
+	$('.btn-number').click(function(e){
+	    e.preventDefault();
+	    
+	    fieldName = $(this).attr('data-field');
+	    type      = $(this).attr('data-type');
+	    var input = $("input[name='"+fieldName+"']");
+	    var currentVal = parseInt(input.val());
+	    if (!isNaN(currentVal)) {
+	        if(type == 'minus') {
+	            
+	            if(currentVal > input.attr('min')) {
+	                input.val(currentVal - 1).change();
+	            } 
+	            if(parseInt(input.val()) == input.attr('min')) {
+	                $(this).attr('disabled', true);
+	            }
+
+	        } else if(type == 'plus') {
+
+	            if(currentVal < input.attr('max')) {	
+	                input.val(currentVal + 1).change();
+	            }
+	            if(parseInt(input.val()) == input.attr('max')) {
+	                $(this).attr('disabled', true);
+	            }
+
+	        }
+	    } else {
+	        input.val(0);
+	    }
+	});
+	$('.input-number').focusin(function(){
+	   $(this).data('oldValue', $(this).val());
+	});
+	$('.input-number').change(function() {
+	    
+	    minValue =  parseInt($(this).attr('min'));
+	    maxValue =  parseInt($(this).attr('max'));
+	    valueCurrent = parseInt($(this).val());
+	    
+	    name = $(this).attr('name');
+	    if(valueCurrent >= minValue) {
+	        $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
+	    } else {
+	        alert('Sorry, the minimum value was reached');
+	        $(this).val($(this).data('oldValue'));
+	    }
+	    if(valueCurrent <= maxValue) {
+	        $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
+	    } else {
+	        alert('Sorry, the maximum value was reached');
+	        $(this).val($(this).data('oldValue'));
+	    }
+	    
+	    
+	});
+	$(".input-number").keydown(function (e) {
+	        // Allow: backspace, delete, tab, escape, enter and .
+	        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+	             // Allow: Ctrl+A
+	            (e.keyCode == 65 && e.ctrlKey === true) || 
+	             // Allow: home, end, left, right
+	            (e.keyCode >= 35 && e.keyCode <= 39)) {
+	                 // let it happen, don't do anything
+	                 return;
+	        }
+	        // Ensure that it is a number and stop the keypress
+	        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+	            e.preventDefault();
+	        }
+	    });
+	</script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" media="all">
+	
+	 <link rel="preload" as="style" href="//bizweb.dktcdn.net/100/289/371/themes/883177/assets/main.scss.css?1667212443268">
+    <link href="//bizweb.dktcdn.net/100/289/371/themes/883177/assets/main.scss.css?1667212443268" rel="stylesheet" type="text/css">
+	<link rel="preload" as="style" type="text/css" href="//bizweb.dktcdn.net/100/289/371/themes/883177/assets/ajaxcart.scss.css?1667212443268" class="">
+</body>
+</html>

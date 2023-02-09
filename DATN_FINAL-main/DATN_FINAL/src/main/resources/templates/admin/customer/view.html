@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+		<h1 class="h3 mb-2 text-gray-800">CHI TIẾT KHÁCH HÀNG</h1>
+		<div class="card shadow mb-4">
+			<div class="container">
+				<form th:object="${user}">
+					<br>
+					<div class="row">
+						<div class="col-4">
+							<label>Photos: </label>
+							<img th:src="@{|/assets/img/${user.avatar}|}" width="300px" />
+						</div>
+						<div class="col-8">
+							<div class="mt-2 row">
+								<label class="col-2">Họ và tên:</label>
+								<div class="col-10">
+									<p class="form-control">[[${user.firstName}]] [[${user.lastName}]]</p>
+								</div>
+							</div>
+							<br>
+							<div class="mt-2 row">
+								<label class="col-2">Username:</label>
+								<div class="col-10 input-group mb-2">
+									<p class="form-control" th:text="${user.username}"></p>
+								</div>
+							</div>
+							<br>
+							<div class="mt-2 row">
+								<label class="col-2">Email:</label>
+								<div class="col-10 input-group mb-2">
+									<p class="form-control" th:text="${user.email}"></p>
+								</div>
+							</div>
+							<br>
+							<div class="mt-2 row">
+								<label class="col-2">Số điện thoại:</label>
+								<div class="col-10 input-group mb-2">
+									<p class="form-control" th:text="${user.phoneNumber}"></p>
+								</div>
+							</div>
+							<br>
+							<div class="mt-2 row">
+								<label class="col-2">Địa chỉ:</label>
+								<div class="col-10 input-group mb-2">
+									<span
+										class="form-control">[[${user.address}]]-[[${user.ward}]]-[[${user.district}]]-[[${user.provineCity}]]</span>
+								</div>
+							</div>
+							<br>
+							<div class="mt-2 row">
+								<label class="col-2">Tổng chi tiêu:</label>
+								<div class="col-10 input-group mb-2">
+									<p class="form-control" th:text="${#numbers.formatCurrency(user.totalSpending)}">
+									</p>
+								</div>
+							</div>
+							<br>
+							<div class="mt-2 row">
+								<label class="col-2">tb_coin:</label>
+								<div class="col-10 input-group mb-2">
+									<p class="form-control"
+										th:text="${#numbers.formatDecimal(user.tbCoin, 1, 2, 'COMMA')}">
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Ngày tạo:</label>
+						<div class="col-10 input-group mb-2">
+							<p class="form-control" th:text="${#dates.format(user.createDay,'dd-MM-yyyy')}"></p>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Giới tính:</label>
+						<div class="col-10 input-group mb-2" th:switch="${user.gender}">
+							<p class="form-control" th:case="1">Nam</p>
+							<p class="form-control" th:case="0">Nữ</p>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Loại thành viên:</label>
+						<div class="col-10 input-group mb-2" th:switch="${user.memberType}">
+							<p class="form-control" th:case="dong">Đồng</p>
+							<p class="form-control" th:case="bac">Bạc</p>
+							<p class="form-control" th:case="vang">Vàng</p>
+							<p class="form-control" th:case="kimcuong">Kim cương</p>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Trạng thái:</label>
+						<div class="col-10 input-group mb-2" th:switch="${user.status}">
+							<p class="form-control" th:case="0">Không hoạt động</p>
+							<p class="form-control" th:case="1">Đang hoạt động</p>
+						</div>
+					</div>
+					<br>
+					<br>
+					<hr>
+					<br>
+					<br>
+				</form>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+		<h1 class="h3 mb-2 text-gray-800">THỐNG KÊ</h1>
+		<div class="card shadow mb-4">
+			<div class="card-body">
+				<div class="alert alert-danger" th:text="${updateFailed}" th:if="${updateFailed != null}"></div>
+				<form th:action="@{/admin/billByThongKe/list}" method="post">
+					<div class="container">
+						<div class="mt-2">
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="inputState">Ngày bắt đầu:</label>
+									<div>
+										<input type="date" name="date1" class="form-control" required />
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label for="inputState">Ngày kết thúc:</label>
+									<div>
+										<input type="date" name="date2" class="form-control" required />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-warning">
+						<span>
+							<i class="fa-solid fa-pen-to-square"></i>
+						</span>
+						<span class="text"></span>Thống kê</button>
+				</form>
+				<br>
+					<div class="mt-2 row">
+						<label class="col-2">Tổng tiền trong tháng:</label>
+						<div class="col-10">
+							<p class="form-control" th:text="${#numbers.formatCurrency(billtotal)}"></p>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Tổng số đơn hàng trong tháng:</label>
+						<div class="col-10">
+							<p class="form-control" th:text="${billcount}"></p>
+						</div>
+					</div>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

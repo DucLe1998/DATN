@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+		<h1 class="h3 mb-2 text-gray-800">CREATE SẢN PHẨM</h1>
+		<div class="card shadow mb-4">
+			<div class="container">
+				<form th:action="@{/api/product/save}" th:object="${product}" method="post">
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Tên sản phẩm:</label>
+						<div class="col-10">
+							<input type="text" id="name" class="form-control" th:field="*{name}" required />
+						</div>
+						<i class="pull-left text-danger" th:text="${error1}"></i>
+						<i class="pull-left text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></i>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Giá:</label>
+						<div class="col-10 input-group mb-2">
+							<input type="number" id="price" class="form-control" th:field="*{price}" required />
+							<div class="input-group-prepend">
+								<div class="input-group-text">VNĐ</div>
+							</div>
+						</div>
+						<i class="pull-left text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></i>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Chất liệu:</label>
+						<div class="col-10">
+							<input type="text" id="material" class="form-control" th:field="*{material}" required />
+						</div>
+						<i class="pull-left text-danger" th:if="${#fields.hasErrors('material')}"
+							th:errors="*{material}"></i>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Danh mục sản phẩm:</label>
+						<div class="col-10 input-group mb-2">
+							<select class="form-control" th:field="*{category}">
+								<option value="0">Hãy chọn danh mục sản phẩm</option>
+								<option th:each="category : ${category}" th:value="${category.id}"
+									th:text="${category.name}"></option>
+							</select>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Chú ý:</label>
+						<div class="col-10 input-group mb-2">
+							<textarea type="text" id="note" class="form-control" th:field="*{note}" required></textarea>
+						</div>
+						<i class="pull-left text-danger" th:if="${#fields.hasErrors('note')}" th:errors="*{note}"></i>
+					</div>
+					<br>
+					<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#createModal">
+						<span>
+							<i class="fa-solid fa-pen-to-square"></i>
+						</span>
+						<span class="text">Thêm mới</span></button>
+					<!-- Modal -->
+					<div class="modal fade" id="createModal" tabindex="-1" role="dialog"
+						aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Thêm mới khách hàng</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									Bạn có muốn thêm mới khách hàng này không ?
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+									<button type="submit" class="btn btn-primary">Yes</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button type="reset" class="btn btn-info">
+						<span>
+							<i class="fa-solid fa-broom"></i>
+						</span>
+						<span class="text">Clear</span></button>
+					<br>
+					<hr>
+					<br>
+				</form>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

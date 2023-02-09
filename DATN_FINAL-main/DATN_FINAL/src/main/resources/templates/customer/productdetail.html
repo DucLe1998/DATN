@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/customer/layout :: dynamic(~{::main})}">
+
+<body>
+    <main>
+    	<link rel="preload" href="//bizweb.dktcdn.net/100/289/371/themes/883177/assets/swiper-plugin.js?1667212443268" as="script">
+    	<script src="//bizweb.dktcdn.net/100/289/371/themes/883177/assets/swiper-plugin.js?1667212443268"></script>
+	    <section class="bread-crumb">
+	        <span class="crumb-border"></span>
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-xs-12 a-left">
+	                    <ul class="breadcrumb">
+	                        <li class="home">
+	                            <a href="/"><span>Trang chủ</span></a>
+	                            <span>>></span>
+	                        </li>
+	
+	
+	                        <li>
+	                            <a class="changeurl" href="/san-pham-noi-bat"><span>Chi tiết sản phẩm</span></a>
+	                            <span>>></span>
+	                        </li>
+	
+	                        <li><strong><span th:object="${product}" th:text="${product.name}"  ></span></strong></li>
+							
+	                    </ul>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+	    <section class="product margin-top-20" itemscope itemtype="http://schema.org/Product">
+	        <meta itemprop="category" content="Sáº£n pháº©m ná»•i báº­t">
+	        <meta itemprop="url" content="//template-digiworld.mysapo.net/cu-sac-belkin-f8-den">
+	        <meta itemprop="name" content="Cá»§ sáº¡c Belkin F8 Ä�en">
+	        <meta itemprop="image"
+	            content="http://bizweb.dktcdn.net/thumb/grande/100/289/371/products/18.jpg?v=1516602617570">
+	        <meta itemprop="description"
+	            content=" Cá»§ sáº¡c Belkin F8 vá»›i thiáº¿t káº¿ nhá»� gá»�n, tiá»‡n sá»­ dá»¥ng vÃ  giÃºp tiáº¿t kiá»‡m diá»‡n tÃ­ch mang theo khi di chuyá»ƒn. Sáº¡c Ä‘iá»‡n cÃ³ thá»ƒ dÃ¹ng cho Ä‘iá»‡n thoáº¡i vÃ  cÃ¡c loáº¡i mÃ¡y tÃ­nh báº£ng,â€¦ Ä‘em Ä‘áº¿n hiá»‡u quáº£ vÃ  sáº¡c nhanh tá»« nguá»“n Ä‘iá»‡n khi khÃ´ng thá»ƒ káº¿t ná»‘i vá»›i mÃ¡y tÃ­nh. Thiáº¿t káº¿ nhá»� gá»�n, trá»�ng lÆ°á»£ng siÃªu nháº¹ giÃºp báº¡n dá»… dÃ ng mang theo bÃªn mÃ¬nh nhÆ°ng cÃ³ kháº£ nÄƒng sáº¡c nhanh chÃ³ng vÃ  hiá»‡u quáº£ cho thiáº¿t bá»‹ cá»§a báº¡n. Vá»›i mÃ u sáº¯c thá»�i trang cÃ¹ng cÃ¡ch sá»­ dá»¥ng Ä‘Æ¡n giáº£n, báº¡n chá»‰ cáº§n cáº¯m cÃ¡p USB vÃ o thiáº¿t bá»‹ vÃ  cá»§ sáº¡c lÃ  cÃ³ thá»ƒ náº¡p Ä‘iá»‡n cho thiáº¿t bá»‹. Cá»§ sáº¡c cÃ³ Ä‘iá»‡n Ã¡p Ä‘áº§u vÃ o á»•n Ä‘á»‹nh AC100-240V 50/60Hz vÃ  Ä‘áº§u ra 2.4A. ">
+	        <div class="d-none" itemprop="brand" itemtype="https://schema.org/Brand" itemscope>
+	            <meta itemprop="name" content="Belkin" />
+	        </div>
+	        <meta itemprop="model" content="">
+	        <div class="d-none hidden" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+	            <div class="inventory_quantity hidden" itemscope itemtype="http://schema.org/ItemAvailability">
+	                <span class="a-stock" itemprop="supersededBy">
+	                    CÃ²n hÃ ng
+	                </span>
+	            </div>
+	            <link itemprop="availability" href="http://schema.org/InStock">
+	            <meta itemprop="priceCurrency" content="VND">
+	            <meta itemprop="price" content="160000">
+	            <meta itemprop="url" content="https://template-digiworld.mysapo.net/cu-sac-belkin-f8-den">
+	            <span itemprop="UnitPriceSpecification" itemscope itemtype="https://schema.org/Downpayment">
+	                <meta itemprop="priceType" content="160000">
+	            </span>
+	            <meta itemprop="priceValidUntil" content="2099-01-01">
+	        </div>
+	        <div class="d-none hidden" id="https://template-digiworld.mysapo.net" itemprop="seller"
+	            itemtype="http://schema.org/Organization" itemscope>
+	            <meta itemprop="name" content="Digiworld" />
+	            <meta itemprop="url" content="https://template-digiworld.mysapo.net" />
+	            <meta itemprop="logo"
+	                content="http://bizweb.dktcdn.net/100/289/371/themes/853089/assets/logo.png?1665374051412" />
+	        </div>
+	        <div class="container">
+	            <div class="row">
+	                <div class="details-product">
+	                    
+							<div class="row ">
+								<div class="product-single__wrapper">
+								<div class="product-single__images">
+								<div class="product-single__thumbnails">
+								<div rel-script="product-gallery-popup" class="product-single__inner">
+								<div rel-script="product-thumbnails-slide" class="thumbnails slick-initialized slick-slider slick-dotted">
+								<button class="btn btn-link " onclick="prevImg()" aria-label="Previous" type="button" style="position: absolute;top: calc(50% - 20px);    width: 40px;height: 40px; left: -6%;font-size: 50px;"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+								<div class="slick-list draggable">
+									<div class="slick-track" style="opacity: 1; width: 4266px;">
+										<div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide00" aria-describedby="slick-slide-control00" style="width: 500px;height:600px; position: relative; left: 0px; top: 0px; z-index: 999; opacity: 1;">
+											<div rel-script="product-lightbox-gallery"  data-index="0" class="image">
+												<img loading="lazy" id="bigImg"  alt=" Áo khoác nỉ nam For Winter (có mũ trùm tiện lợi) xam-dam">
+											</div>
+										</div>
+									
+									</div>
+								</div>     
+									<button class="btn btn-link " onclick="nextImg()" aria-label="Next" type="button" style="position: absolute;top: calc(50% - 20px);    width: 40px;height: 40px; right: 9%; font-size: 50px;"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+								</div>
+								</div>
+								 <div data-image-option="true" data-image-default="false" data-option-name="xam-dam" class="thumbs">
+								 	<div rel-script="product-thumbs-slide" class="product-single__gallery slick-initialized slick-slider">
+								 		<div class="slick-list draggable">
+									 		<div class="slick-track" style="opacity: 1; width: 300px; transform: translate3d(0px, 0px, 0px);">
+									 			<div data-image-id="5e69abdd" data-index="1" class="image image-lazyload is-current slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="0" style="width: 50px;" th:each="p:${listProductDetail}">
+									 				<img loading="lazy" th:id="${p.thumnail}" th:value="${p.thumnail}" onclick="" th:src="@{|/customerAssets/images/${p.thumnail}|}" th:alt="${p.thumnail}">
+									 			</div>
+									 		</div>
+									 	</div>     
+									 </div>
+								</div>
+								</div>
+								</div> 
+								<div rel-script="product-single-summary" class="product-single__summary" th:object="${product}">
+								<div class="product-single__sticky">
+								<h1 rel-script="product-single-title" class="product-single__title" th:text="${product.name}"></h1> 
+								
+								 <div class="reviews-rating__label" th:object="${buyquantity}">
+Đã bán (web): [(${buyquantity})] </div></div> <div class="product-single__price-infomation"><div rel-script="product-single-prices" data-compare-price="499000" class="product-single__prices"><ins th:if="${product.discountDetails.size()}==0">
+																			[(${product.price/1000})]00₫ 
+																			- [(${product.price/1000+25})]00₫</ins> <ins th:if="${product.discountDetails.size()} > 0">[(${product.price/1000 - product.price/1000 * product.discountDetails[0].discount.decreasePercent/100})]00₫ 
+																			- [(${product.price/1000+25-product.price/1000*product.discountDetails[0].discount.decreasePercent/100})]00₫</ins> <del th:if="${product.discountDetails.size()} > 0">
+                                                                                [(${product.price/1000})]00₫ 
+																					- [(${product.price/1000+25})]00₫</del> <span th:if="${product.discountDetails.size()} > 0">-[(${product.discountDetails[0].discount.decreasePercent})]%</span></div></div> <div class="product-single__mini-coupon"><div class="mini-coupon__heading">
+Các mã giảm giá có thể áp dụng:
+</div></div> <div rel-script="toggle-mini-coupon" class="mini-coupon__wrapper"><div class="mini-coupon-item">
+            <a href="javascript:void(0)" class="mini-coupon" data-mini-coupon="GIFT70">
+                <div class="mini-coupon__title" th:if="${product.discountDetails}!=null">
+                    <div  th:if="${d.id}" th:each="d: ${product.discountDetails}">
+	                                                            	Giảm [(${d.discount.decreasePercent})]%
+	                                                            </div>             
+                </div>
+                <div class="mini-coupon__title" th:if="${product.discountDetails}==null">
+                    
+	                                                            	
+	                                                            	Đã hết
+	                                                                         
+                </div>
+                <div class="mini-coupon__tooltip" th:if="${product.discountDetails}!=null">
+                    <span style="display:block; font-size:14px" th:if="${d.id}" th:each="d: ${product.discountDetails}">
+                    	Nhập <span class="mini-coupon__code">[(${d.discount.discountName})]</span> <span class="mini-coupon__used">&nbsp;còn</span> (93)</span>
+                    
+                </div>
+            </a>
+            </div>
+        </div> <div class="product-single__addtocart">
+        <form th:action="@{|/cart/add|}" rel-script="product-single-script" th:object="${addToCart}" method="post">
+        	<div class="product-single__options">
+        		<div rel-script="product-single-option-item" class="product-single__option">
+        			<div class="option-heading">
+        				<span class="option-heading__title">Màu sắc: 
+        					<span rel="product-option-title-color" id="color"  class="text--bold"></span>
+        				</span>
+        			</div> 
+        				<div data-option-id="color" data-option-index="1" class="option-select option-select--color">
+        					<label class="option-select__item option-select__item--color xam-dam" th:each="lst:${listProductDetail}">
+        						<div class="option-select__inner" th:if="${lst.color} == 'đen'">
+        							<input type="radio" th:id="${lst.id}" onclick="chooseColor('đen')" name="color" value="đen" data-gallery="" > 
+        							<span class="checkmark " style="background-color: black;"></span>
+        						</div>
+        						<div class="option-select__inner" th:if="${lst.color} == 'đỏ'">
+        							<input type="radio" th:id="${lst.id}" onclick="chooseColor('đỏ')" name="color" value="đỏ" data-gallery="" > 
+        							<span class="checkmark " style="background-color: red;"></span>
+        						</div>
+        						<div class="option-select__inner" th:if="${lst.color} == 'xanh'">
+        							<input type="radio" th:id="${lst.id}" onclick="chooseColor('xanh')" name="color" value="xanh" data-gallery="" > 
+        							<span class="checkmark " style="background-color: #377b9e;"></span>
+        						</div>
+        						<div class="option-select__inner" th:if="${lst.color} == 'vàng'">
+        							<input type="radio" th:id="${lst.id}" onclick="chooseColor('vàng')" name="color" value="vàng" data-gallery="" > 
+        							<span class="checkmark " style="background-color: yellow;"></span>
+        						</div>
+        			
+        						<div class="option-select__inner" th:if="${lst.color} == 'nâu'">
+        							<input type="radio" th:id="${lst.id}" onclick="chooseColor('nâu')" name="color" value="nâu" data-gallery="" > 
+        							<span class="checkmark " style="background-color: rosybrown;"></span>
+        						</div>
+        						<div class="option-select__inner" th:if="${lst.color} == 'xám'">
+        							<input type="radio" th:id="${lst.id}" onclick="chooseColor('xám')" name="color" value="xám" data-gallery="" > 
+        							<span class="checkmark " style="background-color: gray;"></span>
+        						</div>
+        						<div class="option-select__inner" th:if="${lst.color} == 'tím'">
+        							<input type="radio" th:id="${lst.id}" onclick="chooseColor('tím')" name="color" value="tím" data-gallery="" > 
+        							<span class="checkmark " style="background-color: purple;"></span>
+        						</div>
+        						<div class="option-select__inner" th:if="${lst.color} == 'trắng'">
+        							<input type="radio" th:id="${lst.id}" onclick="chooseColor('trắng')" name="color" value="trắng" data-gallery="" > 
+        							<span class="checkmark " style="background-color: white;"></span>
+        						</div>
+        						<div class="option-select__inner" th:if="${lst.color} == 'lục'">
+        							<input type="radio" th:id="${lst.id}" onclick="chooseColor('lục')" name="color" value="lục" data-gallery="" > 
+        							<span class="checkmark " style="background-color: limegreen;"></span>
+        						</div>
+        						<div class="option-select__inner" th:if="${lst.color} == 'cam'">
+        							<input type="radio" th:id="${lst.id}" onclick="chooseColor('cam')" name="color" value="cam" data-gallery="" > 
+        							<span class="checkmark " style="background-color: orange;"></span>
+        						</div>
+        					</label>
+        					<input th:object="${product}" id="proId" name="proId" th:value="${product.id}" hidden="true">
+						</div>
+				</div> 
+				<div rel-script="product-single-option-item" class="product-single__option"><div class="option-heading"><span class="option-heading__title">Kích thước: <span rel="product-option-title-size" class="text--bold"></span></span> 
+        		</div> 
+        		<div data-option-id="size" data-option-index="2" class="option-select option-select--size"><label class="option-select__item m"><div class="option-select__inner"><input type="radio" id="S" name="size" value="S" data-title="S" disabled> <span class="checkmark">S</span></div></label> <label class="option-select__item l"><div class="option-select__inner"><input type="radio" id="M" name="size" value="M" data-title="M" disabled> <span class="checkmark">M</span></div></label> <label class="option-select__item xl"><div class="option-select__inner"><input type="radio" name="size" id="L" value="L" data-title="L" disabled> <span class="checkmark">L</span></div></label> <label class="option-select__item 2xl"><div class="option-select__inner"><input type="radio" id="XL" name="size" value="XL" data-title="XL" disabled> <span class="checkmark">XL</span></div></label> <label class="option-select__item 3xl"><div class="option-select__inner"><input type="radio" id="XXL" name="size" value="XXL" data-title="XXL" disabled> <span class="checkmark">XXL</span></div></label></div></div></div> 
+        		<div class="product-single__actions">
+        			<div class="product-single__quantity">
+        				<div rel-script="quantity-change" class="quantity">
+        					<a type="button"  onclick="reduce1()" class="quantity__reduce">-</a> 
+        						<input type="number" id="quan" name="quantity" value="1" max="99" min="1" style="width: 30px;padding: 1px;margin: -1px;"> 
+        					<a type="button" onclick="augure1()" class="quantity__augure">+</a>
+        				</div>
+        			</div> 
+        		<div class="product-single__button">
+        		<button type="submit" data-product-id="6331215261fd036269393756" data-variant-id="" data-quantity="1" rel-script="product-add-to-cart" class="btn">Thêm vào giỏ hàng </button></div></div></form></div> <div class="product-single__policy"><div class="product-policy"><div class="product-policy__item"><div class="product-policy__icon"><img src="https://www.coolmate.me/
+
+s/icons/icon3.svg" alt="Đổi trả với số điện thoại"></div> <span class="product-policy__title">
+Đổi trả cực dễ<br> chỉ cần số điện thoại
+</span></div> <div class="product-policy__item"><div class="product-policy__icon"><img src="https://www.coolmate.me/images/icons/icon4.svg" alt="Miễn phí vận chuyển"></div> <span class="product-policy__title">
+Miễn phí vận chuyển<br> cho đơn hàng trên 200k
+</span></div> <div class="product-policy__item"><div class="product-policy__icon"><img src="https://www.coolmate.me/images/icons/icon5.svg" alt="Đổi hàng trong 60 ngày"></div> <span class="product-policy__title">
+60 ngày đổi trả<br> vì bất kỳ lý do gì
+</span></div> <div class="product-policy__item"><div class="product-policy__icon"><img src="https://www.coolmate.me/images/icons/icon2.svg" alt="Hotline 1900.27.27.37" style="width: 25px;"></div> <span class="product-policy__title">
+Hotline 1900.27.27.37 <br>
+hỗ trợ từ 8h30 - 22h mỗi ngày
+</span></div> <div class="product-policy__item"><div class="product-policy__icon"><img src="https://www.coolmate.me/images/icons/icon1.svg" alt="Trả hàng tận nơi"></div> <span class="product-policy__title">
+Đến tận nơi nhận hàng trả,<br> hoàn tiền trong 24h
+</span></div> <div class="product-policy__item"><div class="product-policy__icon"><img src="https://www.coolmate.me/images/icons/icon6.svg" alt="Giao hàng"></div> <span class="product-policy__title">
+Giao hàng nhanh toàn quốc
+</span></div></div></div> <div class="product-single__features"><div class="product-features"><a href="#features-listing" class="product-features__heading " rel-script="features-toggle">
+Đặc điểm nổi bật
+</a> <div id="features-listing" class="product-features__listing" style="display: none"><div class="product-features__item">
+Chất liệu: 60% Cotton + 40% Polyester
+</div> <div class="product-features__item">
+Đây sẽ là chiếc áo khoác nỉ cho mùa đông của bạn với kiểu dệt Rib ô vuông: mềm mại, mặc nhẹ đem lại sự thoải mái và tiện lợi khi mặc
+</div> <div class="product-features__item">
+Phù hợp với: mặc giữ ấm cơ thể vào mùa đông
+</div> <div class="product-features__item">
+Kiểu dáng: nhỏ gọn, dễ mặc
+</div> <div class="product-features__item">
+Người mẫu: 1m75, 69kg * Mặc áo XL, quần L
+</div> <div class="product-features__item">
+Tự hào sản xuất tại Việt Nam
+</div></div></div></div> 
+</div></div></div>
+							</div>
+
+
+	
+	
+	
+	                    <div class="col-lg-12 related-product margin-top-20 xs-margin-top-0 margin-bottom-30">
+	                        <div class="section_prd_feature" style="margin-left: -1px;">
+	                            <div class="heading">
+	                                <h2 class="title-head"><a href="/san-pham-noi-bat">Sản phẩm cùng loại</a></h2>
+	                            </div>
+	                            <div class="products product_related products-view-grid-bb owl-carousel owl-theme products-view-grid not-dot2"
+	                                data-dot="false" data-nav="false" data-lg-items="5" data-md-items="4" data-sm-items="3"
+	                                data-xs-items="2" data-margin="0">
+	
+	
+	                                <div class="item saler_item col-lg-3 col-md-12 col-sm-12 col-xs-12 no-padding" th:each="p: ${listProduct}">
+	                                    <div class="owl_item_product product-col">
+	                                        <div class="product-box-h">
+	                                            <div class="row">
+	                                                <div class="col-sm-12 col-md-12 col-lg-12">
+	                                                    <div class="product-thumbnail">
+	
+	                                                        <a class="image_link display_flex"
+	                                                            th:href="@{|/product/productDetail/index/${p.id}|}"
+															title="${p.name}">
+	                                                            <img class="lazyload"
+	                                                                th:src="@{|/customerAssets/images/${p.note}|}"
+	                                                                data-src="//bizweb.dktcdn.net/thumb/large/100/289/371/products/02-6de51c3c-a10f-41b5-9fe9-163959424303.jpg?v=1516613483000"
+	                                                                alt="á»�p lÆ°ng Iphone 7 há»�a tiáº¿t">
+	                                                        </a>
+
+	                                                        <div th:if="${p.discountDetails}!=null">
+	                                                            <div class="sale-flash sale" th:if="${d.id}" th:each="d: ${p.discountDetails}">
+	                                                            	Giảm [(${d.discount.decreasePercent})]%
+	                                                            </div>
+                                                            </div>
+	                                                        <a title="Xem nhanh" th:href="@{|/product/productDetail/index/${p.id}|}"
+	                                                            data-handle="op-lung-iphone-7-hoa-tiet"
+	                                                            class="xem_nhanh button_wh_40 btn_view right-to quick-view hidden-xs hidden-sm hidden-md">
+	                                                            Xem nhanh
+	                                                        </a>
+	                                                    </div>
+	                                                </div>
+	                                                <div class="col-sm-12 col-md-12 col-lg-12">
+	                                                    <div class="product-info a-left">
+	
+	                                                        <h3 class="product-name"><a class="height_name"
+	                                                                th:href="@{|/product/productDetail/index/${p.id}|}"
+																th:text="${p.name}"
+																th:title="${p.name}"></a></h3>
+	                                                        <div class="product-hides">
+	                                                            <div class="bizweb-product-reviews-badge" data-id="9722892">
+	                                                            </div>
+	                                                            <div class="product-hide">
+	                                                                <div class="price-box clearfix">
+	                                                                    <div class="special-price">
+																		<span class="price product-price" th:if="${p.discountDetails.size()}==0">
+																			[(${p.price/1000})]00₫ 
+																			- [(${p.price/1000+25})]00₫
+																		</span>
+																	
+																		<span class="price product-price" th:if="${p.discountDetails.size()} > 0">[(${p.price/1000 - p.price/1000 * p.discountDetails[0].discount.decreasePercent/100})]00₫ 
+																			- [(${p.price/1000+25-p.price/1000*p.discountDetails[0].discount.decreasePercent/100})]00₫
+																		</span>
+																	</div>
+																	<div class="old-price">
+                                                                            <span class="price product-price-old" th:if="${p.discountDetails.size()} > 0">
+                                                                                [(${p.price/1000})]00₫ 
+																					- [(${p.price/1000+25})]00₫
+                                                                            </span>
+                                                                        </div>
+	                                                                </div>
+	                                                            </div>
+	                                                        </div>
+	                                                        <div class="product-action clearfix hidden-xs">
+	                                                            <form action="/cart/add" method="post"
+	                                                                class="variants form-nut-grid"
+	                                                                data-id="product-actions-9722892"
+	                                                                enctype="multipart/form-data">
+	                                                                <div>
+	
+	                                                                    <input class="hidden" type="hidden" name="variantId"
+	                                                                        value="15528471" />
+	                                                                    <button class="btn btn-cart btn btn-circle left-to"
+	                                                                        title="Chá»�n sáº£n pháº©m" type="button"
+	                                                                        onclick="window.location.href='/op-lung-iphone-7-hoa-tiet'">
+	                                                                        Tùy chọn
+	                                                                    </button>
+	                                                                </div>
+	                                                            </form>
+	                                                        </div>
+	                                                    </div>
+	                                                </div>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                </div>
+
+	                            </div>
+	                        </div>
+	                    </div>
+	
+	                </div>
+	
+	            </div>
+	        </div>
+	
+	    </section>
+	    
+	
+	
+	
+	
+	    <link href="//bizweb.dktcdn.net/100/289/371/themes/853089/assets/bpr-products-module.css?1665374051412"
+	        rel="stylesheet" type="text/css" />
+	    <div class="bizweb-product-reviews-module"></div>
+	
+	      
+	    <!-- Bizweb javascript -->
+	
+	    <div class="ajax-load">
+	        <span class="loading-icon">
+	            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	                y="0px" width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;"
+	                xml:space="preserve">
+	                <rect x="0" y="10" width="4" height="10" fill="#333" opacity="0.2">
+	                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s"
+	                        repeatCount="indefinite" />
+	                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.6s"
+	                        repeatCount="indefinite" />
+	                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.6s"
+	                        repeatCount="indefinite" />
+	                </rect>
+	                <rect x="8" y="10" width="4" height="10" fill="#333" opacity="0.2">
+	                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.6s"
+	                        repeatCount="indefinite" />
+	                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.6s"
+	                        repeatCount="indefinite" />
+	                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.6s"
+	                        repeatCount="indefinite" />
+	                </rect>
+	                <rect x="16" y="10" width="4" height="10" fill="#333" opacity="0.2">
+	                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.6s"
+	                        repeatCount="indefinite" />
+	                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.6s"
+	                        repeatCount="indefinite" />
+	                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s"
+	                        repeatCount="indefinite" />
+	                </rect>
+	            </svg>
+	        </span>
+	    </div>
+	
+	    <div class="loading awe-popup">
+	        <div class="overlay"></div>
+	        <div class="loader" title="2">
+	            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	                y="0px" width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;"
+	                xml:space="preserve">
+	                <rect x="0" y="10" width="4" height="10" fill="#333" opacity="0.2">
+	                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s"
+	                        repeatCount="indefinite" />
+	                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.6s"
+	                        repeatCount="indefinite" />
+	                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.6s"
+	                        repeatCount="indefinite" />
+	                </rect>
+	                <rect x="8" y="10" width="4" height="10" fill="#333" opacity="0.2">
+	                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.6s"
+	                        repeatCount="indefinite" />
+	                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.6s"
+	                        repeatCount="indefinite" />
+	                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.6s"
+	                        repeatCount="indefinite" />
+	                </rect>
+	                <rect x="16" y="10" width="4" height="10" fill="#333" opacity="0.2">
+	                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.6s"
+	                        repeatCount="indefinite" />
+	                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.6s"
+	                        repeatCount="indefinite" />
+	                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s"
+	                        repeatCount="indefinite" />
+	                </rect>
+	            </svg>
+	        </div>
+	
+	    </div>
+	
+	    <div class="addcart-popup product-popup awe-popup">
+	        <div class="overlay no-background"></div>
+	        <div class="content">
+	            <div class="row row-noGutter">
+	                <div class="col-xl-6 col-xs-12">
+	                    <div class="btn btn-full btn-primary a-left popup-title"><i class="fa fa-check"></i>ThÃªm vÃ o giá»�
+	                        hÃ ng thÃ nh cÃ´ng
+	                    </div>
+	                    <a href="javascript:void(0)" class="close-window close-popup"><i class="fa fa-close"></i></a>
+	                    <div class="info clearfix">
+	                        <div class="product-image margin-top-5">
+	                            <img alt="popup"
+	                                src="//bizweb.dktcdn.net/100/289/371/themes/853089/assets/logo.png?1665374051412"
+	                                style="max-width:150px; height:auto" />
+	                        </div>
+	                        <div class="product-info">
+	                            <p class="product-name"></p>
+	                            <p class="quantity color-main"><span>Sá»‘ lÆ°á»£ng: </span></p>
+	                            <p class="total-money color-main"><span>Tá»•ng tiá»�n: </span></p>
+	
+	                        </div>
+	                        <div class="actions">
+	                            <button class="btn  btn-primary  margin-top-5 btn-continue">Tiáº¿p tá»¥c mua hÃ ng</button>
+	                            <button class="btn btn-gray margin-top-5" onclick="window.location='/cart'">Kiá»ƒm tra giá»�
+	                                hÃ ng</button>
+	                        </div>
+	                    </div>
+	
+	                </div>
+	            </div>
+	
+	        </div>
+	    </div>
+	    <div class="error-popup awe-popup">
+	        <div class="overlay no-background"></div>
+	        <div class="popup-inner content">
+	            <div class="error-message"></div>
+	        </div>
+	    </div>
+	
+	    <div id="popup-cart" class="modal fade" role="dialog">
+	        <div id="popup-cart-desktop" class="clearfix">
+	            <div class="title-popup-cart">
+	                <img src="//bizweb.dktcdn.net/100/289/371/themes/853089/assets/icon-check.png?1665374051412"
+	                    alt="Digiworld" /> <span class="your_product">Báº¡n Ä‘Ã£ thÃªm <span class="cart_name_style">[ <span
+	                            class="cart-popup-name"></span>]</span> vÃ o giá»� hÃ ng thÃ nh cÃ´ng ! </span>
+	            </div>
+	            <div class="wrap_popup">
+	                <div class="title-quantity-popup">
+	                    <span class="cart_status" onclick="window.location.href='/cart';">Giá»� hÃ ng cá»§a báº¡n cÃ³ <span
+	                            class="cart-popup-count"></span> sáº£n pháº©m </span> <i class="fa fa-caret-right"
+	                        aria-hidden="true"></i>
+	                </div>
+	                <div class="content-popup-cart">
+	                    <div class="thead-popup">
+	                        <div style="width: 53%;" class="text-left">Sáº£n pháº©m</div>
+	                        <div style="width: 15%;" class="text-center">Ä�Æ¡n giÃ¡</div>
+	                        <div style="width: 15%;" class="text-center">Sá»‘ lÆ°á»£ng</div>
+	                        <div style="width: 17%;" class="text-center">ThÃ nh tiá»�n</div>
+	                    </div>
+	                    <div class="tbody-popup scrollbar-dynamic">
+	                    </div>
+	                    <div class="tfoot-popup">
+	                        <div class="tfoot-popup-1 a-right clearfix">
+	                            <span class="total-p popup-total">Tá»•ng tiá»�n thanh toÃ¡n: <span
+	                                    class="total-price"></span></span>
+	                        </div>
+	                        <div class="tfoot-popup-2 clearfix">
+	                            <a class="button buy_ btn-proceed-checkout" title="Tiáº¿p tá»¥c mua hÃ ng"
+	                                onclick="$('#popup-cart').modal('hide');"><span><span>Tiáº¿p tá»¥c mua
+	                                        hÃ ng</span></span></a>
+	                            <a class="button checkout_ btn-proceed-checkout" title="Thá»±c hiá»‡n thanh toÃ¡n"
+	                                href="/checkout"><span>Thá»±c hiá»‡n thanh toÃ¡n</span></a>
+	
+	                        </div>
+	                    </div>
+	                </div>
+	                <a title="Close" class="quickview-close close-window" href="javascript:;"
+	                    onclick="$('#popup-cart').modal('hide');"><i class="fa  fa-close"></i></a>
+	            </div>
+	        </div>
+	
+	    </div>
+	    <div id="myModal" class="modal fade" role="dialog">
+	    </div>
+	    <!-- Quick view -->
+	
+	
+	
+	    <div id="quick-view-product" class="quickview-product" style="display:none;">
+	        <div class="quickview-overlay fancybox-overlay fancybox-overlay-fixed"></div>
+	        <div class="quick-view-product"></div>
+	        <div id="quickview-modal" style="display:none;">
+	            <div class="block-quickview primary_block row">
+	
+	                <div class="product-left-column col-xs-12 col-sm-5 col-md-5 col-lg-5">
+	                    <div class="clearfix image-block">
+	                        <span class="view_full_size">
+	                            <a class="img-product" title="" href="#">
+	                                <img id="product-featured-image-quickview"
+	                                    class="img-responsive product-featured-image-quickview"
+	                                    src="//bizweb.dktcdn.net/100/289/371/themes/853089/assets/logo.png?1665374051412"
+	                                    alt="quickview" />
+	                            </a>
+	                        </span>
+	                        <div class="loading-imgquickview" style="display:none;"></div>
+	                    </div>
+	                    <div class="more-view-wrapper clearfix">
+	                        <div class="thumbs_quickview" id="thumbs_list_quickview">
+	                            <ul class="product-photo-thumbs quickview-more-views-owlslider" id="thumblist_quickview">
+	                            </ul>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="product-center-column product-info product-item col-xs-5 col-sm-7 col-md-7 col-lg-7">
+	                    <div class="head-qv">
+	                        <h3 class="qwp-name">abc</h3>
+	                        <div class="vend-qv">
+	                            <div class="left_vend">
+	                                <span class="vendor_"></span>
+	                                <span class="line">|</span>
+	                                TÃ¬nh tráº¡ng: <span class="soluong"></span>
+	                            </div>
+	
+	                        </div>
+	                    </div>
+	                    <div class="quickview-info">
+	
+	                        <div class="reviews_qv">
+	                            <div class="bizweb-product-reviews-badge" data-id="9718831"></div>
+	                        </div>
+	
+	                        <span class="prices">
+	                            <span class="price"></span>
+	                            <del class="old-price"></del>
+	                        </span>
+	                    </div>
+	                    <div class="product-description">
+	                        <div class="rte text2line">
+	
+	                        </div>
+	
+	                    </div>
+	
+	                    <form action="/cart/add" method="post" enctype="multipart/form-data"
+	                        class="quick_option variants form-ajaxtocart">
+	                        <span class="price-product-detail hidden" style="opacity: 0;">
+	                            <span class=""></span>
+	                        </span>
+	                        <select name='variantId' class="hidden" style="display:none"></select>
+	                        <div class="clearfix"></div>
+	                        <div class="quantity_wanted_p">
+	                            <div class="input_qty_qv">
+	                                <a class="btn_num num_1 button button_qty"
+	             					>-</a>
+	                                <input type="text" id="quantity-detail" name="quantity" value="1"
+	                                    onkeypress='validate(event)' onkeyup="valid(this,'numbers')"
+	                                    onblur="valid(this,'numbers')" class="form-control prd_quantity">
+	                                <a class="btn_num num_2 button button_qty"
+	                                    onClick="var result = document.getElementById('quantity-detail'); var qtyqv = result.value; if( !isNaN( qtyqv )) result.value++;return false;">+</a>
+	                            </div>
+	
+	                            <div class="button_actions">
+	                                <button type="submit"
+	                                    class="btn btn-lg fix_add_to_cart  btn-cart button_cart_buy_enable add_to_cart btn_buy add_to_cart_detail ajax_addtocart"
+	                                    title="Cho vÃ o giá»� hÃ ng">
+	                                    <span class="btn-image">
+	                                        <img src="//bizweb.dktcdn.net/100/289/371/themes/853089/assets/shopping_cart.png?1665374051412"
+	                                            alt="shopping-cart" />
+	                                    </span>
+	                                    <span class="btn-content">Cho vÃ o giá»� hÃ ng</span>
+	                                </button>
+	                            </div>
+	                        </div>
+	                        <div class="total-price" style="display:none">
+	                            <label>Tá»•ng cá»™ng: </label>
+	                            <span></span>
+	                        </div>
+	
+	                    </form>
+	
+	
+	                </div>
+	
+	            </div>
+	            <a title="Close" class="quickview-close close-window" href="javascript:;"><i class="fa   fa-times"></i></a>
+	        </div>
+	    </div>
+	
+	
+	
+	
+	
+	
+	    <!-- Product detail JS,CSS -->
+	
+	
+	
+	<script src="/js/product-detail.js"></script>
+	
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" ></script>
+	
+	    <link href="/customerAssets/css2" rel="stylesheet">
+	
+	    <link rel="preconnect" href="https://fonts.googleapis.com">
+	    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+	</main>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/customer/layout :: dynamic(~{::main})}">
+
+<body>	
+	<main>
+		<section class="bread-crumb">
+			<span class="crumb-border"></span>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 a-left">
+						<ul class="breadcrumb">
+							<li class="home">
+								<a th:href="@{|/|}"><span>Trang chủ</span></a>
+								<span> >> </span>
+							</li>
+	
+	
+							<li><strong><span> Lịch sử mua hàng</span></strong></li>
+	
+	
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="container">
+		<div class="row">
+            <div class="col-1">
+      		</div>
+
+            
+		      <div class="col-10">
+		        <div class="card shadow mb-4">
+					
+					<div class="card-body">
+						<div class="table-responsive">
+							<b>Đơn hàng đã mua</b>
+							<p class="mb-4">Danh sách đơn hàng bạn đã mua ngày <b th:object="${items[0]}" th:text="${items[0].createDay}"></b> đến ngày <b th:object="${items[items.size()-1]}" th:text="${items[items.size()-1].createDay}">22/12/2020</b> </p>
+							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+								<thead>
+									<tr style="text-align: center;">
+										<th>Mã đơn hàng</th>
+						                <th>Tổng giá</th>
+						                <th>Ngày đặt mua</th>
+						                <th>Loại hình thanh toán</th>
+						                <th>Trạng thái</th>
+						                <th>Xem chi tiết</th>
+						                <th>Hủy đơn</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="p:${items}">
+										<td th:text="${p.id}"></td>
+							            <td th:if="${p.total/1000} > 1000">
+							            	<span th:if="${p.total/1000} % 100 == 0">[(${p.total/1000000})]00.000₫</span>
+							            	<span th:if="${p.total/1000} % 10 == 0">[(${p.total/1000000})]0.000₫</span>
+							            	<span th:if="${p.total/1000} % 10 != 0">[(${p.total/1000000})].000₫</span>
+							            </td>
+							            <td th:if="${p.total/1000} < 1000">[(${p.total/1000})]00₫</td>
+				                        <td th:text="${p.createDay}"></td>
+				                        <td th:text="${p.paymentType}"></td>
+				                        <td th:if="${p.status == 0}">Đang chuyển</td>
+				                        <td th:if="${p.status == 1}">Đang chuyển</td>
+				                        <td th:if="${p.status == 2}">Đã nhận hàng</td>
+				                        <td th:if="${p.status == 3}">Đã hủy đơn</td>
+										<td class="text-center">
+											<a th:href="@{|/billdetail/${p.id}|}"
+												class="btn btn-success" data-toggle="tooltip" data-placement="bottom"
+												title="View">
+												<i class="fa-solid fa-eye"></i>
+											</a>
+										</td>
+										<td class="text-center">
+											<a th:href="@{|/bill/cancel/${p.id}|}"
+												class="btn btn-danger" data-toggle="tooltip" data-placement="bottom"
+												title="View">
+												<i class="fa-solid fa-trash"></i>
+											</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		
+        
+        <!-- Bootstrap core JavaScript-->
+	    <script src="vendor/jquery/jquery.min.js"></script>
+	    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+	    <!-- Core plugin JavaScript-->
+	    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+	
+	    <!-- Custom scripts for all pages-->
+	    <script src="js/sb-admin-2.min.js"></script>
+	
+	    <!-- Page level plugins -->
+	    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+	    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+	
+	    <!-- Page level custom scripts -->
+	    <script src="js/demo/datatables-demo.js"></script>
+      </main>
+        
+</body>
+</html>

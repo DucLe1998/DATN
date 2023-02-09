@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/index :: dynamic(~{::main})}">
+
+<body>
+    <main>
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">BẢNG NHÀ CUNG CẤP</h1>
+        <p class="mb-4">Quản lý danh sách nhà cung cấp của Shop!</p>
+        <div class="alert alert-success" th:text="${insertSuccess}" th:if="${insertSuccess != null}"></div>
+		<div class="alert alert-danger" th:text="${updateFailed}" th:if="${updateFailed != null}"></div>
+		<div class="alert alert-success" th:text="${updateSuccess}" th:if="${updateSuccess != null}"></div>
+		<div class="alert alert-danger" th:text="${insertFailed}" th:if="${insertFailed != null}"></div>
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 row">
+                <a th:href="@{/admin/supplier/save}" class="btn btn-outline-primary btn-icon-split">
+					<span>
+						<i class="fa-solid fa-plus"></i>
+					</span>
+					<span class="text">Thêm mới</span>
+				</a>
+                <div class="col-1"></div>
+                <a class="btn btn-outline-success btn-icon-split" th:href="@{/admin/importation/addImportation}">
+                    <span>
+						<i class="fa-solid fa-table"></i>
+					</span>
+					<span class="text">Return Importation List </span>
+                </a>
+                <a th:href="@{/admin/supplier/excelExport}" class="btn btn-outline-success btn-icon-split ml-auto">
+					<span>
+						<i class="fa-solid fa-file-excel"></i>
+					</span>
+					<span class="text">Xuất excel</span>
+				</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th> Id</th>
+                                <th>Nhà phân phối</th>
+                                <th>Địa chỉ</th>
+                                <th>Số điện thoại</th>
+                                <th>Chú ý</th>
+                                <th>Trạng thái</th>
+                                <th>Edit</th>
+                                <th sec:authorize="hasRole('Directors')">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="p: ${list}">
+                                <td th:text="${p.id}"></td>
+                                <td th:text="${p.providerName}"></td>
+                                <td th:text="${p.address}"></td>
+                                <td th:text="${p.phonerNumber}"></td>
+                                <td th:text="${p.note}"></td>
+                                <td th:switch="${p.status}">
+									<p th:case="1">Đang hoạt động</p>
+									<p th:case="0">Không hoạt động</p>
+								</td>
+                                <td class="text-center">
+									<a th:href="@{/api/supplier/{id} (id = ${p.id})}"
+										class="btn btn-outline-warning" data-toggle="tooltip" data-placement="bottom"
+										title="Edit">
+										<i class="fa-solid fa-pen-to-square"></i>
+									</a>
+								</td>
+                                <td th:if="${p.status == 1}" class="text-center" sec:authorize="hasRole('Directors')">
+									<a th:data-id="${p.id}" th:data-name="${p.providerName}"
+										onclick="showConfirmModalDialog(this.getAttribute('data-id'), this.getAttribute('data-name'))"
+										class="btn btn-outline-danger" data-toggle="tooltip" data-placement="bottom"
+										title="Delete">
+										<i class="fa-solid fa-trash"></i>
+									</a>
+								</td>
+                                <td th:if="${p.status == 0}" class="text-center" sec:authorize="hasRole('Directors')">
+									<a	class="btn btn-outline-danger" data-toggle="tooltip" data-placement="bottom"
+										title="Delete" disabled>
+										<i class="fa-solid fa-trash"></i>
+									</a>
+								</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <script>
+			function showConfirmModalDialog(id, name) {
+				$('#name').text(name);
+				$('#yesOption').attr('href', '/api/supplier/delete/' + id);
+				$('#confirmationId').modal('show');
+			}
+		</script>
+		<!-- Logout Modal-->
+		<div class="modal fade" id="confirmationId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+			aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Thay đổi trạng thái nhà phân phối</h5>
+						<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-body">Bạn có muốn thay đổi trạng thái nhà phân phối <span id="name"></span>
+						không ?</div>
+					<div class="modal-footer">
+						<button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
+						<a id="yesOption" type="button" class="btn btn-danger">Yes</a>
+					</div>
+				</div>
+			</div>
+		</div>
+    </main>
+</body>
+
+</html>

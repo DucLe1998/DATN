@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+		<h1 class="h3 mb-2 text-gray-800">UPDATE MÃ GIẢM GIÁ</h1>
+		<div class="card shadow mb-4">
+			<div class="container">
+				<div th:object="${discount}">
+					<form th:action="@{/api/discount/{id} (id = ${discount.id})}" th:object="${discount}" method="post">
+						<div class="mt-2 row">
+							<label class="col-2">Tên mã giảm giá:</label>
+							<div class="col-10">
+								<input type="text" name="discountName" th:value="${discount.discountName}"
+									class="form-control" disabled />
+							</div>
+						</div>
+						<br>
+						<div class="mt-2 row">
+							<label class="col-2">Phần trăm giảm giá:</label>
+							<div class="col-10 input-group mb-2">
+								<input type="text" name="decreasePercent" th:value="${discount.decreasePercent}"
+									class="form-control" required />
+								<div class="input-group-prepend">
+									<div class="input-group-text">%</div>
+								</div>
+								<i class="pull-left text-danger" th:if="${#fields.hasErrors('decreasePercent')}"
+									th:errors="*{decreasePercent}"></i>
+							</div>
+						</div>
+						<br>
+						<div class="mt-2 row">
+							<label class="col-2">Ngày bắt đầu:</label>
+							<div class="col-10">
+								<input type="date" name="startDay"
+									th:value="${#dates.format(discount.startDay,'yyyy-MM-dd')}" class="form-control"
+									required />
+							</div>
+						</div>
+						<br>
+						<div class="mt-2 row">
+							<label class="col-2">Ngày kết thúc:</label>
+							<div class="col-10">
+								<input type="date" name="endDay"
+									th:value="${#dates.format(discount.endDay,'yyyy-MM-dd')}" class="form-control"
+									required />
+							</div>
+						</div>
+						<br>
+						<div class="mt-2 row">
+							<label class="col-2">Tình trạng:</label>
+							<div class="col-10">
+								<select class="form-control" th:field="${discount.condition}">
+									<option th:value="0">
+										<p>Chưa diễn ra</p>
+									</option>
+									<option th:value="1">
+										<p>Đang diễn ra</p>
+									</option>
+									<option th:value="2">
+										<p>Đã diễn ra</p>
+									</option>
+								</select>
+							</div>
+						</div>
+						<br>
+						<br>
+						<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateModal">
+							<span>
+								<i class="fa-solid fa-pen-to-square"></i>
+							</span>
+							<span class="text">Update</span></button>
+						<!-- Modal -->
+						<div class="modal fade" id="updateModal" tabindex="-1" role="dialog"
+							aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Thay đổi mã giảm giá</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										Bạn có muốn thay đổi mã giảm giá <span
+											th:text="${discount.discountName}"></span> không ?
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+										<button type="submit" class="btn btn-primary">Yes</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<br>
+						<hr>
+						<br>
+					</form>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

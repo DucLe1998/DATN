@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/customer/layout :: dynamic(~{::main})}">
+
+<body>
+    <main>
+		<section class="bread-crumb">
+			<span class="crumb-border"></span>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 a-left">
+						<ul class="breadcrumb">
+							<li class="home">
+								<a href="https://template-digiworld.mysapo.net/"><span>Trang chủ</span></a>
+								<span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+							</li>
+	
+	
+							<li><strong><span> Tất cả sản phẩm</span></strong></li>
+	
+	
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+	
+		<div class="container">
+			<div class="row row-noGutter-2">
+				<section class="main_container collection margin-bottom-30 col-lg-12">
+					<div class="text-sm-left">
+						<h1 class="title-head margin-top-0">Tất cả sản phẩm</h1>
+					</div>
+					<aside class="sidebar left-content row-filter">
+	
+						<div class="aside-filter filter-content clearfix">
+							<div class="filter-container">
+								<div class="filter-container__selected-filter" style="display: none;">
+									<div class="filter-container__selected-filter-header clearfix">
+										<span class="filter-container__selected-filter-header-title"><i
+												class="fa fa-arrow-left hidden-sm-up"></i> Bạn chọn</span>
+										<a href="javascript:void(0)" onclick="clearAllFiltered()"
+											class="filter-container__clear-all">Bỏ hết <i class="fa fa-angle-right"></i></a>
+									</div>
+									<div class="filter-container__selected-filter-list">
+										<ul></ul>
+									</div>
+								</div>
+							</div>
+							
+							<form th:action="@{|/product/filter|}" method="post">
+							<span class="aside-item aside_boloc">Bộ lọc:</span>
+	
+							<aside class="aside-item filter-price">
+								<!-- <div class="aside-title">
+									<h2 class="title-head margin-top-0"><span>Giá sản phẩm</span></h2>
+								</div>
+								<div class="aside-content filter-group"> -->
+									<select name="cate" style="height: 30px">
+										<option selected="selected">Thương hiệu</option>
+										<option th:each="c:${listCategory}" th:value="${c.name}">[(${c.name})]</option>
+									</select>
+								
+							</aside>
+	
+	
+	
+	
+	
+							<aside class="aside-item filter-vendor">
+								<select name="color">
+										<option selected="selected">Màu sắc</option>
+										<option  value="xanh">xanh</option>
+										<option  value="đỏ">đỏ</option>
+										<option  value="tím">tím</option>
+										<option  value="vàng">vàng</option>
+										<option  value="nâu">nâu</option>
+										<option  value="đen">đen</option>
+										<option  value="trắng">trắng</option>
+										<option  value="cam">cam</option>
+										<option  value="lục">lục</option>
+										
+									</select>
+	
+							</aside>
+	
+	
+	
+	
+	
+							<aside class="aside-item filter-tag-style-1">
+								<select name="size">
+										<option selected="selected">Kích thước</option>
+										<option  value="S">S</option>
+										<option  value="M">M</option>
+										<option  value="L">L</option>
+										<option  value="XL">XL</option>
+										<option  value="XXL">XXL</option>						
+									</select>
+								
+							</aside>
+	
+	
+							<aside class="aside-item filter-price filter-btn aside_timkiem">
+								<button type="submit" class="btn btn-primary filter-action">Lọc sản phẩm</button>
+							</aside>
+							<aside class="aside-item category aside_sapxep">
+								<div id="sort-by" class="sorby_xxx">
+									<label class="left hidden-xs hidden-sm hidden-md">Sắp xếp theo: </label>
+									<select name="order">
+										<option selected="selected">Thứ tự</option>
+										<option  value="atoz">A → Z</option>
+										<option  value="ztoa">Z → A</option>
+										<option  value="asc">Giá tăng</option>
+										<option  value="desc">Giá giảm
+														dần</option>
+						
+									</select>
+									
+								</div>
+							</aside>
+							</form>
+						</div>
+	
+					</aside>
+					<div class="category-products products">
+
+						<section class="products-view products-view-grid collection_reponsive">
+							<div class="row row-noGutter-2 content_col" >
+								<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3 col-lg-fix-5" th:each="p: ${data}">
+									<div class="product-col">
+										<div class="product-box-h">
+											<div class="row">
+												<div class="col-sm-12 col-md-12 col-lg-12">
+													<div class="product-thumbnail">
+	
+														<a class="image_link display_flex"
+															th:href="@{|/product/productDetail/index/${p.id}|}"
+															title="${p.name}">
+															<img class="lazyload loaded"
+																th:src="@{|/customerAssets/images/${p.image}|}"
+																data-src="//bizweb.dktcdn.net/thumb/medium/100/289/371/products/08-dbdfc9aa-fe11-45bc-ace0-c2c8cb80b32f.jpg?v=1516612166043"
+																alt="Ốp lưng iPhone 6/6S Memo Totem"
+																data-was-processed="true">
+														</a>
+														<div th:if="${p.discountDetails}!=null">
+	                                                            <div class="sale-flash sale" th:if="${d.id}" th:each="d: ${p.discountDetails}">
+	                                                            	Giảm [(${d.discount.decreasePercent})]%
+	                                                            </div>
+                                                            </div>
+														<a title="Xem nhanh"
+															th:href="@{|/product/productDetail/index/${p.id}|}"
+															data-handle="op-lung-iphone-6-6s-memo-totem"
+															class="xem_nhanh button_wh_40 btn_view right-to quick-view hidden-xs hidden-sm hidden-md">
+															Xem nhanh
+														</a>
+													</div>
+												</div>
+												<div class="col-sm-12 col-md-12 col-lg-12">
+													<div class="product-info a-left">
+	
+														<h3 class="product-name"><a class="height_name"
+																th:href="@{|/product/productDetail/index/${p.id}|}"
+																th:text="${p.name}"
+																th:title="${p.name}"></a></h3>
+														<div class="product-hides">
+															<div class="bizweb-product-reviews-badge" data-id="9721688">
+															</div>
+															<div class="product-hide">
+																<div class="price-box clearfix">
+																	<div class="special-price">
+																		<span class="price product-price" th:if="${p.discountDetails.size()}==0">
+																			[(${p.price/1000})]00₫ 
+																			- [(${p.price/1000+25})]00₫
+																		</span>
+																	
+																		<span class="price product-price" th:if="${p.discountDetails.size()} > 0">[(${p.price/1000 - p.price/1000 * p.discountDetails[0].discount.decreasePercent/100})]00₫ 
+																			- [(${p.price/1000+25-p.price/1000*p.discountDetails[0].discount.decreasePercent/100})]00₫
+																		</span>
+																	</div>
+																	<div class="old-price">
+                                                                            <span class="price product-price-old" th:if="${p.discountDetails.size()} > 0">
+                                                                                [(${p.price/1000})]00₫ 
+																					- [(${p.price/1000+25})]00₫
+                                                                            </span>
+                                                                        </div>
+																	
+																</div>
+															</div>
+														</div>
+														<div class="product-action clearfix hidden-xs">
+															<form action=""
+																method="post" class="variants form-nut-grid"
+																data-id="product-actions-9721688"
+																enctype="multipart/form-data">
+																<div>
+	
+																	<input type="hidden" name="variantId" value="15526574">
+																	<a	
+																		class="btn-buy btn-cart btn btn-circle left-to add_to_cart "
+																		title="Thêm vào giỏ hàng">
+																		Đặt mua ngay
+																	</a>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="text-center">
+	
+								<nav class="clearfix">
+									<ul class="pagination clearfix">
+										<li class="page-item hidden-xs"><a class="page-link page-db" 
+												th:href="@{|/product/index2|}">Đầu tiên</a></li>
+										<li class="page-item hidden-xs" th:if="${data.number} > 0"><a class="page-link page-db" 
+												th:href="@{|/product/index2?page=${data.number-1}|}" >Trước</a></li>
+										<li class="page-item" th:if="${data.number} > 0"><a class="page-link" 
+												th:href="@{|/product/index2?page=${data.number-1}|}" th:text="${data.number}"></a></li>
+										<li class="page-item" ><a class="page-link" style="background-color: lightskyblue"
+												th:href="@{|/product/index2?page=${data.number}|}" th:text="${data.number+1}"></a></li>
+										<li class="page-item" th:if="${data.number} < ${ data.totalPages - 1}"><a class="page-link" 
+												th:href="@{|/product/index2?page=${data.number+1}|}" th:text="${data.number+2}"></a></li>
+										
+										<li class="page-item hidden-xs" th:if="${data.number} < ${ data.totalPages - 1}"><a class="page-link page-db" 
+												th:href="@{|/product/index2?page=${data.number+1}|}" >Sau</a></li>
+										<li class="page-item hidden-xs"><a class="page-link page-db" 
+												th:href="@{|/product/index2?page=${ data.totalPages - 1}|}">Trang cuối</a></li>
+									</ul>
+								</nav>
+							</div>
+						</section>
+					</div>
+				</section>
+	
+			</div>
+		</div>
+	
+		<div class="ajax-load">
+			<span class="loading-icon">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+					y="0px" width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;"
+					xml:space="preserve">
+					<rect x="0" y="10" width="4" height="10" fill="#333" opacity="0.2">
+						<animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s"
+							repeatCount="indefinite"></animate>
+						<animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.6s"
+							repeatCount="indefinite"></animate>
+						<animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.6s"
+							repeatCount="indefinite"></animate>
+					</rect>
+					<rect x="8" y="10" width="4" height="10" fill="#333" opacity="0.2">
+						<animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.6s"
+							repeatCount="indefinite"></animate>
+						<animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.6s"
+							repeatCount="indefinite"></animate>
+						<animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.6s"
+							repeatCount="indefinite"></animate>
+					</rect>
+					<rect x="16" y="10" width="4" height="10" fill="#333" opacity="0.2">
+						<animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.6s"
+							repeatCount="indefinite"></animate>
+						<animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.6s"
+							repeatCount="indefinite"></animate>
+						<animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s"
+							repeatCount="indefinite"></animate>
+					</rect>
+				</svg>
+			</span>
+		</div>
+	
+		<div class="loading awe-popup">
+			<div class="overlay"></div>
+			<div class="loader" title="2">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+					y="0px" width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;"
+					xml:space="preserve">
+					<rect x="0" y="10" width="4" height="10" fill="#333" opacity="0.2">
+						<animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s"
+							repeatCount="indefinite"></animate>
+						<animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.6s"
+							repeatCount="indefinite"></animate>
+						<animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.6s"
+							repeatCount="indefinite"></animate>
+					</rect>
+					<rect x="8" y="10" width="4" height="10" fill="#333" opacity="0.2">
+						<animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.6s"
+							repeatCount="indefinite"></animate>
+						<animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.6s"
+							repeatCount="indefinite"></animate>
+						<animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.6s"
+							repeatCount="indefinite"></animate>
+					</rect>
+					<rect x="16" y="10" width="4" height="10" fill="#333" opacity="0.2">
+						<animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.6s"
+							repeatCount="indefinite"></animate>
+						<animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.6s"
+							repeatCount="indefinite"></animate>
+						<animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s"
+							repeatCount="indefinite"></animate>
+					</rect>
+				</svg>
+			</div>
+	
+		</div>
+	
+		<div class="addcart-popup product-popup awe-popup">
+			<div class="overlay no-background"></div>
+			<div class="content">
+				<div class="row row-noGutter">
+					<div class="col-xl-6 col-xs-12">
+						<div class="btn btn-full btn-primary a-left popup-title"><i class="fa fa-check"></i>Thêm vào giỏ
+							hàng thành công
+						</div>
+						<a href="javascript:void(0)" class="close-window close-popup"><i class="fa fa-close"></i></a>
+						<div class="info clearfix">
+							<div class="product-image margin-top-5">
+								<img alt="popup" src="./images/logo.png"
+									style="max-width:150px; height:auto">
+							</div>
+							<div class="product-info">
+								<p class="product-name"></p>
+								<p class="quantity color-main"><span>Số lượng: </span></p>
+								<p class="total-money color-main"><span>Tổng tiền: </span></p>
+	
+							</div>
+							<div class="actions">
+								<button class="btn  btn-primary  margin-top-5 btn-continue">Tiếp tục mua hàng</button>
+								<button class="btn btn-gray margin-top-5" >Kiểm tra
+									giỏ hàng</button>
+							</div>
+						</div>
+	
+					</div>
+				</div>
+	
+			</div>
+		</div>
+		<div class="error-popup awe-popup">
+			<div class="overlay no-background"></div>
+			<div class="popup-inner content">
+				<div class="error-message"></div>
+			</div>
+		</div>
+	
+		<div id="popup-cart" class="modal fade" role="dialog">
+			<div id="popup-cart-desktop" class="clearfix">
+				<div class="title-popup-cart">
+					<img src="./images/icon-check.png" alt="Digiworld"> <span
+						class="your_product">Bạn đã thêm <span class="cart_name_style">[ <span
+								class="cart-popup-name"></span>]</span> vào giỏ hàng thành công ! </span>
+				</div>
+				<div class="wrap_popup">
+					<div class="title-quantity-popup">
+						<span class="cart_status" onclick="">Giỏ hàng của bạn có <span
+								class="cart-popup-count">0</span> sản phẩm </span> <i class="fa fa-caret-right"
+							aria-hidden="true"></i>
+					</div>
+					<div class="content-popup-cart">
+						<div class="thead-popup">
+							<div style="width: 53%;" class="text-left">Sản phẩm</div>
+							<div style="width: 15%;" class="text-center">Đơn giá</div>
+							<div style="width: 15%;" class="text-center">Số lượng</div>
+							<div style="width: 17%;" class="text-center">Thành tiền</div>
+						</div>
+						<div class="tbody-popup scrollbar-dynamic"></div>
+						<div class="tfoot-popup">
+							<div class="tfoot-popup-1 a-right clearfix">
+								<span class="total-p popup-total">Tổng tiền thanh toán: <span
+										class="total-price">0₫</span></span>
+							</div>
+							<div class="tfoot-popup-2 clearfix">
+								<a class="button buy_ btn-proceed-checkout" title="Tiếp tục mua hàng"
+									><span><span>Tiếp tục mua
+											hàng</span></span></a>
+								<a class="button checkout_ btn-proceed-checkout" title="Thực hiện thanh toán"
+									href="https://template-digiworld.mysapo.net/checkout"><span>Thực hiện thanh
+										toán</span></a>
+	
+							</div>
+						</div>
+					</div>
+					<a title="Close" class="quickview-close close-window" href="javascript:;"
+						><i class="fa  fa-close"></i></a>
+				</div>
+			</div>
+	
+		</div>
+		<div id="myModal" class="modal fade" role="dialog">
+		</div>
+		
+	
+	
+	
+		<div id="quick-view-product" class="quickview-product" style="display:none;">
+			<div class="quickview-overlay fancybox-overlay fancybox-overlay-fixed"></div>
+			<div class="quick-view-product"></div>
+			<div id="quickview-modal" style="display:none;">
+				<div class="block-quickview primary_block row">
+	
+					<div class="product-left-column col-xs-12 col-sm-5 col-md-5 col-lg-5">
+						<div class="clearfix image-block">
+							<span class="view_full_size">
+								<a class="img-product" title=""
+									href="https://template-digiworld.mysapo.net/collections/all#">
+									<img id="product-featured-image-quickview"
+										class="img-responsive product-featured-image-quickview"
+										src="./images/logo.png" alt="quickview">
+								</a>
+							</span>
+							<div class="loading-imgquickview" style="display:none;"></div>
+						</div>
+						<div class="more-view-wrapper clearfix">
+							<div class="thumbs_quickview" id="thumbs_list_quickview">
+								<ul class="product-photo-thumbs quickview-more-views-owlslider" id="thumblist_quickview">
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="product-center-column product-info product-item col-xs-5 col-sm-7 col-md-7 col-lg-7">
+						<div class="head-qv">
+							<h3 class="qwp-name">abc</h3>
+							<div class="vend-qv">
+								<div class="left_vend">
+									<span class="vendor_"></span>
+									<span class="line">|</span>
+									Tình trạng: <span class="soluong"></span>
+								</div>
+	
+							</div>
+						</div>
+						<div class="quickview-info">
+	
+							<div class="reviews_qv">
+								<div class="bizweb-product-reviews-badge" data-id=""></div>
+							</div>
+	
+							<span class="prices">
+								<span class="price"></span>
+								<del class="old-price"></del>
+							</span>
+						</div>
+						<div class="product-description">
+							<div class="rte text2line">
+	
+							</div>
+	
+						</div>
+	
+						<form action="https://template-digiworld.mysapo.net/cart/add" method="post"
+							enctype="multipart/form-data" class="quick_option variants form-ajaxtocart">
+							<span class="price-product-detail hidden" style="opacity: 0;">
+								<span class=""></span>
+							</span>
+							<select name="variantId" class="hidden" style="display:none"></select>
+							<div class="clearfix"></div>
+							<div class="quantity_wanted_p">
+								<div class="input_qty_qv">
+									<a class="btn_num num_1 button button_qty"
+										>-</a>
+									<input type="text" id="quantity-detail" name="quantity" value="1"
+										>
+									<a class="btn_num num_2 button button_qty"
+										>+</a>
+								</div>
+	
+								<div class="button_actions">
+									<button type="submit"
+										class="btn btn-lg fix_add_to_cart  btn-cart button_cart_buy_enable add_to_cart btn_buy add_to_cart_detail ajax_addtocart"
+										title="Cho vào giỏ hàng">
+										<span class="btn-image">
+											<img src="./images/shopping_cart.png"
+												alt="shopping-cart">
+										</span>
+										<span class="btn-content">Cho vào giỏ hàng</span>
+									</button>
+								</div>
+							</div>
+							<div class="total-price" style="display:none">0₫</div>
+	
+						</form>
+	
+	
+					</div>
+	
+				</div>
+				<a title="Close" class="quickview-close close-window" href="javascript:;"><i class="fa   fa-times"></i></a>
+			</div>
+		</div>
+	 
+	
+	
+		<!-- Main JS -->
+	
+	
+		<!-- Product detail JS,CSS -->
+	
+	
+		<link rel="preconnect" href="https://fonts.googleapis.com/">
+		<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+		<link href="/customerAssets/css2" rel="stylesheet">
+	</main>
+</body>
+
+</html>

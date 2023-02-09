@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+		<h1 class="h3 mb-2 text-gray-800">CHI TIẾT TÀI KHOẢN</h1>
+		<div class="card shadow mb-4">
+			<div class="container">
+				<form th:object="${account}">
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Username:</label>
+						<div class="col-10">
+							<p class="form-control" th:text="${account.username}"></p>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Quyền:</label>
+						<div class="col-10 input-group mb-2">
+							<p class="form-control" th:text="${role}"></p>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Ngày tạo:</label>
+						<div class="col-10 input-group mb-2">
+							<p class="form-control" th:text="${#dates.format(account.createDay,'dd-MM-yyyy')}"></p>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Trạng thái:</label>
+						<div class="col-10 input-group mb-2" th:switch="${account.status}">
+							<p class="form-control" th:case="0">Không hoạt động</p>
+							<p class="form-control" th:case="1">Đang hoạt động</p>
+						</div>
+					</div>
+					<br>
+					<div th:switch="${role}">
+						<div th:case="Customers">
+							<a th:href="@{/api/customer/view/{id} (id = ${account.id})}"
+								class="btn btn-primary btn-icon-split">
+								<span>
+									<i class="fa-solid fa-eye"></i>
+								</span>
+								<span class="text">Chi tiết</span>
+							</a>
+						</div>
+					</div>
+					<br>
+					<hr>
+					<br>
+					<br>
+				</form>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

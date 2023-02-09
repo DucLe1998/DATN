@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="dynamic(main)">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    	
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <link href="//bizweb.dktcdn.net/100/289/371/themes/883177/assets/swiper-style.scss.css?1667212443268" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/customerAssets/base.css" class="next-head">
+    <link href="/customerAssets/productdetail.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/customerAssets/bootstrap.css" class="next-head">
+    <link rel="stylesheet" href="/customerAssets/style.css" class="next-head">
+    <link rel="stylesheet" href="/customerAssets/module.css" class="next-head">
+    <link rel="stylesheet" href="/customerAssets/responsive.css" class="next-head">
+    <link rel="stylesheet" href="/customerAssets/ionicons.css" class="next-head">
+    <link rel="stylesheet" href="/customerAssets/checkout.min.css" class="next-head">
+    <link rel="stylesheet" href="/customerAssets/animate.css" type="text/css" media="all" class="next-head">
+    
+    <link rel="stylesheet" href="/customerAssets/cart.css" type="text/css" media="all" class="next-head">
+    <link rel="stylesheet" href="/customerAssets/all.css" class="next-head">
+    <link rel="stylesheet" href="/customerAssets/icon.css"> 
+    
+	<link rel="shortcut icon" href="//bizweb.dktcdn.net/assets/sapo_favicon.png" type="image/x-icon">
+	 <link rel="preload" as="style" href="/customerAssets/swiper.css">
+
+	<link rel="stylesheet" href="/dist/css/checkout.vendor.min.css?v=4fcd86c">
+	<link rel="icon" href="//bizweb.dktcdn.net/100/289/371/themes/883177/assets/favicon.png?1667212443268" type="image/x-icon">
+	<link rel="stylesheet" href="/dist/css/checkout.min.css?v=a876575">
+	<link rel="preload" as="style" href="//bizweb.dktcdn.net/100/289/371/themes/883177/assets/main.scss.css?1667212443268">
+    <link href="//bizweb.dktcdn.net/100/289/371/themes/883177/assets/main.scss.css?1667212443268" rel="stylesheet" type="text/css">
+    <link href="//bizweb.dktcdn.net/100/289/371/themes/883177/assets/header.scss.css?1667212443268" rel="stylesheet" type="text/css" media="all">
+    <link href="//bizweb.dktcdn.net/100/289/371/themes/883177/assets/index.scss.css?1667212443268" rel="stylesheet" type="text/css" media="all">
+	<link rel="preload" as="style" type="text/css" href="//bizweb.dktcdn.net/100/289/371/themes/883177/assets/ajaxcart.scss.css?1667212443268" class="">
+	<link href="//bizweb.dktcdn.net/100/289/371/themes/883177/assets/ajaxcart.scss.css?1667212443268" rel="stylesheet" type="text/css">
+ 	<link rel="preload" as="style" type="text/css" href="//bizweb.dktcdn.net/100/289/371/themes/883177/assets/product_style.scss.css?1667212443268">
+	<link href="//bizweb.dktcdn.net/100/289/371/themes/883177/assets/product_style.scss.css?1667212443268" rel="stylesheet" type="text/css">
+	<link rel="preload" as="style" type="text/css" href="//bizweb.dktcdn.net/100/289/371/themes/883177/assets/sidebar_style.scss.css?1667212443268">
+	<link href="//bizweb.dktcdn.net/100/289/371/themes/883177/assets/sidebar_style.scss.css?1667212443268" rel="stylesheet" type="text/css">
+	    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"> 
+    
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="hidden-md hidden-lg opacity_menu"></div>
+    <!-- Main content -->
+    <!-- Banner khuyến mãi fixed top -->
+
+    <div class="banner_a hidden-sm hidden-xs">
+        <div class="banner_ pull-left  banner_fixed_index_1" style="width: 170.55px;">
+            <a href="https://template-digiworld.mysapo.net/#" title="dlt" class="banner_1_a">
+                <img class="img-responsive lazyload loaded"
+                    src="./images/banner_fixed_1.jpg"
+                    data-src="//bizweb.dktcdn.net/100/289/371/themes/853089/assets/banner_fixed_1.jpg?1665374051412"
+                    alt="alt" data-was-processed="true">
+            </a>
+        </div>
+        <div class="banner_ pull-right  banner_fixed_index_2" style="width: 170.55px;">
+            <a href="https://template-digiworld.mysapo.net/#" title="dlt" class="banner_2_a">
+                <img class="img-responsive lazyload loaded"
+                    src="./images/banner_fixed_2.jpg"
+                    data-src="//bizweb.dktcdn.net/100/289/371/themes/853089/assets/banner_fixed_2.jpg?1665374051412"
+                    alt="alt" data-was-processed="true">
+            </a>
+        </div>
+    </div>
+
+    <!-- Menu mobile -->
+    <div id="mySidenav" class="sidenav menu_mobile hidden-md hidden-lg">
+        <div class="top_menu_mobile">
+            <span class="close_menu">
+            </span>
+        </div>
+        <div class="content_memu_mb">
+            <div class="link_list_mobile">
+
+                <ul class="ct-mobile hidden">
+
+
+                </ul>
+                <ul class="ct-mobile">
+
+                    <li class="level0 level-top parent level_ico">
+                        <a th:href="@{|/|}">Trang chủ</a>
+
+                    </li>
+
+                    <li class="level0 level-top parent level_ico">
+                        <a th:href="@{|/index2|}">Giới thiệu</a>
+
+                    </li>
+
+                    <li class="level0 level-top parent level_ico">
+                        <a th:href="@{|/index2|}">Sản phẩm</a>
+
+                        <i class="ti-plus hide_close"></i>
+                        <ul class="level0 sub-menu" style="display:none;">
+
+                            <li class="level1">
+                                <a th:href="@{|/index2|}"><span>Pin, Cáp &amp; Bộ
+                                        sạc</span></a>
+
+                                <i class="ti-plus hide_close"></i>
+                                <ul class="level1 sub-menu" style="display:none;">
+
+                                    <li class="level2">
+                                        <a th:href="@{|/index2|}"><span>Pin sạc
+                                                sự phòng</span></a>
+                                    </li>
+
+                                    <li class="level2">
+                                        <a th:href="@{|/index2|}"><span>Dây cáp
+                                                sạc</span></a>
+                                    </li>
+
+                                    <li class="level2">
+                                        <a th:href="@{|/index2|}"><span>Sạc điện
+                                                thoại</span></a>
+                                    </li>
+
+                                    <li class="level2">
+                                        <a th:href="@{|/index2|}"><span>Ốp lưng
+                                                điện thoại</span></a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+
+                            <li class="level1">
+                                <a th:href="@{|/index2|}"><span>Vỏ, bao &amp; Ốp
+                                        lưng</span></a>
+
+                            </li>
+
+                            <li class="level1">
+                                <a th:href="@{|/index2|}"><span>Pin sạc dự
+                                        phòng</span></a>
+
+                            </li>
+
+                            <li class="level1">
+                                <a th:href="@{|/index2|}"><span>Giá đỡ &amp;
+                                        Kẹp</span></a>
+
+                            </li>
+
+                            <li class="level1">
+                                <a th:href="@{|/index2|}"><span>Phụ kiện nghe
+                                        nhạc</span></a>
+
+                            </li>
+
+                            <li class="level1">
+                                <a th:href="@{|/index2|}"><span>Gậy chụp
+                                        hình</span></a>
+
+                            </li>
+
+                            <li class="level1">
+                                <a href="https://template-digiworld.mysapo.net/mieng-dan-man-hinh"><span>Miếng dán màn
+                                        hình</span></a>
+
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                    <li class="level0 level-top parent level_ico">
+                        <a href="https://template-digiworld.mysapo.net/tin-tuc">Tin khuyến mãi</a>
+
+                    </li>
+
+                    <li class="level0 level-top parent level_ico">
+                        <a href="https://template-digiworld.mysapo.net/lien-he">Liên hệ</a>
+
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- End -->
+    <header class="header">
+        <div class="topbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-2">
+                        <ul class="list-inline topbar_left hidden-sm hidden-xs">
+
+
+                            <li>
+                                Hotline: <a class="hai01" href="tel:1900 6750">1900 6750</a>
+
+
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 d-list col-xs-10 a-right topbar_right">
+                        <div class="list-inline a-center f-right">
+                            <ul>
+
+                                <li class="hidden-md hidden-lg" sec:authorize="!isAuthenticated()"><a
+                                        th:href="@{|/security/login|}"
+                                        title="Đăng ký">Đăng ký</a></li>
+                                <li class="hidden-md hidden-lg" sec:authorize="!isAuthenticated()"><a
+                                        th:href="@{|/security/login|}"
+                                        title="Đăng nhập">Đăng nhập</a></li>
+                                <li class="hidden-xs hidden-sm" sec:authorize="!isAuthenticated()">
+                                    <a th:href="@{|/security/login|}"
+                                        class="account_a register_btn" title="Đăng ký">Đăng ký</a>
+                                </li>
+                                <li class="hidden-xs hidden-sm" sec:authorize="!isAuthenticated()">
+                                    <a th:href="@{|/security/login|}"
+                                        class="account_a login_btn" title="Đăng nhập">Đăng nhập</a>
+                                </li>
+                                <li class="hidden-xs hidden-sm" sec:authorize="isAuthenticated()">
+                                    <a th:href="@{|/security/login|}"
+                                        class="account_a login_btn" title="Đăng nhập" sec:authentication="name"></a>
+                                </li>
+                                <li class="hidden-xs hidden-sm" sec:authorize="isAuthenticated()">
+                                    <a th:href="@{|/security/logoff|}"
+                                        class="account_a login_btn" title="Đăng nhập">Đăng xuat</a>
+                                </li>
+
+                                <li class="hidden-sm hidden-xs">
+
+                                    <a href="https://template-digiworld.mysapo.net/lien-he" title="Hệ thống cửa hàng"
+                                        class="account_a">
+                                        Hệ thống cửa hàng
+                                    </a>
+
+                                </li>
+                                <li class="hidden-sm hidden-xs">
+
+                                    <a href="https://template-digiworld.mysapo.net/san-pham-noi-bat"
+                                        title="Khuyến mãi hot" class="account_a">
+                                        Tin khuyến mãi
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mid-header">
+            <div class="container">
+                <div class="row">
+                    <div class="content_header">
+                        <div class="header-main">
+                            <div class="menu-bar-h nav-mobile-button hidden-md hidden-lg">
+                                <a href="https://template-digiworld.mysapo.net/#nav-mobile"><img
+                                        src="./images/i_menubar.png"
+                                        alt="menu bar"></a>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="logo">
+
+
+                                    <a th:href="@{|/|}" class="logo-wrapper ">
+                                        <img src="/customerAssets/images/The_Boys_logo.png" width="250" height="60"
+                                            alt="logo ">
+                                    </a>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="header-left">
+                                    <div class="header_search hidden-xs hidden-sm">
+                                        <form action="https://template-digiworld.mysapo.net/search" method="get"
+                                            class="input-group search-bar" role="search">
+                                            <input type="hidden" name="type" value="product">
+
+                                            <input type="search" name="query" value=""
+                                                placeholder="Bạn đang tìm sản phẩm gì..." class="input-group-field">
+                                            <span class="input-group-btn">
+                                                <button type="submit" class="btn icon-fallback-text">
+                                                    Tìm kiếm
+                                                </button>
+                                            </span>
+                                        </form>
+                                    </div>
+                                    <div class="header_search hidden-lg hidden-md">
+                                        <form action="https://template-digiworld.mysapo.net/search" method="get"
+                                            class="input-group search-bar" role="search">
+                                            <input type="hidden" name="type" value="product">
+
+                                            <input type="search" name="query" value="" placeholder="Tìm kiếm..."
+                                                class="input-group-field">
+                                            <span class="input-group-btn">
+                                                <button type="submit" class="btn icon-fallback-text">
+                                                    Tìm kiếm
+                                                </button>
+                                            </span>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="header-right">
+                                   
+                                   <div class="history1">
+                                        <div class=" mini-cart text-xs-center">
+                                            <div class="heading-cart">
+                                                <a class="bg_cart" th:href="@{|/bill/history|}"
+                                                    title="Giỏ hàng">
+                                                    <img src="/customerAssets/images/history.png"
+                                                        alt="Digiworld">
+                                                    <span class="count_item count_item_pr">0</span>
+                                                    <span class="text-giohang hidden-xs">Đã mua</span>
+                                                </a>
+                                            </div>
+                                            <div class="top-cart-content">
+                                                <ul id="cart-sidebar" class="mini-products-list count_li">
+                                                    <div class="no-item">
+                                                        <p>Không có sản phẩm nào trong giỏ hàng.</p>
+                                                    </div>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="like">
+                                        <div class=" mini-cart text-xs-center">
+                                            <div class="heading-cart">
+                                                <a class="bg_cart" th:href="@{|/cartlist|}"
+                                                    title="Giỏ hàng">
+                                                    <img src="/customerAssets/images/heart.png"
+                                                        alt="Digiworld">
+                                                    <span class="count_item count_item_pr">0</span>
+                                                    <span class="text-giohang hidden-xs">Yêu thích</span>
+                                                </a>
+                                            </div>
+                                            <div class="top-cart-content">
+                                                <ul id="cart-sidebar" class="mini-products-list count_li">
+                                                    <div class="no-item">
+                                                        <p>Không có sản phẩm nào trong giỏ hàng.</p>
+                                                    </div>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="top-cart-contain f-right hidden-xs hidden-sm visible-md visible-lg">
+                                        <div class="mini-cart text-xs-center">
+                                            <div class="heading-cart">
+                                                <a class="bg_cart" th:href="@{|/cartlist|}"
+                                                    title="Giỏ hàng">
+                                                    <img src="/customerAssets/images/shopping-cart.png"
+                                                        alt="Digiworld">
+                                                    <span class="count_item count_item_pr">0</span>
+                                                    <span class="text-giohang hidden-xs">Giỏ hàng</span>
+                                                </a>
+                                            </div>
+                                            <div class="top-cart-content">
+                                                <ul id="cart-sidebar" class="mini-products-list count_li">
+                                                    <div class="no-item">
+                                                        <p>Không có sản phẩm nào trong giỏ hàng.</p>
+                                                    </div>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="top-cart-contain f-right hidden-lg hidden-md visible-xs visible-sm">
+                                        <div class="mini-cart text-xs-center">
+                                            <div class="heading-cart">
+                                                <a class="bg_cart" th:href="@{|/cartlist|}"
+                                                    title="Giỏ hàng">
+                                                    <img src="/customerAssets/images/shopping-cart.png"
+                                                        alt="Digiworld">
+                                                    <span class="count_item count_item_pr">0</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrap_main hidden-xs hidden-sm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 col-mega hidden-sm hidden-xs">
+                   </div>
+                    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                        <div class="bg-header-nav hidden-xs hidden-sm">
+                            <div class="relative">
+                                <div class="row row-noGutter-2">
+                                    <nav class="header-nav">
+                                        <ul class="item_big">
+
+
+
+                                            <li class="nav-item active ">
+                                                <a class="a-img"
+                                                    th:href="@{|/|}"><span>Trang
+                                                        chủ</span></a>
+                                            </li>
+
+
+
+                                            <li class="nav-item ">
+                                                <a class="a-img"
+                                                    th:href="@{|/product/index|}"><span>Sản
+                                                        phẩm</span><i class="fa fa-caret-down"></i></a>
+                                                <ul class="item_small">
+
+                                                    
+
+                                                    <li class="caret-down" th:each="c:${cate}">
+                                                        <a th:href="@{|/product/indexbycate/${c.id}|}"
+                                                            title="" >[(${c.name})] </a>
+
+                                                    </li>
+
+                                                    
+                                                   
+                                                </ul>
+                                            </li>
+
+
+
+
+
+                                            <li class="nav-item ">
+                                                <a class="a-img"
+                                                    th:href="@{|/tintuc|}"><span>Tin
+                                                        khuyến mãi</span></a>
+                                            </li>
+
+
+
+
+                                            <li class="nav-item ">
+                                                <a class="a-img"
+                                                    th:href="@{|/contact|}"><span>Liên
+                                                        hệ</span></a>
+                                            </li>
+
+
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+        
+    <div class="row">
+    	<div th:replace="${main}"></div>
+    </div>
+    
+
+	<footer class="footer">
+        <div class="site-footer">
+            <div class="top-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                            <div class="widget-ft">
+                                <h4 class="title-menu">
+                                    <a role="button" class="collapsed" data-toggle="collapse" aria-expanded="false"
+                                        data-target="#collapseListMenu01" aria-controls="collapseListMenu01">
+                                        Hệ thống cửa hàng <i class="fa fa-plus" aria-hidden="true"></i>
+                                    </a>
+                                </h4>
+                                <div class="collapse" id="collapseListMenu01">
+                                    <div class="list-menu">
+                                        <div class="widget-ft wg-logo">
+
+
+
+
+
+
+
+
+                                            <div class="item">
+                                                <h4 class="title-menu4 icon_none_first">
+                                                    <a>Digiworld Đội Cấn</a>
+                                                </h4>
+                                                <ul class="contact contact_x">
+                                                    <li>
+                                                        <span class="txt_content_child">
+                                                            <span>Địa chỉ:</span>
+                                                            Tầng 6, 266 Đội Cấn, Ba Đình, Hà Nội
+                                                        </span>
+                                                    </li>
+
+                                                    <li class="sdt">
+                                                        <span> Hotline:</span>
+                                                        <a href="tel:18006750">1800 6750</a>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+
+
+
+
+
+
+
+
+                                            <div class="item">
+                                                <h4 class="title-menu4 icon_none_first">
+                                                    <a>Digiwolrd Thái Hà</a>
+                                                </h4>
+                                                <ul class="contact contact_x">
+                                                    <li>
+                                                        <span class="txt_content_child">
+                                                            <span>Địa chỉ:</span>
+                                                            365 Thái Hà, Đống Đa, Hà Nội, Hà Nội
+                                                        </span>
+                                                    </li>
+
+                                                    <li class="sdt">
+                                                        <span> Hotline:</span>
+                                                        <a href="tel:0968688989">0968688989</a>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+
+
+
+
+
+
+
+
+                                            <div class="item">
+                                                <h4 class="title-menu4 icon_none_first">
+                                                    <a>Digiworld Nguyễn Trãi</a>
+                                                </h4>
+                                                <ul class="contact contact_x">
+                                                    <li>
+                                                        <span class="txt_content_child">
+                                                            <span>Địa chỉ:</span>
+                                                            58 Nguyễn Trãi, Thanh Xuân, Hà Nội, Hà Nội
+                                                        </span>
+                                                    </li>
+
+                                                    <li class="sdt">
+                                                        <span> Hotline:</span>
+                                                        <a href="tel:01659685999">01659685999</a>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-25 col-lg-25">
+                            <div class="widget-ft">
+                                <h4 class="title-menu">
+                                    <a role="button" class="collapsed" data-toggle="collapse" aria-expanded="false"
+                                        data-target="#collapseListMenu02" aria-controls="collapseListMenu02">
+                                        Giới thiệu <i class="fa fa-plus" aria-hidden="true"></i>
+                                    </a>
+                                </h4>
+                                <div class="collapse" id="collapseListMenu02">
+                                    <ul class="list-menu">
+
+                                        <li class="li_menu"><a href="https://template-digiworld.mysapo.net/">Trang
+                                                chủ</a></li>
+
+                                        <li class="li_menu"><a
+                                                href="https://template-digiworld.mysapo.net/gioi-thieu">Giới thiệu</a>
+                                        </li>
+
+                                        <li class="li_menu"><a
+                                                href="https://template-digiworld.mysapo.net/collections/all">Sản
+                                                phẩm</a></li>
+
+                                        <li class="li_menu"><a href="https://template-digiworld.mysapo.net/tin-tuc">Tin
+                                                khuyến mãi</a></li>
+
+                                        <li class="li_menu"><a href="https://template-digiworld.mysapo.net/lien-he">Liên
+                                                hệ</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-25 col-lg-25">
+                            <div class="widget-ft">
+                                <h4 class="title-menu">
+                                    <a role="button" class="collapsed" data-toggle="collapse" aria-expanded="false"
+                                        data-target="#collapseListMenu03" aria-controls="collapseListMenu03">
+                                        Hỗ trợ khách hàng <i class="fa fa-plus" aria-hidden="true"></i>
+                                    </a>
+                                </h4>
+                                <div class="collapse time_work" id="collapseListMenu03">
+                                    <ul class="list-menu">
+
+                                        <li class="li_menu"><a th:href="@{|/|}">Trang
+                                                chủ</a></li>
+
+                                        <li class="li_menu"><a
+                                                th:href="@{|/|}">Giới thiệu</a>
+                                        </li>
+
+                                        <li class="li_menu"><a
+                                                th:href="@{|/product/index2|}">Sản
+                                                phẩm</a></li>
+
+                                        <li class="li_menu"><a th:href="@{|/tintuc|}">Tin
+                                                khuyến mãi</a></li>
+
+                                        <li class="li_menu"><a th:href="@{|/contact|}">Liên
+                                                hệ</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="widget-ft last-child">
+                                <h4 class="title-menu title-db">
+                                    <a role="button" class="collapsed" data-toggle="collapse" aria-expanded="false"
+                                        data-target="#collapseListMenu04" aria-controls="collapseListMenu04">
+                                        Kết nối trên Facebook <i class="fa fa-plus" aria-hidden="true"></i>
+                                    </a>
+                                </h4>
+                                <div class="collapse" id="collapseListMenu04">
+
+                                    <div class="facebook">
+                                        <div id="fb-root" class=" fb_reset">
+                                            <div style="position: absolute; top: -10000px; width: 0px; height: 0px;">
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                        <script>
+                                            var timer = undefined;
+                                            timer = setTimeout(() => {
+                                                (function (d, s, id) {
+                                                    var js, fjs = d.getElementsByTagName(s)[0];
+                                                    if (d.getElementById(id)) return;
+                                                    js = d.createElement(s); js.id = id;
+                                                    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=631942543575730";
+                                                    fjs.parentNode.insertBefore(js, fjs);
+                                                }(document, 'script', 'facebook-jssdk'));
+
+                                                timer = undefined;
+                                            }, 5000)
+                                        </script>
+                                        <div class="fb-page fb_iframe_widget" data-href="https://www.facebook.com/sapo/"
+                                            data-tabs="timeline" data-height="150" data-small-header="true"
+                                            data-adapt-container-width="true" data-hide-cover="false"
+                                            data-show-facepile="true" fb-xfbml-state="rendered"
+                                            fb-iframe-plugin-query="adapt_container_width=true&amp;app_id=631942543575730&amp;container_width=263&amp;height=150&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fsapo%2F&amp;locale=en_US&amp;sdk=joey&amp;show_facepile=true&amp;small_header=true&amp;tabs=timeline">
+                                            <span style="vertical-align: bottom; width: 263px; height: 150px;"><iframe
+                                                    name="f192692253b4884" width="1000px" height="150px"
+                                                    data-testid="fb:page Facebook Social Plugin"
+                                                    title="fb:page Facebook Social Plugin" frameborder="0"
+                                                    allowtransparency="true" allowfullscreen="true" scrolling="no"
+                                                    allow="encrypted-media"
+                                                    src="./images/page.html"
+                                                    style="border: none; visibility: visible; width: 263px; height: 150px;"
+                                                    class=""></iframe></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-bottom-1px"></div>
+                </div>
+            </div>
+            <div class="mid-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-5">
+                            <div class="widget-ft wg-logo">
+                                <h4 class="title-menu2 icon_none_first">
+                                    <a>Công ty cổ phần đầu tư thương mại thế giới số Digiworld</a>
+                                </h4>
+                                <ul class="contact">
+                                    <li>
+                                        <span class="txt_content_child">
+                                            <span> Địa chỉ:</span>
+
+                                            Tầng 6, 266 Đội Cấn, Ba Đình, Hà Nội
+
+                                        </span>
+                                    </li>
+                                    <li class="sdt">
+                                        <span> Hotline:</span>
+
+                                        <a href="tel:19006750">19006750</a>
+
+                                        <span class="email_style"><span> Email:</span>
+
+                                            <a href="mailto:support@sapo.vn"> support@sapo.vn</a>
+
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 pay_footer">
+                            <h4 class="title-menu2 icon_none_first">
+                                <a>Chấp nhận thanh toán</a>
+                            </h4>
+                            <ul class="follow_option">
+
+
+                                <li>
+                                    <a href="https://template-digiworld.mysapo.net/#"><img class="lazyload loaded"
+                                            src="/customerAssets/images/pay_3.png"
+                                            data-src="//bizweb.dktcdn.net/100/289/371/themes/853089/assets/pay_1.png?1665374051412"
+                                            alt="Digiworld" data-was-processed="true"></a>
+                                </li>
+
+
+                               
+
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 social_footer">
+                            <h4 class="title-menu2 icon_none_first icon_title_last">
+                                <a>Khiếu nại &amp; Chăm sóc khách hàng</a>
+                            </h4>
+                            <div class="time_work">
+                                <ul class="list-menu list-menu-time">
+                                    <li class="li_menu li_menu_xxx">
+                                        <a class="rc yeloww" href="tel:19006750">19006750</a>
+
+                                        <span class="hour_">( Miễn phí cuộc gọi )</span>
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-bottom-1px"></div>
+                </div>
+            </div>
+            <div class="bg-footer-bottom copyright clearfix">
+                <div class="container">
+                    <div class="inner clearfix">
+                        <div class="row tablet">
+                            <div id="copyright" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 a-center fot_copyright">
+                                <span class="wsp"><span class="mobile">© Bản quyền thuộc về <b>Cafein Team</b><span
+                                            class="hidden-xs"> | </span></span><span class="opacity1"
+                                        style="opacity: 0.7;">Cung cấp bởi</span>
+                                    <a href="https://www.sapo.vn/?utm_campaign=cpn:site_khach_hang-plm:footer&amp;utm_source=site_khach_hang&amp;utm_medium=referral&amp;utm_content=fm:text_link-km:-sz:&amp;utm_term=&amp;campaign=site_khach_hang"
+                                        rel="nofollow" title="Sapo" target="_blank">Sapo</a>
+                                </span>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <a href="https://template-digiworld.mysapo.net/#" id="back-to-top" class="backtop"
+                        title="Lên đầu trang"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+
+
+                </div>
+            </div>
+        </div>
+        <!-- <link id="myCss" rel="stylesheet" type="text/css"
+            href="/customerAssets/images/font-awesome.min.css" media="all"> -->
+    </footer>
+    
+    
+</body>
+
+</html>

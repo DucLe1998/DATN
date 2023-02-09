@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+		<h1 class="h3 mb-2 text-gray-800">CHI TIẾT ĐƠN HÀNG</h1>
+		<p class="mb-4">Quản lý đơn hàng chi tiết của Shop!</p>
+		<form>
+			<div class="card shadow mb-4">
+				<div class="card-header py-3 row">
+					<div class="col-5"></div>
+					<div th:switch="${delivery.status}" class="text-center">
+						<h3 th:case="0">DUYỆT ĐƠN HÀNG</h3>
+						<h3 th:case="1">ĐƠN HÀNG ĐANG CHUYỂN</h3>
+						<h3 th:case="2">ĐƠN HÀNG ĐÃ NHẬN</h3>
+						<h3 th:case="3">ĐƠN HÀNG HOÀN TRẢ</h3>
+					</div>
+				</div>
+				<div class="card-body">
+					<div class="container">
+						<br>
+						<div class="mt-2">
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="inputState">Tên khách hàng:</label>
+									<div>
+										<div id="to_name" class="form-control">[[${user.firstName}]] [[${user.lastName}]]</div>
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label for="inputState">Số điện thoại:</label>
+									<div>
+										<div id="to_phone" class="form-control" th:text="${user.phoneNumber}"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="mt-2">
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="inputState">Tổng tiền:</label>
+									<div class="input-group mb-2">
+										<div id="insurance_value" class="form-control" th:text="${total}"></div>
+										<div class="input-group-prepend">
+											<div class="input-group-text">VNĐ</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label for="inputState">Phương thức giao hàng:</label>
+									<div th:switch="${delivery.services}">
+										<p class="form-control" th:case="53321">Chuyển phát thương mại điện tử</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="mt-2">
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="inputState">Ngày tạo:</label>
+									<div>
+										<div class="form-control"
+											th:text="${#dates.format(delivery.createDay,'dd-MM-yyyy')}"></div>
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label for="inputState">Địa chỉ:</label>
+									<div>
+										<div id="to_address" class="form-control" th:text="${delivery.address}"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="mt-2">
+							<div class="form-row">
+								<div class="form-group col-md-4">
+									<label for="inputState">Tỉnh/Thành phố:</label>
+									<div id="to_province_name" class="form-control" th:text="${delivery.province}">
+									</div>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="inputState">Quận/Huyện:</label>
+									<div id="to_district_name" class="form-control" th:text="${delivery.district}">
+									</div>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="inputState">Phường/Xã:</label>
+									<div id="to_ward_name" class="form-control" th:text="${delivery.ward}"></div>
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="mt-2 row">
+							<label class="col-2">Trạng thái:</label>
+							<div class="col-10 input-group mb-2" th:switch="${delivery.status}">
+								<p class="form-control" th:case="0">Chưa duyệt</p>
+								<p class="form-control" th:case="1">Đang chuyển</p>
+								<p class="form-control" th:case="2">Đã nhận</p>
+								<p class="form-control" th:case="3">Hoàn trả</p>
+							</div>
+						</div>
+						<br>
+						<br>
+						<hr>
+						<br>
+						<br>
+					</div>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>ID hóa đơn</th>
+									<th>Ảnh</th>
+									<th>Tên sản phẩm</th>
+									<th>Size</th>
+									<th>Màu</th>
+									<th>Số lượng</th>
+									<th>Đơn giá</th>
+									<th>Tổng</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="listBD : ${listBillDetail}">
+									<td th:text="${listBD.id}"></td>
+									<td th:text="${listBD.bill}"></td>
+									<td>
+										<img th:src="@{|/assets/img/${listBD.thumnail}|}" height="150px" width="150px">
+									</td>
+									<td th:text="${listBD.product}"></td>
+									<td th:text="${listBD.size}"></td>
+									<td th:text="${listBD.color}"></td>
+									<td th:text="${listBD.quantity}"></td>
+									<td th:text="${#numbers.formatCurrency(listBD.unitPrice)}"></td>
+									<td th:text="${#numbers.formatCurrency(listBD.total)}"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<br>
+					<div th:if="${delivery.status == 0}">
+						<button th type="button" class="btn btn-warning" data-toggle="modal" data-target="#duyetModal">
+							<span>
+								<i class="fa-solid fa-check-to-slot"></i>
+							</span>
+							<span class="text">Duyệt đơn hàng</span></button>
+						<!-- Modal -->
+						<div class="modal fade" id="duyetModal" tabindex="-1" role="dialog"
+							aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">DUYỆT ĐƠN HÀNG</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										Bạn có muốn duyệt đơn hàng này không ?
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+										<a class="btn btn-primary" type="submit" onclick="submitForm()" th:href="@{/api/billanddelivery/update/{id} (id = ${delivery.id})}">
+										 Yes</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<script>
+			// option city
+			var citis = document.getElementById("to_province_name");
+			// option quận huyện
+			var districts = document.getElementById("to_district_name");
+			// option phường xã
+			var wards = document.getElementById("to_ward_name");
+			// option địa chỉ
+			var address = document.getElementById("to_address");
+			// get tổng tiền
+			var moneys = document.getElementById("insurance_value");
+			// get sdt
+			var phoneNumber = document.getElementById("to_phone");
+			// get Customer
+			var customer = document.getElementById("to_name");
+			// // get soluongs
+			// var soluongs = document.getElementById("soluong");
+			// get phivanchuyen
+			// var phivanchuyens = document.getElementById("phivanchuyen");
+
+			function submitForm() {
+				console.log(citis.textContent);
+				console.log(address.textContent);
+				console.log(districts.textContent);
+				console.log(wards.textContent);
+				console.log(parseInt(moneys.textContent));
+				console.log(phoneNumber.textContent);
+				console.log(customer.textContent);
+				// var height = soluongs.value * 1;  //cm
+				// var weight = soluongs.value * 1000; //gram
+
+				fetch('https://dev-online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/create', {
+					method: 'POST',
+					body: JSON.stringify({
+						"payment_type_id": 2,
+						"to_name": customer.textContent,
+						"to_phone": phoneNumber.textContent,
+						"to_address": address.textContent,
+						"to_ward_name": wards.textContent,
+						"to_district_name": districts.textContent,
+						"to_province_name": citis.textContent,
+						"required_note": "KHONGCHOXEMHANG",
+						"insurance_value": parseInt(moneys.textContent),
+						"weight": 200,
+						"length": 1,
+						"width": 19,
+						"height": 10,
+						"service_id": 53321,
+						"items": [
+							{
+								"name": "Áo Polo thể thao nam ADIDAS V2",
+								"quantity": 2
+							}
+						]
+
+					}),
+					headers: {
+						"shop_id": 120837,     // id client shop the boys
+						"token": "f1e25a8c-6ec0-11ed-b62e-2a5743127145",
+						'Content-type': 'application/json; charset=UTF-8',
+					}
+				})
+			}
+		</script>
+	</main>
+</body>
+
+</html>

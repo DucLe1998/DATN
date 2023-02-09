@@ -1,0 +1,10 @@
+.payment-content-item {
+  display: flex;
+  margin-bottom: 6px;
+  font-size: 17px;
+}
+::ng-deep{
+  .mat-dialog-container{
+    padding: 14px !important;
+  }
+}

@@ -1,0 +1,16 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="card custom-card">
+            <div class="card-body">
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <a routerLink="turnover" (click)="color = 1" mat-button class="{{color == 1 ? 'btn-color' : 'btn-color-gray'}} nav-link">Doanh thu</a>
+                        <a routerLink="cus" (click)="color = 2" mat-button class="mx-2 {{color == 2 ? 'btn-color' : 'btn-color-gray'}}  nav-link">Khách hàng</a>
+                        <a routerLink="pro" (click)="color = 3" mat-button  class="{{color == 3 ? 'btn-color' : 'btn-color-gray'}} nav-link">Sản phẩm</a>
+                    </div>
+                </div>
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

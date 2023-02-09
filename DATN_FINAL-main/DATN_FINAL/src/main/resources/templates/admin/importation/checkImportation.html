@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/index :: dynamic(~{::main})}">
+
+
+<body>
+    <main>
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">CHI TIẾT PHIẾU NHẬP</h1>
+        <p class="mb-4">Xem Chi tiết phiếu nhập, nhân viên vui lòng kiểm tra kỹ số lượng, đơn giá của từng sản phẩm
+        </p>
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="mt-2 ml-3">
+                <a class="btn btn-outline-success btn-icon-split" th:href="@{/admin/importation/addImportation}">
+                    <span>
+						<i class="fa-solid fa-table"></i>
+					</span>
+					<span class="text">Return Importation List </span>
+                </a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="80px;">ID chi tiết phiếu nhập</th>
+                                <th width="150;">Tên sản phẩm</th>
+                                <th width="70px;">Số lượng</th>
+                                <th width="70px;">Chất liệu</th>
+                                <th width="80px;">Màu</th>
+                                <th width="70px;">Size</th>
+                                <th width="70px;">Đơn giá</th>
+                                <th width="70px;">Tổng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="p: ${list}">
+                                <td th:text="${p.id}"></td>
+                                <td th:text="${p.productName}"></td>
+                                <td th:text="${p.quantity}"></td>
+                                <td th:text="${p.material}"></td>
+                                <td th:text="${p.color}"></td>
+                                <td th:text="${p.size}"></td>
+                                <td th:text="${#numbers.formatCurrency(p.unitPrice)}"></td>
+                                <td th:text="${#numbers.formatCurrency(p.total)}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+		<h1 class="h3 mb-2 text-gray-800">CREATE NHÀ PHÂN PHỐI</h1>
+		<div class="card shadow mb-4">
+			<div class="container">
+				<form th:action="@{/api/supplier/save}" th:object="${supplier}" method="post">
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Nhà phân phối:</label>
+						<div class="col-10">
+							<input type="text" id="providerName" class="form-control" th:field="*{providerName}" required />
+						</div>
+						<i class="pull-left text-danger" th:text="${error1}"></i>
+						<i class="pull-left text-danger" th:if="${#fields.hasErrors('providerName')}" th:errors="*{providerName}"></i>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Địa chỉ:</label>
+						<div class="col-10 input-group mb-2">
+							<input type="text" id="address" class="form-control" th:field="*{address}" required />
+						</div>
+						<i class="pull-left text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></i>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Số điện thoại:</label>
+						<div class="col-10">
+							<input type="number" id="phonerNumber" class="form-control" th:field="*{phonerNumber}"
+								required />
+						</div>
+						<i class="pull-left text-danger" th:text="${error2}"></i>
+						<i class="pull-left text-danger" th:if="${#fields.hasErrors('phonerNumber')}"
+							th:errors="*{phonerNumber}"></i>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Chú ý:</label>
+						<div class="col-10 input-group mb-2">
+							<textarea type="text" id="note" class="form-control" th:field="*{note}" required></textarea>
+						</div>
+						<i class="pull-left text-danger" th:if="${#fields.hasErrors('note')}" th:errors="*{note}"></i>
+					</div>
+					<br>
+					<br>
+					<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#createModal">
+						<span>
+							<i class="fa-solid fa-pen-to-square"></i>
+						</span>
+						<span class="text">Thêm mới</span></button>
+					<!-- Modal -->
+					<div class="modal fade" id="createModal" tabindex="-1" role="dialog"
+						aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Thêm mới nhà phân phối</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									Bạn có muốn thêm mới nhà phân phối này không ?
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+									<button type="submit" class="btn btn-primary">Yes</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button type="reset" class="btn btn-info">
+						<span>
+							<i class="fa-solid fa-broom"></i>
+						</span>
+						<span class="text">Clear</span></button>
+					<br>
+					<hr>
+					<br>
+				</form>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

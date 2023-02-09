@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+		<h1 class="h3 mb-2 text-gray-800">CHI TIẾT SẢN PHẨM</h1>
+		<div class="card shadow mb-4">
+			<div class="container">
+				<form th:object="${productdetail}">
+					<br>
+					<div class="row">
+						<div class="col-4">
+							<label>Photos: </label>
+							<img th:src="@{|/assets/img/${productdetail.thumnail}|}" width="300px" />
+						</div>
+						<div class="col-8">
+							<div class="mt-2 row">
+								<label class="col-2">Tên sản phẩm:</label>
+								<div class="col-10">
+									<p class="form-control" th:text="${product.name}"></p>
+								</div>
+							</div>
+							<br>
+							<div class="mt-2 row">
+								<label class="col-2">Giá:</label>
+								<div class="col-10 input-group mb-2">
+									<p class="form-control" th:text="${#numbers.formatCurrency(product.price)}"></p>
+								</div>
+							</div>
+							<br>
+							<div class="mt-2 row">
+								<label class="col-2">Chất liệu:</label>
+								<div class="col-10 input-group mb-2">
+									<p class="form-control" th:text="${product.material}"></p>
+								</div>
+							</div>
+							<br>
+							<div class="mt-2 row">
+								<label class="col-2">Danh mục sản phẩm:</label>
+								<div class="col-10 input-group mb-2">
+									<p class="form-control" th:text="${category.name}"></p>
+								</div>
+							</div>
+							<br>
+							<div class="mt-2 row">
+								<label class="col-2">Size:</label>
+								<div class="col-10 input-group mb-2">
+									<p class="form-control" th:text="${productdetail.size}"></p>
+								</div>
+							</div>
+							<br>
+							<div class="mt-2 row">
+								<label class="col-2">Màu:</label>
+								<div class="col-10 input-group mb-2">
+									<p class="form-control" th:text="${productdetail.color}"></p>
+								</div>
+							</div>
+							<br>
+							<div class="mt-2 row">
+								<label class="col-2">Số lượng:</label>
+								<div class="col-10 input-group mb-2">
+									<p class="form-control" th:text="${productdetail.quantity}">
+									</p>
+								</div>
+							</div>
+							<br>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2">
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="inputState">Người tạo:</label>
+								<div>
+									<p class="form-control" th:text="${userCreatedBy.username}">
+									</p>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="inputState">Ngày tạo:</label>
+								<div>
+									<p class="form-control"
+										th:text="${#dates.format(productdetail.createDay,'dd-MM-yyyy')}">
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2">
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="inputState">Người sửa:</label>
+								<div>
+									<p class="form-control" th:text="${userModifiedBy.username}">
+									</p>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="inputState">Ngày sửa:</label>
+								<div>
+									<p class="form-control"
+										th:text="${#dates.format(productdetail.modifyDay,'dd-MM-yyyy')}">
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Ghi chú:</label>
+						<div class="col-10 input-group mb-2">
+							<p class="form-control" th:text="${product.note}">
+							</p>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Trạng thái:</label>
+						<div class="col-10 input-group mb-2" th:switch="${productdetail.status}">
+							<p class="form-control" th:case="0">Không hoạt động</p>
+							<p class="form-control" th:case="1">Đang hoạt động</p>
+						</div>
+					</div>
+					<br>
+					<br>
+					<hr>
+					<br>
+					<br>
+				</form>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

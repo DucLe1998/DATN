@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+		<h1 class="h3 mb-2 text-gray-800">CREATE CHI TIẾT SẢN PHẨM</h1>
+		<div class="card shadow mb-4">
+			<div class="container">
+				<form th:action="@{/api/productdetail/save/{id} (id = ${product.id})}" th:object="${productdetail}" method="post">
+					<br>
+					<div class="row">
+						<div class="col-4">
+							<label>Photos: </label>
+							<input type="file" id="thumnail" th:field="*{thumnail}" accept="image/png, image/jpeg" />
+							<img id="thumbnail" alt="Thumnail Product" width="300px" />
+						</div>
+						<div class="col-8">
+							<div class="mt-2 row">
+								<label class="col-2">Tên sản phẩm:</label>
+								<div class="col-10">
+									<p class="form-control" th:text="${product.name}"></p>
+								</div>
+							</div>
+							<br>
+							<div class="mt-2 row">
+								<label class="col-2">Giá:</label>
+								<div class="col-10">
+									<p class="form-control" th:text="${#numbers.formatCurrency(product.price)}"></p>
+								</div>
+							</div>
+							<br>
+							<div class="mt-2 row">
+								<label class="col-2">Chất liệu:</label>
+								<div class="col-10">
+									<p class="form-control" th:text="${product.material}"></p>
+								</div>
+							</div>
+							<br>
+							<div class="mt-2 row">
+								<label class="col-2">Danh mục sản phẩm:</label>
+								<div class="col-10">
+									<p class="form-control" th:text="${category.name}"></p>
+								</div>
+							</div>
+							<br>
+							<div class="mt-2 row">
+								<label class="col-2">Chú ý:</label>
+								<div class="col-10">
+									<p class="form-control" th:text="${product.note}"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Size:</label>
+						<div class="col-10 input-group mb-2">
+							<select class="form-control" id="size" name="size">
+								<option>Hãy chọn Size quần áo:</option>
+								<option value="XXS">XXS - Rất rất nhỏ</option>
+								<option value="XS">XS - Rất nhỏ</option>
+								<option value="S">S - Nhỏ</option>
+								<option value="M">M - Trung bình</option>
+								<option value="L">L - Lớn</option>
+								<option value="XL">XL - Rất lớn</option>
+								<option value="XXL">XXL - Rất rất lớn</option>
+							</select>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Màu:</label>
+						<div class="col-10">
+							<input type="text" id="color" class="form-control" th:field="*{color}" required />
+						</div>
+						<i class="pull-left text-danger" th:if="${#fields.hasErrors('color')}"
+							th:errors="*{color}"></i>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Số lượng:</label>
+						<div class="col-10">
+							<input type="number" id="quantity" class="form-control" th:field="*{quantity}" required />
+						</div>
+						<i class="pull-left text-danger" th:if="${#fields.hasErrors('quantity')}"
+							th:errors="*{quantity}"></i>
+					</div>
+					<br>
+					<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#createModal">
+						<span>
+							<i class="fa-solid fa-pen-to-square"></i>
+						</span>
+						<span class="text">Thêm mới</span></button>
+					<!-- Modal -->
+					<div class="modal fade" id="createModal" tabindex="-1" role="dialog"
+						aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Thêm mới chi tiết sản phẩm</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									Bạn có muốn thêm mới chi tiết sản phẩm này không ?
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+									<button type="submit" class="btn btn-primary">Yes</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button type="reset" class="btn btn-info">
+						<span>
+							<i class="fa-solid fa-broom"></i>
+						</span>
+						<span class="text">Clear</span></button>
+					<br>
+					<hr>
+					<br>
+				</form>
+			</div>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
+			integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
+			crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$('#thumnail').change(function () {
+					showImageThumbnail(this);
+				})
+			})
+
+			function showImageThumbnail(fileInput) {
+				file = fileInput.files[0];
+				reader = new FileReader();
+				reader.onload = function (e) {
+					$('#thumbnail').attr('src', e.target.result);
+				};
+				reader.readAsDataURL(file);
+			}
+		</script>
+	</main>
+</body>
+
+</html>

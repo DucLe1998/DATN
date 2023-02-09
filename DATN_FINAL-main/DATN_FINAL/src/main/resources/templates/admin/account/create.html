@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+		<h1 class="h3 mb-2 text-gray-800">CREATE TÀI KHOẢN NHÂN VIÊN, ADMIN</h1>
+		<div class="card shadow mb-4">
+			<div class="container">
+				<form th:action="@{/api/account/save}" th:object="${user}" method="post">
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Username:</label>
+						<div class="col-10">
+							<input type="text" id="username" class="form-control" th:field="*{username}" required />
+						</div>
+						<i class="pull-left text-danger" th:text="${error1}"></i>
+						<i class="pull-left text-danger" th:if="${#fields.hasErrors('username')}"
+							th:errors="*{username}"></i>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Password:</label>
+						<div class="col-10">
+							<input type="text" id="password" class="form-control" th:field="*{password}" required />
+						</div>
+						<i class="pull-left text-danger" th:if="${#fields.hasErrors('password')}"
+							th:errors="*{password}"></i>
+					</div>
+					<br>
+					<div class="form-group row">
+						<label class="col-3 text">Quyền:</label>
+						<div class="col-9 row">
+							<div class="col-4 form-group row">
+								<input class="form-check-input" type="radio" id="option1" name="role" value="1" checked>
+								<label class="form-check-label text-muted" for="option1">
+									Admin
+								</label>
+							</div>
+							<div class="col-4 form-group row">
+								<input class="form-check-input" type="radio" id="option2" name="role" value="2">
+								<label class="form-check-label text-muted" for="option2">
+									Staff
+								</label>
+							</div>
+						</div>
+					</div>
+					<br>
+					<br>
+					<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#createModal">
+						<span>
+							<i class="fa-solid fa-pen-to-square"></i>
+						</span>
+						<span class="text">Thêm mới</span></button>
+					<!-- Modal -->
+					<div class="modal fade" id="createModal" tabindex="-1" role="dialog"
+						aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Thêm mới tài khoản</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									Bạn có muốn thêm mới tài khoản này không ?
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+									<button type="submit" class="btn btn-primary">Yes</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button type="reset" class="btn btn-info">
+						<span>
+							<i class="fa-solid fa-broom"></i>
+						</span>
+						<span class="text">Clear</span></button>
+					<br>
+					<hr>
+					<br>
+				</form>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

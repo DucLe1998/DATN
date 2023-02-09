@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Login & Register</title>
+
+    <!-- Custom fonts for this template-->
+    <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link th:href="@{/css/sb-admin-2.min.css}" rel="stylesheet">
+    <link th:href="@{/bootstrapv5.2/css/bootstrap.min.css}" rel="stylesheet" />
+    <!-- Bootstrap core JavaScript-->
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script th:src="@{/js/sb-admin-2.min.js}"></script>
+    <script th:src="@{/bootstrapv5.2/js/jquery.min.js}"></script>
+    <script th:src="@{/bootstrapv5.2/js/popper.min.js}"></script>
+    <script th:src="@{/bootstrapv5.2/js/bootstrap.min.js}"></script>
+
+</head>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Welcome To TheBoys!</h1>
+                                    </div>
+                                    <form class="user" action="/security/login" method="post">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-user"
+                                                id="exampleInputText" aria-describedby="textHelp"
+                                                placeholder="Username *" name="username" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user"
+                                                id="exampleInputPassword" placeholder="Password *" name="password"
+                                                required>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <label class="custom-control-label" for="customCheck">Remember
+                                                    Me</label>
+                                            </div>
+                                        </div>
+                                        <i class="pull-left text-danger" th:text="${message}"></i>
+                                        <button class="btn btn-primary btn-user btn-block" type="submit">
+                                            Login
+                                        </button>
+                                        <hr>
+                                        <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/login-google&response_type=code
+                                        &client_id=80724656105-fg2ndheoujm7c7dd4ob1i9mq3ebdbjhb.apps.googleusercontent.com&approval_prompt=force"
+                                            class="btn btn-outline-danger btn-user btn-block">
+                                            <i class="fab fa-google fa-fw"></i> Login with Google
+                                        </a>
+                                        <a href="https://www.facebook.com/dialog/oauth?client_id=180439422588509&redirect_uri=https://localhost:8080/login-facebook"
+                                            class="btn btn-outline-primary btn-user btn-block">
+                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                                        </a>
+                                    </form>
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="small" th:href="@{/security/forgotPassword}">Forgot Password?</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                    </div>
+                                    <form action="#" th:action="@{/security/register}" th:object="${user}"
+                                        method="post">
+                                        <div class="user">
+                                            <div class="form-group row">
+                                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                                    <input type="text" th:field="*{firstName}"
+                                                        class="form-control form-control-user" id="firstName"
+                                                        placeholder="First Name *" required>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input type="text" th:field="*{lastName}"
+                                                        class="form-control form-control-user" id="lastName"
+                                                        placeholder="Last Name *" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" th:field="*{username}"
+                                                    class="form-control form-control-user" id="username"
+                                                    placeholder="Username *" required>
+                                                <i class="pull-left text-danger" th:text="${error1}"></i>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="email" th:field="*{email}"
+                                                    class="form-control form-control-user" id="email"
+                                                    placeholder="Email Address *" required>
+                                                <i class="pull-left text-danger" th:text="${error2}"></i>
+                                                <i class="pull-left text-danger" th:if="${#fields.hasErrors('email')}"
+                                                    th:errors="*{email}"></i>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                                    <input type="password" th:field="*{password}"
+                                                        class="form-control form-control-user" id="password"
+                                                        placeholder="Password *" required>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input type="password" class="form-control form-control-user"
+                                                        id="exampleRepeatPassword" placeholder="Repeat Password *"
+                                                        required oninput="checkPasswordMatch(this);">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-3 text-muted">Giới tính :</label>
+                                                <div class="col-9 row">
+                                                    <div class="col-6 form-group row">
+                                                        <input class="form-check-input" type="radio" id="option1"
+                                                            name="option1" value="1" th:field="*{gender}" checked>
+                                                        <label class="form-check-label text-muted" for="option1">
+                                                            Nam
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-6 form-group row">
+                                                        <input class="form-check-input" type="radio" id="option2"
+                                                            name="option2" value="0" th:field="*{gender}">
+                                                        <label class="form-check-label text-muted" for="option2">
+                                                            Nữ
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="number" th:field="*{phoneNumber}"
+                                                    class="form-control form-control-user" id="phoneNumber"
+                                                    placeholder="Phone Number *" required>
+                                                <i class="pull-left text-danger" th:text="${error3}"></i>
+                                                <i class="pull-left text-danger"
+                                                    th:if="${#fields.hasErrors('phoneNumber')}"
+                                                    th:errors="*{phoneNumber}"></i>
+                                            </div>
+                                            <button class="btn btn-primary btn-user btn-block" type="submit">
+                                                Register Account
+                                            </button>
+                                            <i class="pull-left text-danger" th:text="${message1}"></i>
+                                            <hr>
+                                        </div>
+                                        <script type="text/javascript">
+                                            function checkPasswordMatch(fieldConfirmPassword) {
+                                                if (fieldConfirmPassword.value != $("#password").val()) {
+                                                    fieldConfirmPassword.setCustomValidity("Passwords do not match!");
+                                                } else {
+                                                    fieldConfirmPassword.setCustomValidity("");
+                                                }
+                                            }
+                                        </script>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+</body>
+
+</html>

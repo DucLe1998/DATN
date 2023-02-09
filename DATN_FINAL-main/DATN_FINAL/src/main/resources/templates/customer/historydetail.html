@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/customer/layout :: dynamic(~{::main})}">
+
+<body>	
+	<main>
+		<section class="bread-crumb">
+			<span class="crumb-border"></span>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 a-left">
+						<ul class="breadcrumb">
+							<li class="home">
+								<a th:href="@{|/|}"><span>Trang chủ</span></a>
+								<span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+							</li>
+	
+	
+							<li><strong><span> Chi tiết mua hàng</span></strong></li>
+	
+	
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="container">
+		<div class="row">
+            <div class="col-1">
+      		</div>
+
+            
+		      <div class="col-10">
+		        <div class="card shadow mb-4">
+					
+					<div class="card-body">
+						<div class="table-responsive">
+							<h2>Đơn hàng đã mua</h2>
+							<span>Đây là danh sách đơn hàng bạn đã mua ngày <b th:object="${items[0]}" th:text="${items[0].bill.createDay}"></b> </span>
+							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+								<thead>
+									<tr>
+						                <th>Tên sản phẩm</th>
+						                <th>Hình ảnh</th>
+						                <th>Màu sắc</th>
+						                <th>Kích cỡ</th>
+						                <th>Số lượng</th>
+						                <th>Thành tiền</th>
+						                <th>Đặt lại</th>
+						            </tr>
+								</thead>
+								<tbody>
+									<tr class="" data-id="02325SH22030110190  " th:each="p:${items}">
+							            <td th:text="${p.product.product.name}"></td>
+							            <td >
+							            	<img style="max-width: 150px;max-height: 200px;width: auto;height: auto;" th:src="@{|/customerAssets/images/${p.product.thumnail}|}" alt="${p.product.product.name}">
+							            </td>
+				                        <td th:text="${p.product.color}"></td>
+				                        <td th:text="${p.product.size}"></td>
+				                        <td th:text="${p.quantity}"></td>
+				                        <td th:if="${p.total/1000} > 1000">
+							            	<span th:if="${p.total/1000} % 100 == 0">[(${p.total/1000000})]00.000₫</span>
+							            	<span th:if="${p.total/1000} % 10 == 0">[(${p.total/1000000})]0.000₫</span>
+							            	<span th:if="${p.total/1000} % 10 != 0">[(${p.total/1000000})].000₫</span>
+							            </td>
+							            <td th:if="${p.total/1000} < 1000">[(${p.total/1000})]00₫</td>
+							           
+				                        <td class="text-center">
+											<a th:href="@{|/product/productDetail/index/${p.product.product.id}|}"
+												class="btn btn-success" data-toggle="tooltip" data-placement="bottom"
+												title="View">
+												<i class="fa-solid fa-eye"></i>
+											</a>
+										</td>
+				                       
+							        
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		
+        </main>
+</body>
+</html>

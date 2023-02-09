@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+		<h1 class="h3 mb-2 text-gray-800">BẢNG HÓA ĐƠN</h1>
+		<p class="mb-4">Quản lý danh sách hóa đơn của Shop!</p>
+		<div class="card shadow mb-4">
+			<div class="card-header py-3 row">
+				<a th:href="@{/admin/bill/excelExport}" class="btn btn-outline-success btn-icon-split">
+					<span>
+						<i class="fa-solid fa-file-excel"></i>
+					</span>
+					<span class="text">Xuất excel</span>
+				</a>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<p class="mb-4">Danh sách hóa đơn chưa duyệt của Shop!</p>
+					<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Khách hàng</th>
+								<th>Ngày tạo</th>
+								<th>Tổng</th>
+								<th>Hình thức thanh toán</th>
+								<th>Trạng thái</th>
+								<th>Chú ý</th>
+								<th>Duyệt</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="listB : ${listBill}">
+								<td th:text="${listB.id}"></td>
+								<td th:text="${listB.customer}"></td>
+								<td th:text="${#dates.format(listB.createDay,'dd-MM-yyyy')}"></td>
+								<td th:text="${#numbers.formatCurrency(listB.total)}"></td>
+								<td th:text="${listB.paymentType}"></td>
+								<td th:text="${listB.status}"></td>
+								<td th:text="${listB.note}"></td>
+								<td class="text-center">
+									<a th:href="@{/admin/billdetail/list/{id} (id = ${listB.id})}"
+										class="btn btn-outline-warning" data-toggle="tooltip" data-placement="bottom"
+										title="Duyệt đơn">
+										<i class="fa-solid fa-check-to-slot"></i>
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

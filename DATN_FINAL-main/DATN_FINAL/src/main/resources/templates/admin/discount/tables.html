@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+		<h1 class="h3 mb-2 text-gray-800">BẢNG MÃ GIẢM GIÁ</h1>
+		<div class="alert alert-success" th:text="${insertSuccess}" th:if="${insertSuccess != null}"></div>
+		<div class="alert alert-danger" th:text="${updateFailed}" th:if="${updateFailed != null}"></div>
+		<div class="alert alert-success" th:text="${updateSuccess}" th:if="${updateSuccess != null}"></div>
+		<div class="alert alert-danger" th:text="${insertFailed}" th:if="${insertFailed != null}"></div>
+		<div class="card shadow mb-4">
+			<div class="card-header py-3 row">
+				<a th:href="@{/admin/discount/save}" class="btn btn-outline-primary btn-icon-split">
+					<span>
+						<i class="fa-solid fa-plus"></i>
+					</span>
+					<span class="text">Thêm mới</span>
+				</a>
+
+				<a th:href="@{/admin/discount/excelExport}" class="btn btn-outline-success btn-icon-split ml-auto">
+					<span>
+						<i class="fa-solid fa-file-excel"></i>
+					</span>
+					<span class="text">Xuất excel</span>
+				</a>
+			</div>
+
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Tên mã giảm giá</th>
+								<th>Phần trăm giảm giá</th>
+								<th>Ngày bắt đầu</th>
+								<th>Ngày kết thúc</th>
+								<th>Tình trạng</th>
+								<th>Edit</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="listDC : ${listDiscount}">
+								<td th:text="${listDC.id}"></td>
+								<td th:text="${listDC.discountName}"></td>
+								<td>[[${listDC.decreasePercent}]]%</td>
+								<td th:text="${#dates.format(listDC.startDay,'dd-MM-yyyy')}"></td>
+								<td th:text="${#dates.format(listDC.endDay,'dd-MM-yyyy')}"></td>
+								<td th:switch="${listDC.condition}">
+									<p th:case="0">Chưa diễn ra</p>
+									<p th:case="1">Đang diễn ra</p>
+									<p th:case="2">Đã diễn ra</p>
+								</td>
+								<td class="text-center">
+									<a class="btn btn-outline-warning"
+										th:href="@{/api/discount/update/{id} (id = ${listDC.id})}" data-toggle="tooltip"
+										data-placement="bottom" title="Edit">
+										<i class="fa-solid fa-pen-to-square"></i>
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

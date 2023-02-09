@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+		<h1 class="h3 mb-2 text-gray-800">CHI TIẾT DANH MỤC SẢN PHẨM</h1>
+		<div class="card shadow mb-4">
+			<div class="container">
+				<form th:object="${category}">
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Tên danh mục:</label>
+						<div class="col-10">
+							<p class="form-control" th:text="${category.name}"></p>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Chú ý:</label>
+						<div class="col-10 input-group mb-2">
+							<p class="form-control" th:text="${category.note}"></p>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Ngày tạo:</label>
+						<div class="col-10 input-group mb-2">
+							<p class="form-control" th:text="${#dates.format(category.createDay,'dd-MM-yyyy')}"></p>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Người tạo:</label>
+						<div class="col-10 input-group mb-2">
+							<p class="form-control" th:text="${userCreatedBy.username}"></p>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Ngày sửa:</label>
+						<div class="col-10 input-group mb-2">
+							<p class="form-control" th:text="${#dates.format(category.modifyDay,'dd-MM-yyyy')}"></p>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Người sửa:</label>
+						<div class="col-10 input-group mb-2">
+							<p class="form-control" th:text="${userModifiedBy.username}"></p>
+						</div>
+					</div>
+					<br>
+					<div class="mt-2 row">
+						<label class="col-2">Trạng thái:</label>
+						<div class="col-10 input-group mb-2" th:switch="${category.status}">
+							<p class="form-control" th:case="0">Không hoạt động</p>
+							<p class="form-control" th:case="1">Đang hoạt động</p>
+						</div>
+					</div>
+					<br>
+					<br>
+					<hr>
+					<br>
+					<br>
+				</form>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

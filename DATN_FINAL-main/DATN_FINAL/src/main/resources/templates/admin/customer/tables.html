@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+		<h1 class="h3 mb-2 text-gray-800">BẢNG KHÁCH HÀNG</h1>
+		<p class="mb-4">Quản lý danh sách khách hàng của Shop!</p>
+		<div class="alert alert-danger" th:text="${updateFailed}" th:if="${updateFailed != null}"></div>
+		<div class="alert alert-success" th:text="${updateSuccess}" th:if="${updateSuccess != null}"></div>
+		<div class="card shadow mb-4">
+			<div class="card-header py-3 row">
+				<a th:href="@{/admin/customer/excelExport}" class="btn btn-outline-success btn-icon-split ml-auto">
+					<span>
+						<i class="fa-solid fa-file-excel"></i>
+					</span>
+					<span class="text">Xuất excel</span>
+				</a>
+			</div>
+
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Họ và tên</th>
+								<th>Username</th>
+								<th>Email</th>
+								<th>Số điện thoại</th>
+								<th>Địa chỉ</th>
+								<th>Xã-Huyện-Tỉnh</th>
+								<th>Tổng chi tiêu</th>
+								<th>Loại thành viên</th>
+								<th>Trạng thái</th>
+								<th>View</th>
+								<th>Edit</th>
+								<th sec:authorize="hasRole('Directors')">Delete</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="listCu : ${listCustomer}">
+								<td th:text="${listCu.id}"></td>
+								<td>[[${listCu.firstName}]] [[${listCu.lastName}]]</td>
+								<td th:text="${listCu.username}"></td>
+								<td th:text="${listCu.email}"></td>
+								<td th:text="${listCu.phoneNumber}"></td>
+								<td th:text="${listCu.address}"></td>
+								<td>[[${listCu.ward}]]-[[${listCu.district}]]-[[${listCu.provineCity}]]
+								</td>
+								<td th:text="${#numbers.formatCurrency(listCu.totalSpending)}"></td>
+								<td th:switch="${listCu.memberType}">
+									<p th:case="dong">Đồng</p>
+									<p th:case="bac">Bạc</p>
+									<p th:case="vang">Vàng</p>
+									<p th:case="kimcuong">Kim cương</p>
+								</td>
+								<td th:switch="${listCu.status}">
+									<p th:case="1">Đang hoạt động</p>
+									<p th:case="0">Không hoạt động</p>
+								</td>
+								<td class="text-center">
+									<a class="btn btn-outline-success" data-toggle="tooltip" data-placement="bottom"
+										title="View" th:href="@{/api/customer/view/{id} (id = ${listCu.id})}">
+										<i class="fa-solid fa-eye"></i>
+									</a>
+								</td>
+								<td class="text-center">
+									<a class="btn btn-outline-warning"
+										th:href="@{/api/customer/{id} (id = ${listCu.id})}" data-toggle="tooltip"
+										data-placement="bottom" title="Edit">
+										<i class="fa-solid fa-pen-to-square"></i>
+									</a>
+								</td>
+								<td th:if="${listCu.status == 1}" class="text-center" sec:authorize="hasRole('Directors')">
+									<a th:data-id="${listCu.id}" th:data-name="${listCu.username}"
+										onclick="showConfirmModalDialog(this.getAttribute('data-id'), this.getAttribute('data-name'))"
+										class="btn btn-outline-danger" data-toggle="tooltip" data-placement="bottom"
+										title="Delete">
+										<i class="fa-solid fa-trash"></i>
+									</a>
+								</td>
+								<td th:if="${listCu.status == 0}" class="text-center" sec:authorize="hasRole('Directors')">
+									<a	class="btn btn-outline-danger" data-toggle="tooltip" data-placement="bottom"
+										title="Delete" disabled>
+										<i class="fa-solid fa-trash"></i>
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<script>
+			function showConfirmModalDialog(id, name) {
+				$('#name').text(name);
+				$('#yesOption').attr('href', '/api/customer/delete/' + id);
+				$('#confirmationId').modal('show');
+			}
+		</script>
+		<!-- Logout Modal-->
+		<div class="modal fade" id="confirmationId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+			aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Thay đổi trạng thái khách hàng</h5>
+						<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-body">Bạn có muốn thay đổi trạng thái khách hàng <span id="name"></span> không ?
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
+						<a id="yesOption" type="button" class="btn btn-danger">Yes</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/index :: dynamic(~{::main})}">
+
+<body>
+    <main>
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">LIST IMPORTATION</h1>
+        <!-- DataTales Example -->
+        <div class="alert alert-success" th:text="${insertSuccess}" th:if="${insertSuccess != null}"></div>
+        <div class="alert alert-danger" th:text="${insertFailed}" th:if="${insertFailed != null}"></div>
+        <div class="card shadow mb-4">
+            <form th:action="@{/openExcel}" method="POST" enctype="multipart/form-data" class="mt-2 ml-3">
+                <h4> ADD Importation </h4>
+                <input type="file" name="file" id="file" />
+                <button script="if()" class="btn-outline-success" type="submit">
+                    <span>
+                        <i class="fa-solid fa-file-excel"></i>
+                    </span>
+                    <span class="text">ADD EXCEL</span></button>
+            </form>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="80;">Id</th>
+                                <th width="150;">Nhà cung cấp</th>
+                                <th width="100px;">Nhân viên</th>
+                                <th>Thời gian tạo(mm:HH)</th>
+                                <th width="80px;">Tổng</th>
+                                <th width="70px;">Trạng thái</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr th:each="p: ${items}">
+                                <td th:text="${p.id}"></td>
+                                <td th:text="${p.supplier.providerName}"></td>
+                                <td th:text="${p.staff.username}"></td>
+                                <td th:text="${#dates.format(p.createDay,'mm:HH, dd-MM-yyyy')}"></td>
+                                <td th:text="${#numbers.formatCurrency(p.total)}"></td>
+                                <td th:if="${p.status == 1}">Chưa nhập</td>
+                                <td th:if="${p.status == 2}">Đã nhập</td>
+                                <td>
+                                    <a class="btn btn-outline-primary" th:href="@{/checkImportation/{id}(id=${p.id})}">
+                                        <span>
+                                            <i class="fa-solid fa-check"></i>
+                                        </span>
+                                        <span class="text">Check</span>
+                                    </a>
+                                    <a th:if="${p.status ==1}" class="btn btn-outline-success"
+                                        th:href="@{/importImportationDetail/{id}(id=${p.id})}">
+                                        <span>
+                                            <i class="fa-solid fa-file-import"></i>
+                                        </span>
+                                        <span class="text">Import</span>
+                                    </a>
+                                    <a th:if="${p.status ==1}" th:href="@{/deleteImportation/{id}(id=${p.id})}"
+                                        class="btn btn-outline-danger">
+                                        <span>
+                                            <i class="fa-solid fa-trash"></i>
+                                        </span>
+                                        <span class="text">Delete</span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

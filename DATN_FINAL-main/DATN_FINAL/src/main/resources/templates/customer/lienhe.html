@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/customer/layout :: dynamic(~{::main})}">
+	
+<body>
+	<main>
+		<section class="bread-crumb">
+			<span class="crumb-border"></span>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 a-left">
+						<ul class="breadcrumb">
+							<li class="home">
+								<a href="https://template-digiworld.mysapo.net/"><span>Trang chủ</span></a>
+								<span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+							</li>
+	
+							<li><strong><span>Liên hệ</span></strong></li>
+	
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+	
+		<section class="margin-top-0">
+			<div class="container">
+				<div class="row">
+					<div class="section_maps col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bottom-20">
+						<div class="title_head margin-bottom-20">
+							<h1 class="title_center_page title-head-contact">
+								<span>Bản đồ liên hệ</span>
+							</h1>
+						</div>
+						<div class="box-maps">
+							<div class="iFrameMap">
+								<div class="google-map">
+									<div id="contact_map" class="map">
+										<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.904611732553!2d105.81388241542348!3d21.03650239288885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab1946cc7e23%3A0x87ab3917166a0cd5!2zQ8O0bmcgdHkgY-G7lSBwaOG6p24gY8O0bmcgbmdo4buHIFNBUE8!5e0!3m2!1svi!2s!4v1555900531747!5m2!1svi!2s"
+										 width="100%" height="450" style="border:0" allowfullscreen=""></iframe>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="container contact contact-owf">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="page-login page_cotact">
+						<h2 class="title-head-contact a-left"><span>Liên hệ với chúng tôi:</span></h2>
+						<div id="pagelogin">
+							<form accept-charset="utf-8" action="https://template-digiworld.mysapo.net/contact" id="contact"
+								method="post">
+								<input name="FormType" type="hidden" value="contact">
+								<input name="utf8" type="hidden" value="true"><input type="hidden"
+									id="Token-920a46df271f47f49fcc24fceb250f57" name="Token"
+									value="03AIIukziubNHH6fs-ViztenwTu8x0k3pYcX22pQJi9ncI5RE9wRVo_2-6hKwcMJfYWC3Xb7IqyRGul44VdmZA_Pme9Z4luvZFEvmkauOGWBKcebduQL6nFuXjjRoKMc1jgLDaCI5U6WLm4KNQU_yl4qbsm24DugUGU49Y6wOiXbDAw0T1-GzbKCDEjHodI0Jszdwd0R_bbeVkIYEKwVxyIBE3HjQt3if1dycHocUOnQARKkNz0Ic00OhK-wCPU5E-il4uGT7Njsv31eEjOzyWUp-3kSOPtSa4-pyxnFdo1cvKUTpjiJFnY98hBcfDYBLBhfSQ1UFuhyIKrDgQjjEfkvWX-KzZrnzS3baegdZUcyIllAubTfmgL7__ZN6hzhCEva3SI4x_jtDBRsI2z2RSY0C7mCTzQL71yLBAFzf-61wOCSsgK7yR9ffexUVGPhXuct7Klml6Ef46WzgNF3lFisZrImlTAWIiGNd8kDBJ7HZzU9NSvV6krvw0_YxcJcAUitecB9bEULr_9UF3WNOKxP1Qu680sssSHhoOHA4tyLglkDHRkRqtREOI7vtOnMp6hXPyWQFquso9pZnRkmNoBI5YutaqYsWNPw">
+							
+	
+	
+								<div class="form-signup clearfix">
+									<div class="row group_contact">
+										<fieldset class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+											<label>Họ và tên:</label>
+											<input type="text" class="form-control  form-control-lg" required="" value=""
+												name="contact[Name]">
+										</fieldset>
+										<fieldset class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+											<label>Email:</label>
+											<input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+												required="" id="email1" class="form-control form-control-lg" value=""
+												name="contact[email]">
+										</fieldset>
+										<fieldset class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+											<label>Số điện thoại:</label>
+											<input type="text" pattern="\d+"
+												class="form-control form-control-comment form-control-lg" name="Phone"
+												required="">
+										</fieldset>
+										<fieldset class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+											<label>Nội dung:</label>
+											<textarea name="contact[body]" id="comment"
+												class="form-control content-area form-control-lg" rows="5"
+												required=""></textarea>
+	
+										</fieldset>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-top-10">
+											<button type="submit" class="btn btn-primary btn-lienhe">Gửi liên hệ</button>
+										</div>
+	
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="select_maps col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="bb">
+						<div class="page_cotact">
+							<h2 class="title_db"><span>Công ty cổ phần đầu tư thương mại thế giới số Digiworld</span></h2>
+						</div>
+						<div class="contact-addresss margin-bottom-10">
+							<ul class="contact">
+								<li>
+									<span class="txt_content_child">
+										<span> Địa chỉ:</span>
+	
+										Tầng 6, 266 Đội Cấn, Ba Đình, Hà Nội, Vietnam
+	
+									</span>
+								</li>
+								<li class="sdt">
+									<span> Hotline:</span>
+	
+									<a href="tel:19006750">1900 6750</a>
+	
+									<span>-</span>
+									<span class="email_style"><span> Email:</span>
+	
+										<a href="mailto:support@sapo.vn"> support@sapo.vn</a>
+	
+									</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+	
+					<div class="aa">
+						<div class="page_cotact">
+							<h2 class="title_db"><span>Hệ thống cửa hàng của Digiworld</span></h2>
+						</div>
+						<div class="city_1 city-wrapper" style="display: block;">
+							<div class="nano has-scrollbar">
+								<div class="content">
+	
+	
+	
+	
+	
+	
+	
+	
+									<div class="showroom-item">
+										<div class="title-module-page">
+											<h2><span>Digiworld Đội Cấn</span></h2>
+										</div>
+										<span class="showroom-address">
+											<span>Địa chỉ:
+												Tầng 6, 266 Đội Cấn, Ba Đình, Hà Nội
+											</span>
+	
+										</span>
+	
+										<span class="showroom-contact"><span>Hotline:
+												<a href="tel:18006750">1800 6750</a>
+											</span></span>
+	
+									</div>
+	
+	
+	
+	
+	
+	
+									<div class="showroom-item">
+										<div class="title-module-page">
+											<h2><span>Digiwolrd Thái Hà</span></h2>
+										</div>
+										<span class="showroom-address">
+											<span>Địa chỉ:
+												365 Thái Hà, Đống Đa, Hà Nội, Hà Nội
+											</span>
+	
+										</span>
+	
+										<span class="showroom-contact"><span>Hotline:
+												<a href="tel:0968688989">0968688989</a>
+											</span></span>
+	
+									</div>
+	
+	
+	
+	
+	
+	
+									<div class="showroom-item">
+										<div class="title-module-page">
+											<h2><span>Digiworld Nguyễn Trãi</span></h2>
+										</div>
+										<span class="showroom-address">
+											<span>Địa chỉ:
+												58 Nguyễn Trãi, Thanh Xuân, Hà Nội, Hà Nội
+											</span>
+	
+										</span>
+	
+										<span class="showroom-contact"><span>Hotline:
+												<a href="tel:01659685999">01659685999</a>
+											</span></span>
+	
+									</div>
+	
+	
+	
+								</div>
+							</div>
+						</div>
+					</div>
+					<span class="thank_text">
+						Công ty chân thành cảm ơn sự quan tâm của quý khách đến các sản phẩm và dịch vụ của chúng tôi!
+					</span>
+				</div>
+	
+			</div>
+		</div>
+	
+	
+	
+		<!-- Main JS -->
+	
+	
+	
+		<!-- Product detail JS,CSS -->
+	
+	
+		<link rel="preconnect" href="https://fonts.googleapis.com/">
+		<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+		<link href="/customerAssets/css2" rel="stylesheet">
+	
+		<div>
+			<div class="grecaptcha-badge" data-style="bottomright"
+				style="width: 256px; height: 60px; display: block; transition: right 0.3s ease 0s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;">
+				<div class="grecaptcha-logo"><iframe title="reCAPTCHA" src="./images/anchor.html"
+						width="256" height="60" role="presentation" name="a-d7l4y3dxgz9y" frameborder="0" scrolling="no"
+						sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe>
+				</div>
+				<div class="grecaptcha-error"></div><textarea id="g-recaptcha-response-100000" name="g-recaptcha-response"
+					class="g-recaptcha-response"
+					style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
+			</div><iframe style="display: none;" src="./images/saved_resource.html"></iframe>
+		</div>
+		</main>
+	</body>
+</html>

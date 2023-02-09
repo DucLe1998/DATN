@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+	<meta name="description" content="Digiworld - Thanh toán đơn hàng">
+	<title>Digiworld - Thanh toán đơn hàng</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
+<link rel="shortcut icon" href="//bizweb.dktcdn.net/assets/sapo_favicon.png" type="image/x-icon">
+
+<link rel="stylesheet" href="/customerAssets/checkout1.css">
+
+<link rel="stylesheet" href="/customerAssets/checkout2.css">
+
+<!-- Begin checkout custom css -->
+<style>
+
+</style>
+<!-- End checkout custom css -->
+
+<!-- <script src="//bizweb.dktcdn.net/assets/themes_support/libphonenumber-v3.2.30.min.js?1667212443268"></script>
+
+<script src="/dist/js/checkout.vendor.min.js?v=11006c9"></script>
+
+<script src="/dist/js/checkout.min.js?v=ee358d5"></script> -->
+
+<script>
+	var Bizweb = Bizweb || {};
+	Bizweb.id = '289371';
+	Bizweb.store = 'template-digiworld.mysapo.net';
+	
+	
+	Bizweb.template = 'checkout';
+	
+	
+	Bizweb.Checkout = Bizweb.Checkout || {};
+	Bizweb.Checkout.token = "726c56cb408d46fd8750ea586cbe98b1"
+	Bizweb.Checkout.apiHost = "template-digiworld.mysapo.net"
+	
+	
+</script>
+
+<script>
+	window.BizwebAnalytics = window.BizwebAnalytics || {};
+	window.BizwebAnalytics.meta = window.BizwebAnalytics.meta || {};
+	window.BizwebAnalytics.meta.currency = 'VND';
+	window.BizwebAnalytics.tracking_url = '/s';
+	var meta = {};
+	
+	
+	for (var attr in meta) {
+		window.BizwebAnalytics.meta[attr] = meta[attr];
+	}
+</script>
+
+<!-- 
+<script src="/dist/js/stats.min.js?v=69e02f0"></script><script async="" src="//bizweb.dktcdn.net/web/assets/lib/js/fp.v3.3.0.min.js"></script>
+
+ -->
+</head>
+
+<body data-no-turbolink="" data-select2-id="select2-data-215-fk6t">
+
+	<header class="banner">
+		<div class="wrap">
+			<div class="logo logo--left ">
+	
+				<h1 class="shop__name">
+					<a href="@{|/|}">
+						The Boys
+					</a>
+				</h1>
+	
+			</div>
+		</div>
+	</header>
+	<aside>
+		<button class="order-summary-toggle" data-toggle="#order-summary" data-toggle-class="order-summary--is-collapsed">
+			<span class="wrap">
+				<span class="order-summary-toggle__inner">
+					<span class="order-summary-toggle__text expandable">
+						Đơn hàng (1 sản phẩm)
+					</span>
+					<span class="order-summary-toggle__total-recap" data-bind="getTextTotalPrice()">250.000₫</span>
+				</span>
+			</span>
+		</button>
+	</aside>
+	<div data-tg-refresh="checkout" id="checkout" class="content" data-select2-id="select2-data-checkout" th:object="${dto}">
+		<form id="checkoutForm" method="post" data-define="{
+				loadingShippingErrorMessage: 'Không thể load phí vận chuyển. Vui lòng thử lại',
+				loadingReductionCodeErrorMessage: 'Có lỗi xảy ra khi áp dụng khuyến mãi. Vui lòng thử lại',
+				submitingCheckoutErrorMessage: 'Có lỗi xảy ra khi xử lý. Vui lòng thử lại',
+				requireShipping: true,
+				requireDistrict: false,
+				requireWard: false,
+				shouldSaveCheckoutAbandon: true}" th:action="@{|/payMoney|}" data-bind-event-submit="handleCheckoutSubmit(event)" data-bind-event-keypress="handleCheckoutKeyPress(event)" data-bind-event-change="handleCheckoutChange(event)" data-select2-id="select2-data-checkoutForm">
+			<input type="hidden" name="_method" value="patch">
+			<div class="wrap" data-select2-id="select2-data-214-a95q">
+				<main class="main">
+					<header class="main__header">
+						<div class="logo logo--left ">
+	
+		<h1 class="shop__name">
+			<a href="@{|/|}">
+				The Boys
+			</a>
+		</h1>
+	
+				</div>
+					</header>
+					<div class="main__content" data-select2-id="select2-data-213-y8ju" th:object="${user}">
+						<article class="animate-floating-labels row">
+							<div class="col col--two">
+								<section class="section" data-select2-id="select2-data-212-l59k">
+									<div class="section__header">
+										<div class="layout-flex">
+											<h2 class="section__title layout-flex__item layout-flex__item--stretch">
+												<i class="fa fa-id-card-o fa-lg section__title--icon hide-on-desktop"></i>
+												
+												Thông tin nhận hàng
+												
+											</h2>
+											
+											
+											<a href="/account/login?returnUrl=/checkout/726c56cb408d46fd8750ea586cbe98b1">
+												<i class="fa fa-user-circle-o fa-lg"></i>
+												<span>Đăng nhập </span>
+											</a>
+											
+											
+										</div>
+									</div>
+									<div class="section__content" data-select2-id="select2-data-211-sx60">
+										<div class="fieldset">
+											
+
+											
+											
+											<div class="field " data-bind-class="{'field--show-floating-label': email}">
+												<div class="field__input-wrapper">
+													<label for="email" class="field__label">
+														Email
+													</label>
+													<input name="email" id="email" type="email" class="field__input" data-bind="email" th:value="${user.email}">
+												</div>
+												
+											</div>
+											
+											
+
+											<div class="field " data-bind-class="{'field--show-floating-label': billing.name}">
+												<div class="field__input-wrapper">
+													<label for="billingName" class="field__label">Họ và tên</label>
+													<input name="billingName" id="billingName" type="text" class="field__input" data-bind="billing.name" th:value="${user.firstName+user.lastName}">
+												</div>
+												
+											</div>
+											
+											<div class="field " data-bind-class="{'field--show-floating-label': billing.phone}">
+												<div class="field__input-wrapper field__input-wrapper--connected" data-define="{phoneInput: new InputPhone(this)}" data-select2-id="select2-data-210-q6ss">
+													<label for="billingPhone" class="field__label">
+														Số điện thoại (tùy chọn)
+													</label>
+													<input name="billingPhone" id="billingPhone" type="tel" class="field__input" data-bind="billing.phone" th:value="${user.phoneNumber}">
+													<div class="field__input-phone-region-wrapper">
+														<select class="field__input select-phone-region select2-hidden-accessible" name="billingPhoneRegion" data-init-value="VN" data-select2-id="select2-data-3-rxsm" tabindex="-1" aria-hidden="true"><option value="AF" data-select2-id="select2-data-5-n1mx">Afghanistan (+93)</option><option value="AL" data-select2-id="select2-data-6-ke8y">Albania (+355)</option><option value="DZ" data-select2-id="select2-data-7-jm8g">Algeria (+213)</option><option value="AD" data-select2-id="select2-data-8-gi6i">Andorra (+376)</option><option value="AO" data-select2-id="select2-data-9-g7bn">Angola (+244)</option><option value="AG" data-select2-id="select2-data-10-33ul">Antigua and Barbuda (+1)</option><option value="AR" data-select2-id="select2-data-11-jsqc">Argentina (+54)</option><option value="AM" data-select2-id="select2-data-12-skkm">Armenia (+374)</option><option value="AU" data-select2-id="select2-data-13-k2je">Australia (+61)</option><option value="AT" data-select2-id="select2-data-14-snh8">Austria (+43)</option><option value="AZ" data-select2-id="select2-data-15-6q4o">Azerbaijan (+994)</option><option value="BS" data-select2-id="select2-data-16-zxzn">Bahamas (+1)</option><option value="BH" data-select2-id="select2-data-17-v1pe">Bahrain (+973)</option><option value="BD" data-select2-id="select2-data-18-4rqx">Bangladesh (+880)</option><option value="BB" data-select2-id="select2-data-19-ke47">Barbados (+1)</option><option value="BY" data-select2-id="select2-data-20-efm3">Belarus (+375)</option><option value="BE" data-select2-id="select2-data-21-20li">Belgium (+32)</option><option value="BZ" data-select2-id="select2-data-22-1of1">Belize (+501)</option><option value="BJ" data-select2-id="select2-data-23-sv1y">Benin (+229)</option><option value="BT" data-select2-id="select2-data-24-dzc7">Bhutan (+975)</option><option value="BO" data-select2-id="select2-data-25-jema">Bolivia (+591)</option><option value="BA" data-select2-id="select2-data-26-55uq">Bosnia and Herzegovina (+387)</option><option value="BW" data-select2-id="select2-data-27-acm0">Botswana (+267)</option><option value="BR" data-select2-id="select2-data-28-zxar">Brazil (+55)</option><option value="BN" data-select2-id="select2-data-29-kfnx">Brunei (+673)</option><option value="BG" data-select2-id="select2-data-30-jju5">Bulgaria (+359)</option><option value="BF" data-select2-id="select2-data-31-gs1u">Burkina Faso (+226)</option><option value="BI" data-select2-id="select2-data-32-4j6b">Burundi (+257)</option><option value="KH" data-select2-id="select2-data-33-2a79">Cambodia (+855)</option><option value="CM" data-select2-id="select2-data-34-asg7">Cameroon (+237)</option><option value="CA" data-select2-id="select2-data-35-3yf8">Canada (+1)</option><option value="CV" data-select2-id="select2-data-36-rztn">Cape Verde (+238)</option><option value="CF" data-select2-id="select2-data-37-q64f">Central African Republic (+236)</option><option value="TD" data-select2-id="select2-data-38-bjfm">Chad (+235)</option><option value="CL" data-select2-id="select2-data-39-dln8">Chile (+56)</option><option value="CO" data-select2-id="select2-data-40-iizm">Colombia (+57)</option><option value="KM" data-select2-id="select2-data-41-8lo5">Comoros (+269)</option><option value="CG" data-select2-id="select2-data-42-qmin">Congo-Brazzaville (+242)</option><option value="CK" data-select2-id="select2-data-43-nzke">Congo-Kinshasa (+682)</option><option value="CR" data-select2-id="select2-data-44-s3x5">Costa Rica (+506)</option><option value="CD" data-select2-id="select2-data-45-4htc">Côte d'Ivoire (+243)</option><option value="HR" data-select2-id="select2-data-46-ayib">Croatia (+385)</option><option value="CU" data-select2-id="select2-data-47-5u5f">Cuba (+53)</option><option value="CY" data-select2-id="select2-data-48-kjuw">Cyprus (+357)</option><option value="CZ" data-select2-id="select2-data-49-eza4">Czech Republic (+420)</option><option value="DK" data-select2-id="select2-data-50-ix2m">Denmark (+45)</option><option value="DJ" data-select2-id="select2-data-51-pfwk">Djibouti (+253)</option><option value="DM" data-select2-id="select2-data-52-orzr">Dominica (+1)</option><option value="DO" data-select2-id="select2-data-53-o4d9">Dominican Republic (+1)</option><option value="TL" data-select2-id="select2-data-54-sdql">East Timor (+670)</option><option value="EC" data-select2-id="select2-data-55-00v3">Ecuador (+593)</option><option value="EG" data-select2-id="select2-data-56-lmfw">Egypt (+20)</option><option value="SV" data-select2-id="select2-data-57-1lp2">El Salvador (+503)</option><option value="GQ" data-select2-id="select2-data-58-52sc">Equatorial Guinea (+240)</option><option value="ER" data-select2-id="select2-data-59-rdqp">Eritrea (+291)</option><option value="EE" data-select2-id="select2-data-60-lw6f">Estonia (+372)</option><option value="ET" data-select2-id="select2-data-61-bq66">Ethiopia (+251)</option><option value="FJ" data-select2-id="select2-data-62-forg">Fiji (+679)</option><option value="FI" data-select2-id="select2-data-63-tsem">Finland (+358)</option><option value="FR" data-select2-id="select2-data-64-ijzw">France (+33)</option><option value="GA" data-select2-id="select2-data-65-yf3k">Gabon (+241)</option><option value="GM" data-select2-id="select2-data-66-0myc">Gambia (+220)</option><option value="GE" data-select2-id="select2-data-67-hkcl">Georgia (+995)</option><option value="DE" data-select2-id="select2-data-68-trch">Germany (+49)</option><option value="GH" data-select2-id="select2-data-69-7a8q">Ghana (+233)</option><option value="GR" data-select2-id="select2-data-70-1m9j">Greece (+30)</option><option value="GD" data-select2-id="select2-data-71-hdcd">Grenada (+1)</option><option value="GT" data-select2-id="select2-data-72-d7yp">Guatemala (+502)</option><option value="GN" data-select2-id="select2-data-73-cfoe">Guinea (+224)</option><option value="GW" data-select2-id="select2-data-74-htzx">Guinea-Bissau (+245)</option><option value="GY" data-select2-id="select2-data-75-vams">Guyana (+592)</option><option value="HT" data-select2-id="select2-data-76-jovc">Haiti (+509)</option><option value="HN" data-select2-id="select2-data-77-0mej">Honduras (+504)</option><option value="HK" data-select2-id="select2-data-78-tlor">Hong Kong (+852)</option><option value="HU" data-select2-id="select2-data-79-imjf">Hungary (+36)</option><option value="IS" data-select2-id="select2-data-80-boi5">Iceland (+354)</option><option value="IN" data-select2-id="select2-data-81-ub6j">India (+91)</option><option value="ID" data-select2-id="select2-data-82-ewq3">Indonesia (+62)</option><option value="IR" data-select2-id="select2-data-83-oxsw">Iran (+98)</option><option value="IQ" data-select2-id="select2-data-84-emp3">Iraq (+964)</option><option value="IE" data-select2-id="select2-data-85-kvb8">Ireland (+353)</option><option value="IL" data-select2-id="select2-data-86-i5lq">Israel (+972)</option><option value="IT" data-select2-id="select2-data-87-e0hc">Italy (+39)</option><option value="JM" data-select2-id="select2-data-88-gpgo">Jamaica (+1)</option><option value="JP" data-select2-id="select2-data-89-jfpa">Japan (Nippon) (+81)</option><option value="JO" data-select2-id="select2-data-90-mqo9">Jordan (+962)</option><option value="KZ" data-select2-id="select2-data-91-8ar8">Kazakhstan (+7)</option><option value="KE" data-select2-id="select2-data-92-ie8t">Kenya (+254)</option><option value="KI" data-select2-id="select2-data-93-asnb">Kiribati (+686)</option><option value="KP" data-select2-id="select2-data-94-cbj2">North Korea (+850)</option><option value="XK" data-select2-id="select2-data-95-k3yx">Kosovo (+383)</option><option value="KW" data-select2-id="select2-data-96-ovf7">Kuwait (+965)</option><option value="KG" data-select2-id="select2-data-97-ezhi">Kyrgyzstan (+996)</option><option value="LA" data-select2-id="select2-data-98-dz3y">Laos (+856)</option><option value="LV" data-select2-id="select2-data-99-w5fz">Latvia (+371)</option><option value="LB" data-select2-id="select2-data-100-z99y">Lebanon (+961)</option><option value="LS" data-select2-id="select2-data-101-j5oe">Lesotho (+266)</option><option value="LR" data-select2-id="select2-data-102-q8mc">Liberia (+231)</option><option value="LY" data-select2-id="select2-data-103-zcwz">Libya (+218)</option><option value="LI" data-select2-id="select2-data-104-s1o3">Liechtenstein (+423)</option><option value="LT" data-select2-id="select2-data-105-ngf7">Lithuania (+370)</option><option value="LU" data-select2-id="select2-data-106-asl9">Luxembourg (+352)</option><option value="MK" data-select2-id="select2-data-107-cbdj">Macedonia (FYROM) (+389)</option><option value="MG" data-select2-id="select2-data-108-m2c3">Madagascar (+261)</option><option value="MW" data-select2-id="select2-data-109-lmfu">Malawi (+265)</option><option value="MY" data-select2-id="select2-data-110-a1td">Malaysia (+60)</option><option value="MV" data-select2-id="select2-data-111-m5ey">Maldives (+960)</option><option value="ML" data-select2-id="select2-data-112-50y6">Mali (+223)</option><option value="MT" data-select2-id="select2-data-113-hczo">Malta (+356)</option><option value="MH" data-select2-id="select2-data-114-st30">Marshall Islands (+692)</option><option value="MR" data-select2-id="select2-data-115-6yfz">Mauritania (+222)</option><option value="MU" data-select2-id="select2-data-116-85l5">Mauritius (+230)</option><option value="MX" data-select2-id="select2-data-117-thq1">Mexico (+52)</option><option value="FM" data-select2-id="select2-data-118-jtbt">Micronesia (+691)</option><option value="MD" data-select2-id="select2-data-119-i1ri">Moldova (+373)</option><option value="MC" data-select2-id="select2-data-120-h9s6">Monaco (+377)</option><option value="MN" data-select2-id="select2-data-121-nuox">Mongolia (+976)</option><option value="ME" data-select2-id="select2-data-122-hihl">Montenegro (+382)</option><option value="MA" data-select2-id="select2-data-123-u4u8">Morocco (+212)</option><option value="MZ" data-select2-id="select2-data-124-icpm">Mozambique (+258)</option><option value="MM" data-select2-id="select2-data-125-0eds">Myanmar (+95)</option><option value="NA" data-select2-id="select2-data-126-y4qx">Namibia (+264)</option><option value="NR" data-select2-id="select2-data-127-3z5m">Nauru (+674)</option><option value="NP" data-select2-id="select2-data-128-t2n6">Nepal (+977)</option><option value="NL" data-select2-id="select2-data-129-bd9m">Netherlands (+31)</option><option value="NZ" data-select2-id="select2-data-130-99xs">New Zealand (+64)</option><option value="NI" data-select2-id="select2-data-131-7u65">Nicaragua (+505)</option><option value="NE" data-select2-id="select2-data-132-qo3p">Niger (+227)</option><option value="NG" data-select2-id="select2-data-133-pg8p">Nigeria (+234)</option><option value="KR" data-select2-id="select2-data-134-veh1">South Korea (+82)</option><option value="NC" data-select2-id="select2-data-135-ghs4">New Caledonia (+687)</option><option value="NO" data-select2-id="select2-data-136-3l7h">Norway (+47)</option><option value="OM" data-select2-id="select2-data-137-s702">Oman (+968)</option><option value="PK" data-select2-id="select2-data-138-ofnf">Pakistan (+92)</option><option value="PW" data-select2-id="select2-data-139-l1dq">Palau (+680)</option><option value="PS" data-select2-id="select2-data-140-iucj">Palestine (+970)</option><option value="PA" data-select2-id="select2-data-141-6z5i">Panama (+507)</option><option value="PG" data-select2-id="select2-data-142-3rlj">Papua New Guinea (+675)</option><option value="PY" data-select2-id="select2-data-143-hlh1">Paraguay (+595)</option><option value="PE" data-select2-id="select2-data-144-v9r4">Peru (+51)</option><option value="PH" data-select2-id="select2-data-145-uimy">Philippines (+63)</option><option value="PL" data-select2-id="select2-data-146-t4vs">Poland (+48)</option><option value="PT" data-select2-id="select2-data-147-7v0n">Portugal (+351)</option><option value="QA" data-select2-id="select2-data-148-kbv9">Qatar (+974)</option><option value="RO" data-select2-id="select2-data-149-bjb8">Romania (+40)</option><option value="RU" data-select2-id="select2-data-150-fc8d">Russia (+7)</option><option value="RW" data-select2-id="select2-data-151-yhq4">Rwanda (+250)</option><option value="KN" data-select2-id="select2-data-152-z75u">Saint Kitts and Nevis (+1)</option><option value="LC" data-select2-id="select2-data-153-ca87">Saint Lucia (+1)</option><option value="VC" data-select2-id="select2-data-154-hv8a">Saint Vincent and the Grenadines (+1)</option><option value="WS" data-select2-id="select2-data-155-uiio">Samoa (+685)</option><option value="SM" data-select2-id="select2-data-156-wg0t">San Marino (+378)</option><option value="ST" data-select2-id="select2-data-157-v2gk">Sao Tome and Principe (+239)</option><option value="SA" data-select2-id="select2-data-158-c3hj">Saudi Arabia (+966)</option><option value="SS" data-select2-id="select2-data-159-1cl9">South Sudan (+211)</option><option value="SN" data-select2-id="select2-data-160-gttq">Senegal (+221)</option><option value="RS" data-select2-id="select2-data-161-1ubx">Serbia (+381)</option><option value="SC" data-select2-id="select2-data-162-62mc">Seychelles (+248)</option><option value="SL" data-select2-id="select2-data-163-l5ce">Sierra Leone (+232)</option><option value="SG" data-select2-id="select2-data-164-am2z">Singapore (+65)</option><option value="SH" data-select2-id="select2-data-165-wawf">Saint Helena (+290)</option><option value="SK" data-select2-id="select2-data-166-roiy">Slovakia (+421)</option><option value="SI" data-select2-id="select2-data-167-f7hi">Slovenia (+386)</option><option value="SB" data-select2-id="select2-data-168-lr6l">Solomon Islands (+677)</option><option value="SO" data-select2-id="select2-data-169-p3rh">Somalia (+252)</option><option value="SJ" data-select2-id="select2-data-170-6v6o">Svalbard and Jan Mayen (+47)</option><option value="ZA" data-select2-id="select2-data-171-ubzp">South Africa (+27)</option><option value="ES" data-select2-id="select2-data-172-z2xo">Spain (+34)</option><option value="LK" data-select2-id="select2-data-173-ptl9">Sri Lanka (+94)</option><option value="SD" data-select2-id="select2-data-174-lz7r">Sudan (+249)</option><option value="SR" data-select2-id="select2-data-175-chdp">Suriname (+597)</option><option value="SZ" data-select2-id="select2-data-176-xnpa">Swaziland (+268)</option><option value="SE" data-select2-id="select2-data-177-5v5c">Sweden (+46)</option><option value="CH" data-select2-id="select2-data-178-348l">Switzerland (+41)</option><option value="SY" data-select2-id="select2-data-179-pazx">Syria (+963)</option><option value="TJ" data-select2-id="select2-data-180-ioes">Tajikistan (+992)</option><option value="TZ" data-select2-id="select2-data-181-2z1u">Tanzania (+255)</option><option value="TH" data-select2-id="select2-data-182-ullw">Thailand (+66)</option><option value="TG" data-select2-id="select2-data-183-t99e">Togo (+228)</option><option value="TO" data-select2-id="select2-data-184-fh96">Tonga (+676)</option><option value="TK" data-select2-id="select2-data-185-67ui">Tokelau (+690)</option><option value="TT" data-select2-id="select2-data-186-3o9v">Trinidad and Tobago (+1)</option><option value="TN" data-select2-id="select2-data-187-sm47">Tunisia (+216)</option><option value="TR" data-select2-id="select2-data-188-g4p9">Turkey (+90)</option><option value="CN" data-select2-id="select2-data-189-w2i7">China (+86)</option><option value="TM" data-select2-id="select2-data-190-pp26">Turkmenistan (+993)</option><option value="TV" data-select2-id="select2-data-191-8tgf">Tuvalu (+688)</option><option value="UG" data-select2-id="select2-data-192-p0a3">Uganda (+256)</option><option value="UA" data-select2-id="select2-data-193-edge">Ukraine (+380)</option><option value="AE" data-select2-id="select2-data-194-1xja">United Arab Emirates (+971)</option><option value="GB" data-select2-id="select2-data-195-6xbr">United Kingdom (+44)</option><option value="US" data-select2-id="select2-data-196-226h">United States (+1)</option><option value="UY" data-select2-id="select2-data-197-lzbd">Uruguay (+598)</option><option value="UZ" data-select2-id="select2-data-198-vugk">Uzbekistan (+998)</option><option value="VU" data-select2-id="select2-data-199-9vev">Vanuatu (+678)</option><option value="VA" data-select2-id="select2-data-200-1r2p">Vatican (+39)</option><option value="VE" data-select2-id="select2-data-201-rzfm">Venezuela (+58)</option><option value="VN" data-select2-id="select2-data-202-3er0">Vietnam (+84)</option><option value="EH" data-select2-id="select2-data-203-pr6s">Western Sahara (+212)</option><option value="YE" data-select2-id="select2-data-204-jzec">Yemen (+967)</option><option value="ZM" data-select2-id="select2-data-205-2jjr">Zambia (+260)</option><option value="ZW" data-select2-id="select2-data-206-767h">Zimbabwe (+263)</option><option value="TW" data-select2-id="select2-data-207-61rp">Taiwan (+886)</option></select><span class="select2 select2-container select2-container--default select2-container--below select2-container--open" dir="ltr" data-select2-id="select2-data-4-mk60" style="width: 56px;"><span class="selection"><span class="select2-selection select2-selection--single select2-phone-region" role="combobox" aria-haspopup="true" aria-expanded="true" tabindex="0" aria-disabled="false" aria-labelledby="select2-billingPhoneRegion-dc-container" aria-owns="select2-billingPhoneRegion-dc-results" aria-activedescendant="select2-billingPhoneRegion-dc-result-1a2k-TW"><span class="select2-selection__rendered" id="select2-billingPhoneRegion-dc-container" role="textbox" aria-readonly="true" title="Vietnam (+84)"><span class="fi fi-vn"></span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+													</div>
+												</div>
+												
+											</div>
+											
+											
+															
+											<div class="field field--show-floating-label ">
+												<div class="field__input-wrapper field__input-wrapper--select2">
+													<label for="billingProvince" class="field__label">Tỉnh thành</label>
+													<!-- <select class="field__input" id="city" aria-label=".form-select-sm">
+											            <option value="" selected>Chọn tỉnh thành</option>
+											        </select> -->
+													<select  id="city" name="city"  class="field__input"  aria-label=".form-select-sm" >
+														 <option value="" selected>Chọn tỉnh thành</option>
+													</select>
+<!-- 													<span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="select2-data-1-hfj3" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-billingProvince-container"><span class="select2-selection__rendered" id="select2-billingProvince-container" role="textbox" aria-readonly="true" title="---">---</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+ -->												</div>
+												
+											</div>
+											
+											<div class="field field--show-floating-label ">
+												<div class="field__input-wrapper field__input-wrapper--select2">
+													<label for="billingDistrict" class="field__label">
+														Quận huyện (tùy chọn)
+													</label>
+													<select name="district" id="district" size="1" type="text" class="field__input "  data-address-type="district" data-address-zone="billing" data-select2-id="select2-data-billingDistrict" tabindex="-1" aria-hidden="true" >
+														 <option value="" selected>Chọn quận huyện</option>
+													</select>
+<!-- 													<span class="select2 select2-container select2-container--default select2-container--disabled" dir="ltr" data-select2-id="select2-data-2-i8x5" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="true" aria-labelledby="select2-billingDistrict-container"><span class="select2-selection__rendered" id="select2-billingDistrict-container" role="textbox" aria-readonly="true"></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+ -->											</div>
+												
+											</div>
+											
+											<div class="field field--show-floating-label ">
+												<div class="field__input-wrapper field__input-wrapper--select2">
+													<label for="billingDistrict" class="field__label">
+														Xã phường (tùy chọn)
+													</label>
+													<select name="ward" id="ward" size="1" type="text" class="field__input " value=""  data-address-type="district" data-address-zone="billing" data-select2-id="select2-data-billingDistrict" tabindex="-1" aria-hidden="true" >
+														 <option value="" selected>Chọn xã phường</option>
+													</select>
+<!-- 													<span class="select2 select2-container select2-container--default select2-container--disabled" dir="ltr" data-select2-id="select2-data-2-i8x5" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="true" aria-labelledby="select2-billingDistrict-container"><span class="select2-selection__rendered" id="select2-billingDistrict-container" role="textbox" aria-readonly="true"></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+ -->												</div>
+												
+											</div>
+											
+											<div class="field " data-bind-class="{'field--show-floating-label': billing.address}">
+												<div class="field__input-wrapper">
+													<label for="billingAddress" class="field__label">
+														Địa chỉ (tùy chọn)
+													</label>
+													<input name="address" id="" type="text" class="field__input" data-bind="billing.address" value=""> 
+													
+												</div>
+												
+											</div>
+											<div class="field field--show-floating-label ">
+												<div class="field__input-wrapper field__input-wrapper--select2">
+													<label for="billingDistrict" class="field__label">
+														Chọn phương thức giao hàng 
+													</label>
+													<select name="service" id="service"  class="field__input " value="" data-bind="billing.district" data-address-type="district" data-address-zone="billing" data-select2-id="select2-data-billingDistrict">
+														<option value="" selected>Chọn hình thức vận chuyển</option>
+													</select>
+<!-- 													<span class="select2 select2-container select2-container--default select2-container--disabled" dir="ltr" data-select2-id="select2-data-2-i8x5" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="true" aria-labelledby="select2-billingDistrict-container"><span class="select2-selection__rendered" id="select2-billingDistrict-container" role="textbox" aria-readonly="true"></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+ -->												</div>
+												
+											</div>
+											<input id="money" th:object="${total}" th:value="${total}" hidden="true">
+											<input id="soluong" th:object="${quantity}" th:value="${quantity}" hidden="true">
+										</div>
+									</div>
+								</section>
+								
+								<div class="fieldset">
+									<h3 class="visually-hidden">Ghi chú</h3>
+									<div class="field " data-bind-class="{'field--show-floating-label': note}">
+										<div class="field__input-wrapper">
+											<label for="note" class="field__label">
+												Ghi chú (tùy chọn)
+											</label>
+											<textarea name="note" id="note" type="text" class="field__input" data-bind="note"></textarea>
+										</div>
+										
+									</div>
+								</div>
+								
+							</div>
+							<div class="col col--two">
+								
+
+								
+								<section class="section" data-define="{shippingMethod: ''}">
+									<div class="section__header">
+										<div class="layout-flex">
+											<h2 class="section__title layout-flex__item layout-flex__item--stretch">
+												<i class="fa fa-truck fa-lg section__title--icon hide-on-desktop"></i>
+												Vận chuyển
+											</h2>
+										</div>
+									</div>
+									<div class="section__content" data-tg-refresh="refreshShipping" id="shippingMethodList" data-define="{isAddressSelecting: true, shippingMethods: []}">
+										<div class="alert alert--loader spinner spinner--active hide" data-bind-show="isLoadingShippingMethod">
+											
+										</div>
+
+										
+										<div class="alert alert-retry alert--danger hide" data-bind-event-click="handleShippingMethodErrorRetry()" data-bind-show="!isLoadingShippingMethod &amp;&amp; !isAddressSelecting &amp;&amp; isLoadingShippingError">
+											<span data-bind="loadingShippingErrorMessage">Không thể load phí vận chuyển. Vui lòng thử lại</span> <i class="fa fa-refresh"></i>
+										</div>
+
+										
+										<div class="alert alert--info" data-bind-show="!isLoadingShippingMethod &amp;&amp; isAddressSelecting">
+											Vui lòng nhập thông tin giao hàng
+										</div>
+									</div>
+								</section>
+								
+								<section class="section">
+									<div class="section__header">
+										<div class="layout-flex">
+											<h2 class="section__title layout-flex__item layout-flex__item--stretch">
+												<i class="fa fa-credit-card fa-lg section__title--icon hide-on-desktop"></i>
+												Thanh toán
+											</h2>
+										</div>
+									</div>
+									<div class="section__content">
+										
+										<div class="content-box" data-define="{paymentMethod: undefined}">
+											<div class="content-box__row">
+												<div class="radio-wrapper">
+													<div class="radio__input">
+														<input name="paymentType" id="paymentMethod-295831" type="radio" class="input-radio" data-bind="paymentMethod" value="cash">
+													</div>
+													<label for="paymentMethod-295831" class="radio__label">
+														<span class="radio__label__primary">Thanh toán khi giao hàng (COD)</span>
+														<span class="radio__label__accessory">
+															<span class="radio__label__icon">
+																<i class="payment-icon payment-icon--4"></i>
+															</span>
+														</span>
+													</label>
+												</div>
+												
+												<div class="content-box__row__desc hide" data-bind-show="paymentMethod == 295831">
+													<p>cod</p>
+													
+												</div>
+												
+											</div>
+											
+										</div>
+										<br>
+										<div class="content-box" data-define="{paymentMethod: undefined}">
+											<div class="content-box__row">
+												<div class="radio-wrapper">
+													<div class="radio__input">
+														<input name="paymentType" id="paymentMethod-295831" type="radio" class="input-radio" data-bind="paymentMethod" value="paypal">
+													</div>
+													<label for="paymentMethod-295831" class="radio__label">
+														<span class="radio__label__primary">Thanh toán qua PayPal</span>
+														<span class="radio__label__accessory">
+															<span class="radio__label__icon">
+																<i class="payment-icon payment-icon--4"></i>
+															</span>
+														</span>
+													</label>
+												</div>
+												
+												<div class="content-box__row__desc hide" data-bind-show="paymentMethod == 295831">
+													<p>cod</p>
+													
+												</div>
+												
+											</div>
+											
+										</div>
+									</div>
+								</section>
+							</div>
+						</article>
+						<div class="field__input-btn-wrapper field__input-btn-wrapper--vertical hide-on-desktop">
+							<button type="submit" class="btn btn-checkout spinner" data-bind-class="{'spinner--active': isSubmitingCheckout}" data-bind-disabled="isSubmitingCheckout || isLoadingReductionCode">
+								<span class="spinner-label">ĐẶT HÀNG</span>
+								<svg xmlns="http://www.w3.org/2000/svg" class="spinner-loader">
+									<use href="#spinner"></use>
+								</svg>
+							</button>
+							
+							<a href="/cart" class="previous-link">
+								<i class="previous-link__arrow">❮</i>
+								<span class="previous-link__content">Quay về giỏ hàng</span>
+							</a>
+							
+						</div>
+
+						<div id="common-alert" data-tg-refresh="refreshError">
+							
+							
+							<div class="alert alert--danger hide-on-desktop hide" data-bind-show="!isSubmitingCheckout &amp;&amp; isSubmitingCheckoutError" data-bind="submitingCheckoutErrorMessage">Có lỗi xảy ra khi xử lý. Vui lòng thử lại</div>
+						</div>
+					</div>
+					
+
+
+
+
+
+				</main>
+				<aside class="sidebar">
+					<div class="sidebar__header">
+						<h2 class="sidebar__title">
+							Đơn hàng (1 sản phẩm)
+						</h2>
+					</div>
+					<div class="sidebar__content">
+						<div id="order-summary" class="order-summary order-summary--is-collapsed">
+							<div class="order-summary__sections">
+								<div class="order-summary__section order-summary__section--product-list order-summary__section--is-scrollable order-summary--collapse-element">
+									<table class="product-table">
+										<caption class="visually-hidden">Chi tiết đơn hàng</caption>
+										<thead class="product-table__header">
+											<tr>
+												<th>
+													<span class="visually-hidden">Ảnh sản phẩm</span>
+												</th>
+												<th>
+													<span class="visually-hidden">Mô tả</span>
+												</th>
+												<th>
+													<span class="visually-hidden">Sổ lượng</span>
+												</th>
+												<th>
+													<span class="visually-hidden">Đơn giá</span>
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											
+											<tr class="product" th:each="il:${itemList}">
+												<td class="product__image">
+													<div class="product-thumbnail">
+														<div class="product-thumbnail__wrapper" data-tg-static="">
+															
+															<img th:src="@{|/customerAssets/images/${il.product.thumnail}|}" alt="" class="product-thumbnail__image">
+															
+														</div>
+														<span class="product-thumbnail__quantity" th:text="${il.quantity}" > </span>
+													</div>
+												</td>
+												<th class="product__description">
+													<span class="product__description__name" th:text="${il.product.product.name}">
+														
+														
+													</span>
+													
+													
+												</th>
+												<td class="product__quantity visually-hidden" th:text="${il.quantity}"><em>Số lượng:</em> </td>
+												<td class="product__price" th:text="${il.product.product.price}">
+													
+													
+													
+												</td>
+											</tr>
+											
+										</tbody>
+									</table>
+								</div>
+								<div class="order-summary__section order-summary__section--discount-code" data-tg-refresh="refreshDiscount" id="discountCode">
+									<h3 class="visually-hidden">Mã khuyến mại</h3>
+									<div class="edit_checkout animate-floating-labels">
+										<div class="fieldset">
+											<div class="field  ">
+												<div class="field__input-btn-wrapper">
+													<div class="field__input-wrapper">
+														<label for="reductionCode" class="field__label">Nhập mã giảm giá</label>
+														<input name="reductionCode" id="reductionCode" type="text" class="field__input" autocomplete="off" data-bind-disabled="isLoadingReductionCode" data-bind-event-keypress="handleReductionCodeKeyPress(event)" data-define="{reductionCode: null}" data-bind="reductionCode">
+													</div>
+													<button class="field__input-btn btn spinner btn--disabled" type="button" data-bind-disabled="isLoadingReductionCode || !reductionCode" data-bind-class="{'spinner--active': isLoadingReductionCode, 'btn--disabled': !reductionCode}" data-bind-event-click="applyReductionCode()" disabled="">
+														<span class="spinner-label">Áp dụng</span>
+														<svg xmlns="http://www.w3.org/2000/svg" class="spinner-loader">
+															<use href="#spinner"></use>
+														</svg>
+													</button>
+												</div>
+												
+												<p class="field__message field__message--error field__message--error-always-show hide" data-bind-show="!isLoadingReductionCode &amp;&amp; isLoadingReductionCodeError" data-bind="loadingReductionCodeErrorMessage">Có lỗi xảy ra khi áp dụng khuyến mãi. Vui lòng thử lại</p>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="order-summary__section order-summary__section--total-lines order-summary--collapse-element" data-define="{subTotalPriceText: '250.000₫'}" data-tg-refresh="refreshOrderTotalPrice" id="orderSummary">
+									<table class="total-line-table">
+										<caption class="visually-hidden">Tổng giá trị</caption>
+										<thead>
+											<tr>
+												<td><span class="visually-hidden">Mô tả</span></td>
+												<td><span class="visually-hidden">Giá tiền</span></td>
+											</tr>
+										</thead>
+										<tbody class="total-line-table__tbody">
+											<tr class="total-line total-line--subtotal">
+												<th class="total-line__name">
+													Tạm tính
+												</th>
+												<td class="total-line__price" >
+													<span th:text="${dto.totalCost}"></span>
+													<input id="temp" th:value="${dto.totalCost}" hidden="true">
+													<span>₫</span>
+												</td>
+												
+											</tr>
+											
+											<tr class="total-line total-line--shipping-fee">
+												<th class="total-line__name">
+													Phí vận chuyển
+												</th>
+												<td class="total-line__price" data-bind="getTextShippingPrice()"><p class="form-control" id="phivanchuyen"></p></td>
+											</tr>
+											
+										</tbody>
+										<tfoot class="total-line-table__footer">
+											<tr class="total-line payment-due">
+												<th class="total-line__name">
+													<span class="payment-due__label-total">
+														Tổng cộng
+													</span>
+												</th>
+												<td class="total-line__price">
+													<span class="payment-due__price" id="total" data-bind="getTextTotalPrice()" > </span>
+													<input type="hidden" name="price" th:value="${dto.totalCost/23000}">
+													<span class="payment-due__price">₫</span>
+												</td>
+											</tr>
+										</tfoot>
+									</table>
+								</div>
+								<div class="order-summary__nav field__input-btn-wrapper hide-on-mobile layout-flex--row-reverse">
+									<button type="submit" class="btn btn-checkout spinner" >
+										<span class="spinner-label">ĐẶT HÀNG</span>
+										<svg xmlns="http://www.w3.org/2000/svg" class="spinner-loader">
+											<use href="#spinner"></use>
+										</svg>
+									</button>
+
+									
+									<a href="/cart" class="previous-link">
+										<i class="previous-link__arrow">❮</i>
+										<span class="previous-link__content">Quay về giỏ hàng</span>
+									</a>
+									
+								</div>
+								<div id="common-alert-sidebar" data-tg-refresh="refreshError">
+									
+									
+									<div class="alert alert--danger hide-on-mobile hide" data-bind-show="!isSubmitingCheckout &amp;&amp; isSubmitingCheckoutError" data-bind="submitingCheckoutErrorMessage">Có lỗi xảy ra khi xử lý. Vui lòng thử lại</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</aside>
+			</div>
+		</form>
+		
+		<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+			<symbol id="spinner">
+				<svg viewBox="0 0 30 30">
+					<circle stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="85%" cx="50%" cy="50%" r="40%">
+						<animateTransform attributeName="transform" type="rotate" from="0 15 15" to="360 15 15" dur="0.7s" repeatCount="indefinite"></animateTransform>
+					</circle>
+				</svg>
+			</symbol>
+		</svg>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+	  <script src="/js/add.js"></script>
+
+</body>
+</html>

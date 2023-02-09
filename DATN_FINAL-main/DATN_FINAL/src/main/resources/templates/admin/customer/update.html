@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/admin/index :: dynamic(~{::main})}">
+
+<body>
+	<main>
+		<h1 class="h3 mb-2 text-gray-800">UPDATE KHÁCH HÀNG</h1>
+		<div class="card shadow mb-4">
+			<div class="container">
+				<div th:object="${user}">
+					<form th:action="@{/api/customer/update/{id} (id = ${user.id})}" th:object="${user}" method="post">
+						<br>
+						<div class="row">
+							<div class="col-4">
+								<label>Photos: </label>
+								<input type="file" name="avatar" th:value="${user.avatar}" th:field="*{avatar}"
+									accept="image/png, image/jpeg" />
+								<img th:src="@{|/assets/img/${user.avatar}|}" id="thumbnail" alt="Avatar Customer"
+									width="300px" />
+							</div>
+							<div class="col-8">
+								<div class="mt-2">
+									<div class="form-row">
+										<div class="form-group col-md-6">
+											<label for="inputState">First name:</label>
+											<div>
+												<input type="text" name="firstName" class="form-control"
+													th:value="${user.firstName}" th:field="*{firstName}" required />
+											</div>
+											<i class="pull-left text-danger" th:if="${#fields.hasErrors('firstName')}"
+												th:errors="*{firstName}"></i>
+										</div>
+										<div class="form-group col-md-6">
+											<label for="inputState">Last name:</label>
+											<div>
+												<input type="text" name="lastName" class="form-control"
+													th:value="${user.lastName}" th:field="*{lastName}" required />
+											</div>
+											<i class="pull-left text-danger" th:if="${#fields.hasErrors('lastName')}"
+												th:errors="*{lastName}"></i>
+										</div>
+									</div>
+								</div>
+								<br>
+								<div class="mt-2 row">
+									<label class="col-2">User name:</label>
+									<div class="col-10">
+										<input type="text" name="username" class="form-control" th:field="*{username}"
+											th:value="${user.username}" disabled />
+									</div>
+								</div>
+								<br>
+								<div class="mt-2 row">
+									<label class="col-2">Số điện thoại:</label>
+									<div class="col-10">
+										<input type="text" name="phoneNumber" class="form-control"
+											th:value="${user.phoneNumber}" th:field="*{phoneNumber}" required />
+									</div>
+									<i class="pull-left text-danger" th:if="${#fields.hasErrors('phoneNumber')}"
+										th:errors="*{phoneNumber}"></i>
+								</div>
+								<br>
+								<div class="mt-2 row">
+									<label class="col-2">Email:</label>
+									<div class="col-10">
+										<input type="email" name="email" class="form-control" th:field="*{email}"
+											th:value="${user.email}" required />
+									</div>
+									<i class="pull-left text-danger" th:if="${#fields.hasErrors('email')}"
+										th:errors="*{email}">
+									</i>
+								</div>
+								<br>
+								<div class="mt-2 row">
+									<label class="col-3">Giới tính :</label>
+									<div class="col-9 row">
+										<div class="col-6 form-group row">
+											<input class="form-check-input" type="radio" id="option1" name="option1"
+												value="1" th:field="*{gender}" checked>
+											<label class="form-check-label text-muted" for="option1">
+												Nam
+											</label>
+										</div>
+										<div class="col-6 form-group row">
+											<input class="form-check-input" type="radio" id="option2" name="option2"
+												value="0" th:field="*{gender}">
+											<label class="form-check-label text-muted" for="option2">
+												Nữ
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="mt-2">
+							<div class="form-row">
+								<div class="form-group col-md-4">
+									<label for="inputState">Tỉnh/Thành phố:</label>
+									<select id="provineCityO" class="form-control">
+										<option value="">Chọn tỉnh/thành phố</option>
+									</select>
+									<input class="form-control" th:field="*{provineCity}" id="provineCity"
+										th:value="${user.provineCity}" name="provineCity"></input>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="inputState">Quận/Huyện:</label>
+									<select id="districtO" class="form-control">
+										<option value="">Chọn quận/huyện</option>
+									</select>
+									<input class="form-control" th:field="*{district}" id="district"
+										th:value="${user.district}" name="district"></input>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="inputState">Phường/Xã:</label>
+									<select id="wardO" class="form-control">
+										<option value="">Chọn phường xã</option>
+									</select>
+									<input class="form-control" th:field="*{ward}" id="ward" th:value="${user.ward}"
+										name="ward"></input>
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="mt-2 row">
+							<label class="col-2">Địa chỉ chi tiết:</label>
+							<div class="col-10">
+								<input type="text" id="address" class="form-control" th:field="*{address}" required
+									th:value="${user.address}" placeholder="Ví dụ: số nhà 12 ngõ 13" name="address" />
+							</div>
+							<i class="pull-left text-danger" th:if="${#fields.hasErrors('address')}"
+								th:errors="*{address}">
+							</i>
+						</div>
+						<br>
+						<div class="mt-2 row">
+							<label class="col-2">Tổng chi tiêu:</label>
+							<div class="col-10 input-group mb-2">
+								<input class="form-control" th:value="${user.totalSpending}" th:field="*{totalSpending}"
+									id="totalSpending" name="totalSpending" required>
+								</input>
+								<div class="input-group-prepend">
+									<div class="input-group-text">VNĐ</div>
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="mt-2 row">
+							<label class="col-2">tb_coin:</label>
+							<div class="col-10 input-group mb-2">
+								<input class="form-control" id="tbCoin" name="tbCoin" th:field="*{tbCoin}"
+									th:value="${user.tbCoin}" required>
+								</input>
+							</div>
+						</div>
+						<br>
+						<div sec:authorize="hasRole('Directors')" class="form-group row">
+							<label class="col-3 text">Trạng thái:</label>
+							<div class="col-9 row">
+								<div class="col-6 form-group row">
+									<input class="form-check-input" type="radio" id="option1" name="option1" value="1"
+										th:field="*{status}" checked>
+									<label class="form-check-label text-muted" for="option1">
+										Đang hoạt động
+									</label>
+								</div>
+								<div class="col-6 form-group row">
+									<input class="form-check-input" type="radio" id="option2" name="option2" value="0"
+										th:field="*{status}">
+									<label class="form-check-label text-muted" for="option2">
+										Không hoạt động
+									</label>
+								</div>
+							</div>
+						</div>
+						<br>
+						<br>
+						<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateModal">
+							<span>
+								<i class="fa-solid fa-pen-to-square"></i>
+							</span>
+							<span class="text">Update</span></button>
+						<!-- Modal -->
+						<div class="modal fade" id="updateModal" tabindex="-1" role="dialog"
+							aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Thay đổi khách hàng</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										Bạn có muốn thay đổi khách hàng <span th:text="${user.username}"></span> không ?
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+										<button type="submit" class="btn btn-primary">Yes</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<br>
+						<hr>
+						<br>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
+			integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
+			crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$('#avatar').change(function () {
+					showImageThumbnail(this);
+				})
+			})
+
+			function showImageThumbnail(fileInput) {
+				file = fileInput.files[0];
+				reader = new FileReader();
+				reader.onload = function (e) {
+					$('#thumbnail').attr('src', e.target.result);
+				};
+				reader.readAsDataURL(file);
+			}
+
+
+			// 1. what is API
+			// 2. How do I call API
+			// 3. Explain code
+			const host = "https://provinces.open-api.vn/api/";
+			var callAPI = (api) => {
+				return axios.get(api)
+					.then((response) => {
+						renderData(response.data, "provineCityO");
+					});
+			}
+			callAPI('https://provinces.open-api.vn/api/?depth=1');
+			var callApiDistrict = (api) => {
+				return axios.get(api)
+					.then((response) => {
+						renderData(response.data.districts, "districtO");
+					});
+			}
+			var callApiWard = (api) => {
+				return axios.get(api)
+					.then((response) => {
+						renderData(response.data.wards, "wardO");
+					});
+			}
+
+			var renderData = (array, select) => {
+				let row = ' <option disable value="">chọn</option>';
+				array.forEach(element => {
+					row += `<option value="${element.code}">${element.name}</option>`
+				});
+				document.querySelector("#" + select).innerHTML = row
+			}
+
+			$("#provineCityO").change(() => {
+				callApiDistrict(host + "p/" + $("#provineCityO").val() + "?depth=2");
+				printResult();
+			});
+			$("#districtO").change(() => {
+				callApiWard(host + "d/" + $("#districtO").val() + "?depth=2");
+				printResult();
+			});
+			$("#wardO").change(() => {
+				printResult();
+			})
+
+			function printResult() {
+				if ($("#districtO").val() != "" && $("#provineCityO").val() != "" &&
+					$("#wardO").val() != "") {
+					let provineCity = $("#provineCityO option:selected").text();
+					document.getElementById('provineCity').value = provineCity;
+					let district = $("#districtO option:selected").text();
+					document.getElementById('district').value = district;
+					let ward = $("#wardO option:selected").text();
+					document.getElementById('ward').value = ward;
+				}
+
+			}
+		</script>
+	</main>
+</body>
+
+</html>
